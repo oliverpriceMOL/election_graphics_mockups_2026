@@ -16,7 +16,7 @@ const PARTY = {
   Gwlad:  { name: "Gwlad Gwlad",         short: "Gwlad",   colour: "#D4002A" },
   Propel: { name: "Propel",              short: "Propel",  colour: "#00A86B" },
   Abolish:{ name: "Abolish",             short: "Abolish", colour: "#6B2C91" },
-  NOC:    { name: "No overall control",  short: "NOC",     colour: "#D4B5B0" },
+  NOC:    { name: "No overall control",  short: "NOC",     colour: "#E8A0B4" },
   Other:  { name: "Other",               short: "Other",   colour: "#CCCCCC" },
 };
 
