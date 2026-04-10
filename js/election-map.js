@@ -38,12 +38,11 @@ function createMapScaffold(container, width, height, fitGeo, searchPlaceholder) 
   var defs = svg.append("defs");
   var hatch = defs.append("pattern")
     .attr("id", "crosshatch")
-    .attr("width", 6).attr("height", 6)
-    .attr("patternUnits", "userSpaceOnUse")
-    .attr("patternTransform", "rotate(45)");
-  hatch.append("rect").attr("width", 6).attr("height", 6).attr("fill", "#e0e0e0");
-  hatch.append("line").attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 6)
-    .attr("stroke", "#999").attr("stroke-width", 1.5);
+    .attr("width", 8).attr("height", 8)
+    .attr("patternUnits", "userSpaceOnUse");
+  hatch.append("rect").attr("width", 8).attr("height", 8).attr("fill", "#e0e0e0");
+  hatch.append("path").attr("d", "M0,0 l8,8 M8,0 l-8,8")
+    .attr("stroke", "#888").attr("stroke-width", 1.2).attr("stroke-linecap", "square");
 
   var zoom = d3.zoom()
     .scaleExtent([1, 8])
