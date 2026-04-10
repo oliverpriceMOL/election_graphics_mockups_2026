@@ -334,7 +334,7 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         .attr("fill", function (d) {
           var r = countyResults[d.properties.CTY24NM];
           if (r) return partyColour(r.winningParty);
-          return countyNominations[d.properties.CTY24NM] ? "#d8d8dc" : "#f0f0f2";
+          return countyNominations[d.properties.CTY24NM] ? "url(#crosshatch)" : "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 0.5)
@@ -379,11 +379,11 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           if (mode === "district") {
             var r = ladResults[name];
             if (r) return partyColour(r.winningParty);
-            return ladNominations[name] ? "#d8d8dc" : "#f0f0f2";
+            return ladNominations[name] ? "url(#crosshatch)" : "#f0f0f2";
           } else if (mode === "mayoral") {
             var mr = mayoralLadResults[name];
             if (mr) return partyColour(mr.winningParty);
-            return mayoralLadNominations[name] ? "#d8d8dc" : "#f0f0f2";
+            return mayoralLadNominations[name] ? "url(#crosshatch)" : "#f0f0f2";
           }
           return "#f0f0f2";
         })

@@ -321,7 +321,7 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           var nm = d.properties.SPR_NM;
           var wp = regionWinningParty(nm);
           if (wp) return partyColour(wp);
-          return regNomSet[nm] ? "#d8d8dc" : "#f0f0f2";
+          return regNomSet[nm] ? "url(#crosshatch)" : "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 1)
@@ -370,7 +370,7 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           var nm = d.properties.SPC_NM;
           var r = constMap[nm];
           if (r) return partyColour(r.winningParty);
-          return constNomSet[nm] ? "#d8d8dc" : "#f0f0f2";
+          return constNomSet[nm] ? "url(#crosshatch)" : "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 0.3)

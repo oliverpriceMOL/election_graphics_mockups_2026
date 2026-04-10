@@ -136,7 +136,7 @@ function walesMap(container, results, constGeo, options) {
       var r = constMap[nm];
       var wp = constWinningParty(r);
       if (wp) return partyColour(wp);
-      return constNomSet[nm] ? "#d8d8dc" : "#f0f0f2";
+      return constNomSet[nm] ? "url(#crosshatch)" : "#f0f0f2";
     })
     .attr("stroke", "#fff")
     .attr("stroke-width", 0.5)

@@ -34,6 +34,17 @@ function createMapScaffold(container, width, height, fitGeo, searchPlaceholder) 
 
   var zoomGroup = svg.append("g").attr("class", "map-zoom-group");
 
+  // Crosshatch pattern for "awaiting declaration" areas
+  var defs = svg.append("defs");
+  var hatch = defs.append("pattern")
+    .attr("id", "crosshatch")
+    .attr("width", 6).attr("height", 6)
+    .attr("patternUnits", "userSpaceOnUse")
+    .attr("patternTransform", "rotate(45)");
+  hatch.append("rect").attr("width", 6).attr("height", 6).attr("fill", "#e0e0e0");
+  hatch.append("line").attr("x1", 0).attr("y1", 0).attr("x2", 0).attr("y2", 6)
+    .attr("stroke", "#999").attr("stroke-width", 1.5);
+
   var zoom = d3.zoom()
     .scaleExtent([1, 8])
     .on("zoom", function (event) {
