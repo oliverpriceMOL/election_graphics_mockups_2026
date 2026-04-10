@@ -842,7 +842,7 @@ body {
   cursor: pointer;
 }
 .map-area--awaiting {
-  cursor: default;
+  cursor: pointer;
 }
 
 /* -- Map fullscreen overlay -- */

@@ -196,6 +196,13 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
 
   for (var nm in constMap) addToSearch(nm, constMap[nm], "constituency");
   for (var nm2 in regMap) addToSearch(nm2, regMap[nm2], "region");
+  // Nominated-but-no-result constituencies/regions (for search)
+  for (var cnm in constNomSet) {
+    if (!constMap[cnm]) addToSearch(cnm, { name: cnm, _awaiting: true }, "constituency");
+  }
+  for (var rnm in regNomSet) {
+    if (!regMap[rnm]) addToSearch(rnm, { name: rnm, _awaiting: true }, "region");
+  }
 
   function findAllElections(constName) {
     var elections = [];
@@ -356,7 +363,8 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
         })
         .on("click", function (event, d) {
           var rName = d.properties.SPR_NM;
-          if (regMap[rName]) showRegionOverlay(rName);
+          if (regMap[rName]) { showRegionOverlay(rName); }
+          else if (regNomSet[rName]) { showAwaitingOverlay(rName + " Region"); }
         });
     } else {
       // Constituency view: colour by FPTP winner
@@ -410,8 +418,10 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           Tooltip.hide("map-tooltip");
         })
         .on("click", function (event, d) {
-          var r = constMap[d.properties.SPC_NM];
-          if (r) showScotlandOverlay(findAllElections(d.properties.SPC_NM));
+          var nm = d.properties.SPC_NM;
+          var r = constMap[nm];
+          if (r) { showScotlandOverlay(findAllElections(nm)); }
+          else if (constNomSet[nm]) { showAwaitingOverlay(nm); }
         });
 
       // Region borders overlay
@@ -431,18 +441,37 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
   // ── Overlay ──
   var overlayApi = null;
 
+  function showAwaitingOverlay(label) {
+    createMapOverlay([{
+      tabLabel: label,
+      renderPanel: function (panel) {
+        panel.append("div")
+          .html("<p style=\"color:#888; text-align:center; padding:40px 20px; font-size:15px;\">Awaiting declaration</p>");
+      }
+    }]);
+  }
+
   function showScotlandOverlay(elections) {
+    // If all awaiting, show awaiting panel
+    var allAwaiting = elections.every(function (e) { return e.result._awaiting; });
+    if (allAwaiting && elections.length > 0) {
+      var label = elections[0].type === "region" ? elections[0].result.name + " Region" : elections[0].result.name;
+      showAwaitingOverlay(label);
+      return;
+    }
+    var declared = elections.filter(function (e) { return !e.result._awaiting; });
+
     // If only a region result, use the dedicated region overlay
-    if (elections.length === 1 && elections[0].type === "region") {
-      var regionName = elections[0].result.name;
+    if (declared.length === 1 && declared[0].type === "region") {
+      var regionName = declared[0].result.name;
       for (var rk in regMap) {
-        if (regMap[rk] === elections[0].result) { regionName = rk; break; }
+        if (regMap[rk] === declared[0].result) { regionName = rk; break; }
       }
       showRegionOverlay(regionName);
       return;
     }
 
-    var sorted = elections.slice().sort(function (a, b) {
+    var sorted = declared.slice().sort(function (a, b) {
       if (a.type === "constituency" && b.type !== "constituency") return -1;
       if (b.type === "constituency" && a.type !== "constituency") return 1;
       return 0;

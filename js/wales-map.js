@@ -63,6 +63,12 @@ function walesMap(container, results, constGeo, options) {
   for (var nm in constMap) {
     searchIndex.push({ label: nm, result: constMap[nm] });
   }
+  // Add nominated-but-no-result constituencies so they are searchable
+  for (var nm in constNomSet) {
+    if (!constMap[nm]) {
+      searchIndex.push({ label: nm, _awaiting: true });
+    }
+  }
 
   // ── Search ──
   setupMapSearch(m.searchInput, m.dropdown, m.searchWrap,
@@ -78,6 +84,7 @@ function walesMap(container, results, constGeo, options) {
           onClick: function () {
             m.dropdown.style("display", "none");
             m.searchInput.property("value", s.label);
+            if (s._awaiting) { showAwaitingOverlay(s.label); return; }
             showWalesOverlay(s.result);
           }
         };
@@ -106,6 +113,12 @@ function walesMap(container, results, constGeo, options) {
                   m.searchInput.property("value", nm);
                   m.dropdown.style("display", "none");
                   showWalesOverlay(constMap[nm]);
+                  return;
+                }
+                if (constNomSet[nm]) {
+                  m.searchInput.property("value", nm);
+                  m.dropdown.style("display", "none");
+                  showAwaitingOverlay(nm);
                   return;
                 }
               }
@@ -170,11 +183,26 @@ function walesMap(container, results, constGeo, options) {
       Tooltip.hide("map-tooltip");
     })
     .on("click", function (event, d) {
-      var r = constMap[d.properties.SENEDD_NM];
-      if (r) showWalesOverlay(r);
+      var nm = d.properties.SENEDD_NM;
+      var r = constMap[nm];
+      if (r) { showWalesOverlay(r); return; }
+      if (constNomSet[nm]) showAwaitingOverlay(nm);
     });
 
   // ── Overlay ──
+  function showAwaitingOverlay(label) {
+    createMapOverlay([{
+      tabLabel: label,
+      renderPanel: function (panel) {
+        panel.append("div")
+          .style("padding", "24px 16px")
+          .style("text-align", "center")
+          .style("color", "#888")
+          .text("Awaiting declaration");
+      }
+    }]);
+  }
+
   function showWalesOverlay(result) {
     createMapOverlay([{
       tabLabel: result.name,

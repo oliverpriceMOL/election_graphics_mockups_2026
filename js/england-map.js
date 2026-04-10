@@ -156,6 +156,34 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
       addToIndex(mayoralVals[mi].name, mayoralVals[mi], "mayoral");
     }
   }
+  // Nominated-but-no-result councils (for search)
+  var ladNomKeys = Object.keys(ladNominations);
+  for (var ni = 0; ni < ladNomKeys.length; ni++) {
+    var gnm = ladNomKeys[ni];
+    if (!ladResults[gnm]) {
+      var nom = ladNominations[gnm];
+      addToIndex(nom.name, { name: nom.name, type: nom.type, _awaiting: true }, "council");
+    }
+  }
+  var ctyNomKeys = Object.keys(countyNominations);
+  for (var ni2 = 0; ni2 < ctyNomKeys.length; ni2++) {
+    var gnm2 = ctyNomKeys[ni2];
+    if (!countyResults[gnm2]) {
+      var nom2 = countyNominations[gnm2];
+      addToIndex(nom2.name, { name: nom2.name, type: nom2.type, _awaiting: true }, "council");
+    }
+  }
+  var mayNomKeys = Object.keys(mayoralLadNominations);
+  for (var ni3 = 0; ni3 < mayNomKeys.length; ni3++) {
+    var gnm3 = mayNomKeys[ni3];
+    if (!mayoralLadResults[gnm3]) {
+      var nom3 = mayoralLadNominations[gnm3];
+      var mnorm2 = normaliseName(nom3.name);
+      if (!indexByNorm[mnorm2]) {
+        addToIndex(nom3.name, { name: nom3.name, _awaiting: true }, "mayoral");
+      }
+    }
+  }
 
   // Build a LAD→county mapping (which county contains each LAD centroid)
   var ladToCounty = {};
@@ -363,8 +391,10 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           Tooltip.hide("map-tooltip");
         })
         .on("click", function (event, d) {
-          var r = countyResults[d.properties.CTY24NM];
-          if (r) showOverlay(findAllElections(r.name));
+          var nm = d.properties.CTY24NM;
+          var r = countyResults[nm];
+          if (r) { showOverlay(findAllElections(r.name)); }
+          else if (countyNominations[nm]) { showAwaitingOverlay(countyNominations[nm].name, countyNominations[nm].type); }
         });
     } else {
       // District / Mayoral mode – LAD layer
@@ -424,10 +454,12 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           var name = d.properties.LAD25NM;
           if (mode === "district") {
             var r = ladResults[name];
-            if (r) showOverlay(findAllElections(r.name));
+            if (r) { showOverlay(findAllElections(r.name)); }
+            else if (ladNominations[name]) { showAwaitingOverlay(ladNominations[name].name, ladNominations[name].type); }
           } else if (mode === "mayoral") {
             var mr = mayoralLadResults[name];
-            if (mr) showOverlay(findAllElections(mr.name));
+            if (mr) { showOverlay(findAllElections(mr.name)); }
+            else if (mayoralLadNominations[name]) { showAwaitingOverlay(mayoralLadNominations[name].name, "Mayoral"); }
           }
         });
     }
@@ -435,8 +467,17 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
 
   // ── Overlay ──
   function showOverlay(elections) {
+    // If all elections are awaiting, show awaiting overlay
+    var allAwaiting = elections.every(function (e) { return e.result._awaiting; });
+    if (allAwaiting && elections.length > 0) {
+      var first = elections[0].result;
+      showAwaitingOverlay(first.name, first.type);
+      return;
+    }
+    // Filter to only declared results
+    var declared = elections.filter(function (e) { return !e.result._awaiting; });
     var modeType = activeMode === "mayoral" ? "mayoral" : "council";
-    var sorted = elections.slice().sort(function (a, b) {
+    var sorted = declared.slice().sort(function (a, b) {
       if (a.type === modeType && b.type !== modeType) return -1;
       if (b.type === modeType && a.type !== modeType) return 1;
       return 0;
@@ -469,6 +510,18 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
       };
     });
     createMapOverlay(items);
+  }
+
+  function showAwaitingOverlay(name, type) {
+    var tabLabel = SPECIAL_COUNCIL_NAMES[name] || name + " " + (SECTION_TITLES[type] || "Council");
+    createMapOverlay([{
+      tabLabel: tabLabel,
+      renderPanel: function (panel) {
+        panel.append("div")
+          .attr("class", "map-overlay__awaiting")
+          .html("<p style=\"color:#888; text-align:center; padding:40px 20px; font-size:15px;\">Awaiting declaration</p>");
+      }
+    }]);
   }
 
   // Initial render
