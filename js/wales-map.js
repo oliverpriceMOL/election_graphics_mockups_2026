@@ -27,6 +27,20 @@ function walesMap(container, results, constGeo, options) {
     if (byName[nm]) constMap[nm] = byName[nm];
   }
 
+  // Build nomination lookup (for distinguishing "awaiting" from "no election")
+  var constNomSet = {};
+  var wNoms = options.nominations || [];
+  function normWales(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
+  for (var ni = 0; ni < wNoms.length; ni++) {
+    var wnNorm = normWales(wNoms[ni].name);
+    for (var fi = 0; fi < constGeo.features.length; fi++) {
+      if (normWales(constGeo.features[fi].properties.SENEDD_NM) === wnNorm) {
+        constNomSet[constGeo.features[fi].properties.SENEDD_NM] = true;
+        break;
+      }
+    }
+  }
+
   function constWinningParty(result) {
     if (!result || !result.candidates) return null;
     var counts = {};
@@ -118,23 +132,33 @@ function walesMap(container, results, constGeo, options) {
     .join("path")
     .attr("d", m.path)
     .attr("fill", function (d) {
-      var r = constMap[d.properties.SENEDD_NM];
+      var nm = d.properties.SENEDD_NM;
+      var r = constMap[nm];
       var wp = constWinningParty(r);
-      return wp ? partyColour(wp) : "#e8e8e8";
+      if (wp) return partyColour(wp);
+      return constNomSet[nm] ? "#d8d8dc" : "#f0f0f2";
     })
     .attr("stroke", "#fff")
     .attr("stroke-width", 0.5)
     .attr("class", function (d) {
-      return constMap[d.properties.SENEDD_NM] ? "map-area map-area--has-result" : "map-area";
+      var nm = d.properties.SENEDD_NM;
+      if (constMap[nm]) return "map-area map-area--has-result";
+      if (constNomSet[nm]) return "map-area map-area--awaiting";
+      return "map-area";
     })
     .on("mouseenter", function (event, d) {
-      var r = constMap[d.properties.SENEDD_NM];
-      if (!r) return;
-      var html = "<strong>" + r.name + "</strong><br>";
-      var tally = seatTallyHtml(r);
-      if (tally) html += tally;
-      mapBounds = getMapBounds();
-      Tooltip.show("map-tooltip", html, event.clientX, event.clientY, mapBounds);
+      var nm = d.properties.SENEDD_NM;
+      var r = constMap[nm];
+      if (r) {
+        var html = "<strong>" + r.name + "</strong><br>";
+        var tally = seatTallyHtml(r);
+        if (tally) html += tally;
+        mapBounds = getMapBounds();
+        Tooltip.show("map-tooltip", html, event.clientX, event.clientY, mapBounds);
+      } else if (constNomSet[nm]) {
+        mapBounds = getMapBounds();
+        Tooltip.show("map-tooltip", "<strong>" + nm + "</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
+      } else { return; }
       d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
     })
     .on("mousemove", function (event) {

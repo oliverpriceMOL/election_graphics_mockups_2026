@@ -75,7 +75,9 @@ Promise.all([
   fetch("map_data/scottish_constituencies.geojson").then(r => r.json()),
   fetch("map_data/scottish_regions.geojson").then(r => r.json()),
   fetch("data/scottish_notionals.json").then(r => r.json()).catch(() => ({})),
-]).then(([fptpData, topupData, constGeo, regGeo, notionals]) => {
+  fetch("data/scottish_fptp_nominations.json").then(r => r.json()),
+  fetch("data/scottish_topup_nominations.json").then(r => r.json()),
+]).then(([fptpData, topupData, constGeo, regGeo, notionals, constNominations, regNominations]) => {
   const constResults = fptpData.results || fptpData;
   const regResults = Array.isArray(topupData) ? topupData : (topupData.results || []);
 
@@ -92,8 +94,10 @@ Promise.all([
   const toggleRow = document.querySelector(".party-strip-toggle-row");
   if (toggleRow) {
     const badge = document.createElement("div");
-    badge.className = "scoreboard__declared" + (constDeduped.length >= 73 && regDeduped.length >= 8 ? " scoreboard__declared--complete" : "");
-    badge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>73</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>8</strong> regions declared";
+    var totalConst = constNominations.length || 73;
+    var totalReg = regNominations.length || 8;
+    badge.className = "scoreboard__declared" + (constDeduped.length >= totalConst && regDeduped.length >= totalReg ? " scoreboard__declared--complete" : "");
+    badge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>" + totalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + totalReg + "</strong> regions declared";
     toggleRow.appendChild(badge);
   }
 
@@ -101,7 +105,10 @@ Promise.all([
   devolvedChangeColumns(document.getElementById("change-cols"), constResults, regResults, { nation: "scotland", mode: "total" });
 
   // Map
-  scotlandMap(document.getElementById("scotland-map"), constResults, regResults, constGeo, regGeo);
+  scotlandMap(document.getElementById("scotland-map"), constResults, regResults, constGeo, regGeo, {
+    constNominations: constNominations,
+    regNominations: regNominations,
+  });
 
   // Parliament hemicycle — build seat array from both result types
   const seatParties = {};

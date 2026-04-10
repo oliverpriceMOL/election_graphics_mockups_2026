@@ -42,6 +42,31 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
     if (regByName[nm]) regMap[nm] = regByName[nm];
   }
 
+  // Build nomination lookups (for distinguishing "awaiting" from "no election")
+  var constNomSet = {};  // geoName → true
+  var regNomSet = {};
+  var constNoms = options.constNominations || [];
+  var regNoms = options.regNominations || [];
+  function normName2(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
+  for (var ni = 0; ni < constNoms.length; ni++) {
+    var cnNorm = normName2(constNoms[ni].name);
+    for (var fi = 0; fi < constGeo.features.length; fi++) {
+      if (normName2(constGeo.features[fi].properties.SPC_NM) === cnNorm) {
+        constNomSet[constGeo.features[fi].properties.SPC_NM] = true;
+        break;
+      }
+    }
+  }
+  for (var ni2 = 0; ni2 < regNoms.length; ni2++) {
+    var rnNorm = normName2(regNoms[ni2].name);
+    for (var fi2 = 0; fi2 < regGeo.features.length; fi2++) {
+      if (normName2(regGeo.features[fi2].properties.SPR_NM) === rnNorm) {
+        regNomSet[regGeo.features[fi2].properties.SPR_NM] = true;
+        break;
+      }
+    }
+  }
+
   // Build constituency → region lookup
   function normRegion(s) {
     return s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, " ").trim().split(/\s+/).sort().join(" ");
@@ -293,22 +318,32 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
         .join("path")
         .attr("d", m.path)
         .attr("fill", function (d) {
-          var wp = regionWinningParty(d.properties.SPR_NM);
-          return wp ? partyColour(wp) : "#e8e8e8";
+          var nm = d.properties.SPR_NM;
+          var wp = regionWinningParty(nm);
+          if (wp) return partyColour(wp);
+          return regNomSet[nm] ? "#d8d8dc" : "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 1)
         .attr("class", function (d) {
-          return regMap[d.properties.SPR_NM] ? "map-area map-area--has-result" : "map-area";
+          var nm = d.properties.SPR_NM;
+          if (regMap[nm]) return "map-area map-area--has-result";
+          if (regNomSet[nm]) return "map-area map-area--awaiting";
+          return "map-area";
         })
         .on("mouseenter", function (event, d) {
-          var r = regMap[d.properties.SPR_NM];
-          if (!r) return;
-          var html = "<strong>" + r.name + " Region</strong><br>";
-          var tally = regionTallyHtml(d.properties.SPR_NM);
-          if (tally) html += tally;
-          mapBounds = getMapBounds();
-          Tooltip.show("map-tooltip", html, event.clientX, event.clientY, mapBounds);
+          var nm = d.properties.SPR_NM;
+          var r = regMap[nm];
+          if (r) {
+            var html = "<strong>" + r.name + " Region</strong><br>";
+            var tally = regionTallyHtml(nm);
+            if (tally) html += tally;
+            mapBounds = getMapBounds();
+            Tooltip.show("map-tooltip", html, event.clientX, event.clientY, mapBounds);
+          } else if (regNomSet[nm]) {
+            mapBounds = getMapBounds();
+            Tooltip.show("map-tooltip", "<strong>" + nm + " Region</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
+          } else { return; }
           d3.select(this).attr("stroke", "#222").attr("stroke-width", 2).raise();
         })
         .on("mousemove", function (event) {
@@ -332,28 +367,38 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
         .join("path")
         .attr("d", m.path)
         .attr("fill", function (d) {
-          var r = constMap[d.properties.SPC_NM];
-          return r ? partyColour(r.winningParty) : "#e8e8e8";
+          var nm = d.properties.SPC_NM;
+          var r = constMap[nm];
+          if (r) return partyColour(r.winningParty);
+          return constNomSet[nm] ? "#d8d8dc" : "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 0.3)
         .attr("class", function (d) {
-          return constMap[d.properties.SPC_NM] ? "map-area map-area--has-result" : "map-area";
+          var nm = d.properties.SPC_NM;
+          if (constMap[nm]) return "map-area map-area--has-result";
+          if (constNomSet[nm]) return "map-area map-area--awaiting";
+          return "map-area";
         })
         .on("mouseenter", function (event, d) {
-          var r = constMap[d.properties.SPC_NM];
-          if (!r) return;
-          mapBounds = getMapBounds();
-          var el = Tooltip.show("map-tooltip", "<strong>" + r.name + "</strong><br>", event.clientX, event.clientY, mapBounds);
-          if (r.winningParty) {
-            var badgeSpan = d3.select(el).append("span");
-            gainHoldBadge(badgeSpan.node(), {
-              winningParty: r.winningParty,
-              gainOrHold: r.gainOrHold === "hold" ? "no change" : r.gainOrHold,
-              sittingParty: r.sittingParty,
-            });
-            Tooltip.position(el, event.clientX, event.clientY, mapBounds);
-          }
+          var nm = d.properties.SPC_NM;
+          var r = constMap[nm];
+          if (r) {
+            mapBounds = getMapBounds();
+            var el = Tooltip.show("map-tooltip", "<strong>" + r.name + "</strong><br>", event.clientX, event.clientY, mapBounds);
+            if (r.winningParty) {
+              var badgeSpan = d3.select(el).append("span");
+              gainHoldBadge(badgeSpan.node(), {
+                winningParty: r.winningParty,
+                gainOrHold: r.gainOrHold === "hold" ? "no change" : r.gainOrHold,
+                sittingParty: r.sittingParty,
+              });
+              Tooltip.position(el, event.clientX, event.clientY, mapBounds);
+            }
+          } else if (constNomSet[nm]) {
+            mapBounds = getMapBounds();
+            Tooltip.show("map-tooltip", "<strong>" + nm + "</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
+          } else { return; }
           d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
         })
         .on("mousemove", function (event) {

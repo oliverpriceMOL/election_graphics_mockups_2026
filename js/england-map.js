@@ -97,6 +97,35 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
     }
   }
 
+  // Build nomination lookups (for distinguishing "awaiting" from "no election")
+  var ladNominations = {};   // geoName → nomination
+  var countyNominations = {};
+  var mayoralLadNominations = {};
+  var localNoms = options.localNominations || [];
+  var mayoralNoms = options.mayoralNominations || [];
+
+  for (var ni = 0; ni < localNoms.length; ni++) {
+    var nom = localNoms[ni];
+    var nomMatch = lookup.resolve(nom);
+    if (nomMatch) {
+      if (nomMatch.layer === "county") {
+        countyNominations[nomMatch.geoName] = nom;
+      } else {
+        ladNominations[nomMatch.geoName] = nom;
+      }
+    }
+  }
+  for (var mi2 = 0; mi2 < mayoralNoms.length; mi2++) {
+    var mn = mayoralNoms[mi2];
+    var mnNorm = normaliseName(mn.name);
+    for (var fi2 = 0; fi2 < englandLad.features.length; fi2++) {
+      if (normaliseName(englandLad.features[fi2].properties.LAD25NM) === mnNorm) {
+        mayoralLadNominations[englandLad.features[fi2].properties.LAD25NM] = mn;
+        break;
+      }
+    }
+  }
+
   // Build a searchable index: normalised name → { label, elections: [{result, type}] }
   var searchIndex = [];
   var indexByNorm = {};
@@ -273,6 +302,10 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
     });
     Tooltip.position(el, event.clientX, event.clientY, mapBounds);
   }
+  function showAwaitingTooltip(event, name) {
+    mapBounds = getMapBounds();
+    Tooltip.show("map-tooltip", "<strong>" + name + "</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
+  }
 
   // ── Render view ──
   function renderView(mode) {
@@ -300,19 +333,25 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         .attr("d", m.path)
         .attr("fill", function (d) {
           var r = countyResults[d.properties.CTY24NM];
-          return r ? partyColour(r.winningParty) : "#e8e8e8";
+          if (r) return partyColour(r.winningParty);
+          return countyNominations[d.properties.CTY24NM] ? "#d8d8dc" : "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 0.5)
         .attr("class", function (d) {
-          return countyResults[d.properties.CTY24NM]
-            ? "map-area map-area--has-result"
-            : "map-area";
+          var nm = d.properties.CTY24NM;
+          if (countyResults[nm]) return "map-area map-area--has-result";
+          if (countyNominations[nm]) return "map-area map-area--awaiting";
+          return "map-area";
         })
         .on("mouseenter", function (event, d) {
-          var r = countyResults[d.properties.CTY24NM];
-          if (!r) return;
-          showEnglandTooltip(event, r);
+          var nm = d.properties.CTY24NM;
+          var r = countyResults[nm];
+          if (r) {
+            showEnglandTooltip(event, r);
+          } else if (countyNominations[nm]) {
+            showAwaitingTooltip(event, nm);
+          } else { return; }
           d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
         })
         .on("mousemove", function (event) {
@@ -339,27 +378,38 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           var name = d.properties.LAD25NM;
           if (mode === "district") {
             var r = ladResults[name];
-            return r ? partyColour(r.winningParty) : "#e8e8e8";
+            if (r) return partyColour(r.winningParty);
+            return ladNominations[name] ? "#d8d8dc" : "#f0f0f2";
           } else if (mode === "mayoral") {
             var mr = mayoralLadResults[name];
-            return mr ? partyColour(mr.winningParty) : "#e8e8e8";
+            if (mr) return partyColour(mr.winningParty);
+            return mayoralLadNominations[name] ? "#d8d8dc" : "#f0f0f2";
           }
-          return "#e8e8e8";
+          return "#f0f0f2";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 0.3)
         .attr("class", function (d) {
           var name = d.properties.LAD25NM;
-          var hasResult = false;
-          if (mode === "district") hasResult = !!ladResults[name];
-          else if (mode === "mayoral") hasResult = !!mayoralLadResults[name];
-          return hasResult ? "map-area map-area--has-result" : "map-area";
+          if (mode === "district") {
+            if (ladResults[name]) return "map-area map-area--has-result";
+            if (ladNominations[name]) return "map-area map-area--awaiting";
+          } else if (mode === "mayoral") {
+            if (mayoralLadResults[name]) return "map-area map-area--has-result";
+            if (mayoralLadNominations[name]) return "map-area map-area--awaiting";
+          }
+          return "map-area";
         })
         .on("mouseenter", function (event, d) {
           var name = d.properties.LAD25NM;
           var r = mode === "district" ? ladResults[name] : mode === "mayoral" ? mayoralLadResults[name] : null;
-          if (!r) return;
-          showEnglandTooltip(event, r);
+          if (r) {
+            showEnglandTooltip(event, r);
+          } else {
+            var hasNom = mode === "district" ? ladNominations[name] : mode === "mayoral" ? mayoralLadNominations[name] : null;
+            if (!hasNom) return;
+            showAwaitingTooltip(event, name);
+          }
           d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
         })
         .on("mousemove", function (event) {

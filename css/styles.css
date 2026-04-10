@@ -841,6 +841,9 @@ body {
 .map-area--has-result {
   cursor: pointer;
 }
+.map-area--awaiting {
+  cursor: default;
+}
 
 /* -- Map fullscreen overlay -- */
 .map-overlay {

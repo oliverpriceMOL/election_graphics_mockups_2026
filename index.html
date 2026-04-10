@@ -84,7 +84,9 @@ Promise.all([
   fetch("data/mayoral_results.json").then(r => r.json()),
   fetch("map_data/lad_map.geojson").then(r => r.json()),
   fetch("map_data/counties_map.geojson").then(r => r.json()),
-]).then(([localData, mayoralData, ladGeo, countyGeo]) => {
+  fetch("data/local_nominations.json").then(r => r.json()),
+  fetch("data/mayoral_nominations.json").then(r => r.json()),
+]).then(([localData, mayoralData, ladGeo, countyGeo, localNominations, mayoralNominations]) => {
   const results = localData.results || localData;
 
   const deduped = dedupByRevision(results);
@@ -96,13 +98,17 @@ Promise.all([
   const toggleRow = document.querySelector(".party-strip-toggle-row");
   if (toggleRow) {
     const badge = document.createElement("div");
-    badge.className = "scoreboard__declared" + (deduped.length >= 136 ? " scoreboard__declared--complete" : "");
-    badge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>136</strong> councils declared";
+    var totalCouncils = localNominations.length || 136;
+    badge.className = "scoreboard__declared" + (deduped.length >= totalCouncils ? " scoreboard__declared--complete" : "");
+    badge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + totalCouncils + "</strong> councils declared";
     toggleRow.appendChild(badge);
   }
 
   // ── England map ──
-  englandMap(document.getElementById("england-map"), results, ladGeo, countyGeo, mayoralData);
+  englandMap(document.getElementById("england-map"), results, ladGeo, countyGeo, mayoralData, {
+    localNominations: localNominations,
+    mayoralNominations: mayoralNominations,
+  });
 
   // ── Party scoreboard ──
   partyScoreboard(document.getElementById("scoreboard"), results);
