@@ -74,10 +74,24 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
       .style("color", fmt.colour).text(fmt.text);
   }
 
+  // Aggregate turnout from constituency results
+  var totalVotes = 0, totalElectorate = 0, turnoutSum = 0, turnoutCount = 0;
+  for (const r of constDeduped) {
+    if (r.percentageTurnout != null) {
+      turnoutSum += r.percentageTurnout;
+      turnoutCount++;
+    }
+    totalElectorate += (r.electorate || 0);
+    var rv = (r.candidates || []).reduce(function (s, c) { return s + (c.party && c.party.votes || 0); }, 0);
+    totalVotes += rv;
+  }
+  var avgTurnout = turnoutCount ? (turnoutSum / turnoutCount) : 0;
+
   electionScoreboard(container, {
     title: "Scottish Parliament",
     declaredText: "<strong>" + constDeduped.length + "</strong> of 73 constituencies, <strong>" + regDeduped.length + "</strong> of 8 regions declared",
     allDeclared: constDeduped.length >= 73 && regDeduped.length >= 8,
+    turnout: (totalVotes || avgTurnout) ? { turnout: avgTurnout, totalVotes: totalVotes, electorate: totalElectorate } : null,
     columns: [
       {
         header: "Constituency",

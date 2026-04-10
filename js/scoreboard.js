@@ -64,6 +64,11 @@ function electionScoreboard(container, options) {
       col.render(row.append("td").attr("class", "scoreboard__num-cell"), nocRow);
     }
   }
+
+  // Aggregate turnout bar (Scotland/Wales)
+  if (options.turnout) {
+    turnoutBar(board.node(), options.turnout);
+  }
 }
 
 /**

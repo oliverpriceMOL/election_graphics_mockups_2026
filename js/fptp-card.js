@@ -127,17 +127,7 @@ function fptpResultCard(container, result, options) {
     });
   });
 
-  // Turnout bar
-  var totalVotesFptp = result.candidates.reduce(function (s, c) { return s + (c.party.votes || 0); }, 0);
-  if (result.percentageTurnout != null || totalVotesFptp) {
-    turnoutBar(card.node(), {
-      turnout: result.percentageTurnout || 0,
-      totalVotes: totalVotesFptp,
-      electorate: result.electorate || 0
-    });
-  }
-
-  // Declaration time (mayoral results only)
+  // Declaration time (mayoral results only) — rendered before turnout so turnout is always last
   if (showDeclarationTime && result.declarationTime) {
     var t = new Date(result.declarationTime);
     var dateStr = t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
@@ -145,6 +135,16 @@ function fptpResultCard(container, result, options) {
     card.append("div")
       .attr("class", "council-card__declared")
       .text("Declared " + timeStr + ", " + dateStr);
+  }
+
+  // Turnout bar (always last)
+  var totalVotesFptp = result.candidates.reduce(function (s, c) { return s + (c.party.votes || 0); }, 0);
+  if (result.percentageTurnout != null || totalVotesFptp) {
+    turnoutBar(card.node(), {
+      turnout: result.percentageTurnout || 0,
+      totalVotes: totalVotesFptp,
+      electorate: result.electorate || 0
+    });
   }
 }
 

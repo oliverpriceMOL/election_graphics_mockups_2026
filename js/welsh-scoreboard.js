@@ -36,10 +36,22 @@ function welshScoreboard(container, results) {
   const sorted = Object.values(partyTotals).sort((a, b) => b.seats - a.seats);
   const maxVoteShare = Math.max(...sorted.map(p => p.voteShare), 1);
 
+  // Aggregate turnout
+  var totalElectorate = 0, turnoutSum = 0, turnoutCount = 0;
+  for (const r of deduped) {
+    if (r.percentageTurnout != null) {
+      turnoutSum += r.percentageTurnout;
+      turnoutCount++;
+    }
+    totalElectorate += (r.electorate || 0);
+  }
+  var avgTurnout = turnoutCount ? (turnoutSum / turnoutCount) : 0;
+
   electionScoreboard(container, {
     title: "Welsh Parliament (Senedd)",
     declaredText: "<strong>" + deduped.length + "</strong> of <strong>16</strong> constituencies declared",
     allDeclared: deduped.length >= 16,
+    turnout: (totalVotes || avgTurnout) ? { turnout: avgTurnout, totalVotes: totalVotes, electorate: totalElectorate } : null,
     columns: [
       {
         header: "Seats",
