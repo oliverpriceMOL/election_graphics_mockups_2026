@@ -7,7 +7,7 @@ const PARTY = {
   LD:     { name: "Liberal Democrats",    short: "LD",      colour: "#FAA61A" },
   Green:  { name: "Green",               short: "Grn",     colour: "#6AB023" },
   Reform: { name: "Reform UK",           short: "Ref",     colour: "#12B6CF" },
-  R:      { name: "Ratepayers/Residents", short: "R",       colour: "#DDDDDD" },
+  R:      { name: "Ratepayers/Residents", short: "R",       colour: "#2D6A4F" },
   Ind:    { name: "Independent",         short: "Ind",     colour: "#AAAAAA" },
   Your:   { name: "Your Party",          short: "Your",    colour: "#7E57C2" },
   SNP:    { name: "SNP",                 short: "SNP",     colour: "#FFF95D" },
@@ -16,7 +16,7 @@ const PARTY = {
   Gwlad:  { name: "Gwlad Gwlad",         short: "Gwlad",   colour: "#D4002A" },
   Propel: { name: "Propel",              short: "Propel",  colour: "#00A86B" },
   Abolish:{ name: "Abolish",             short: "Abolish", colour: "#6B2C91" },
-  NOC:    { name: "No overall control",  short: "NOC",     colour: "#888888" },
+  NOC:    { name: "No overall control",  short: "NOC",     colour: "#D4B5B0" },
   Other:  { name: "Other",               short: "Other",   colour: "#CCCCCC" },
 };
 
