@@ -69,6 +69,9 @@ function partyChangeColumns(container, results) {
       .filter(function (p) { return p.name !== "NOC"; })
       .sort(function (a, b) { return b[sortKey] - a[sortKey]; });
 
+    // NOC entry (appended after cull so it's never collapsed into Other)
+    var nocEntry = partyTotals["NOC"];
+
     var maxP = maxPartySlots(el.node());
     if (sorted.length > maxP) {
       var visible = sorted.slice(0, maxP - 1);
@@ -81,6 +84,10 @@ function partyChangeColumns(container, results) {
         other.councilChange += rest[z].councilChange;
       }
       sorted = visible.concat(other);
+    }
+
+    if (nocEntry && isCouncils) {
+      sorted.push(nocEntry);
     }
 
     var parties = sorted.map(function (p) {
