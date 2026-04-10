@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scottish Parliament Elections 2026 — Holyrood</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="site-nav__link">England</a>
+  <a href="scotland.html" class="site-nav__link site-nav__link--active">Scotland</a>
+  <a href="wales.html" class="site-nav__link">Wales</a>
+</nav>
+
+<div class="container">
+
+  <!-- Party strip (progress counters injected into toggle row by JS) -->
+  <div class="section-title" style="margin-top:0">Party totals</div>
+  <div id="party-strip"></div>
+
+  <!-- Change columns -->
+  <div class="section-title">Seat changes</div>
+  <div id="change-cols"></div>
+
+  <!-- Map -->
+  <div class="section-title">Map</div>
+  <div id="scotland-map"></div>
+
+  <!-- Scoreboard -->
+  <div class="section-title">Scoreboard</div>
+  <div id="scoreboard"></div>
+
+  <!-- Parliament hemicycle -->
+  <div class="section-title">Parliament composition</div>
+  <div style="display:flex; justify-content:center;">
+    <div id="hemicycle" style="max-width:500px; width:100%;"></div>
+  </div>
+
+  <!-- Constituency result cards -->
+  <div class="section-title">Constituency results (sample)</div>
+  <div class="card-grid card-grid--2" id="const-cards"></div>
+
+  <!-- Regional result cards -->
+  <div class="section-title">Regional results (sample)</div>
+  <div class="card-grid card-grid--2" id="reg-cards"></div>
+
+</div>
+
+<!-- Component scripts -->
+<script src="js/tooltip.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/party-config.js"></script>
+<script src="js/hemicycle.js"></script>
+<script src="js/badge.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/fptp-card.js"></script>
+<script src="js/list-card.js"></script>
+<script src="js/scoreboard.js"></script>
+<script src="js/scottish-scoreboard.js"></script>
+<script src="js/party-strip.js"></script>
+<script src="js/devolved-strip.js"></script>
+<script src="js/change-columns.js"></script>
+<script src="js/devolved-change-columns.js"></script>
+<script src="js/election-map.js"></script>
+<script src="js/scotland-map.js"></script>
+<script>
+Promise.all([
+  fetch("data/scottish_fptp_results.json").then(r => r.json()),
+  fetch("data/scottish_topup_results.json").then(r => r.json()),
+  fetch("map_data/scottish_constituencies.geojson").then(r => r.json()),
+  fetch("map_data/scottish_regions.geojson").then(r => r.json()),
+  fetch("data/scottish_notionals.json").then(r => r.json()).catch(() => ({})),
+]).then(([fptpData, topupData, constGeo, regGeo, notionals]) => {
+  const constResults = fptpData.results || fptpData;
+  const regResults = Array.isArray(topupData) ? topupData : (topupData.results || []);
+
+  const constDeduped = dedupByRevision(constResults);
+  const regDeduped = dedupByRevision(regResults);
+
+  // Enrich results with notional vote share change where PA data is missing
+  enrichWithNotionals(constDeduped, regDeduped, notionals);
+
+  // Party strip
+  devolvedPartyStrip(document.getElementById("party-strip"), constResults, regResults, { nation: "scotland" });
+
+  // Progress badges (inside strip toggle row, matching scoreboard declared style)
+  const toggleRow = document.querySelector(".party-strip-toggle-row");
+  if (toggleRow) {
+    const badge = document.createElement("div");
+    badge.className = "scoreboard__declared" + (constDeduped.length >= 73 && regDeduped.length >= 8 ? " scoreboard__declared--complete" : "");
+    badge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>73</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>8</strong> regions declared";
+    toggleRow.appendChild(badge);
+  }
+
+  // Seat changes
+  devolvedChangeColumns(document.getElementById("change-cols"), constResults, regResults, { nation: "scotland", mode: "total" });
+
+  // Map
+  scotlandMap(document.getElementById("scotland-map"), constResults, regResults, constGeo, regGeo);
+
+  // Parliament hemicycle — build seat array from both result types
+  const seatParties = {};
+  for (const r of constDeduped) {
+    if (r.winningParty) {
+      if (!seatParties[r.winningParty]) seatParties[r.winningParty] = { name: r.winningParty, seats: 0 };
+      seatParties[r.winningParty].seats++;
+    }
+  }
+  for (const r of regDeduped) {
+    for (const c of (r.candidates || [])) {
+      if (c.elected === "*") {
+        const abbr = c.party.abbreviation;
+        if (!seatParties[abbr]) seatParties[abbr] = { name: abbr, seats: 0 };
+        seatParties[abbr].seats++;
+      }
+    }
+  }
+  const hemiData = Object.values(seatParties).sort((a, b) => b.seats - a.seats);
+  hemicycle(document.getElementById("hemicycle"), hemiData, { width: 500 });
+
+  // Scoreboard
+  scottishScoreboard(document.getElementById("scoreboard"), constResults, regResults);
+
+  // Constituency cards — first 4
+  const constContainer = document.getElementById("const-cards");
+  for (const r of constDeduped.slice(0, 4)) {
+    const div = document.createElement("div");
+    constContainer.appendChild(div);
+    constituencyResultCard(div, r);
+  }
+
+  // Regional cards — first 4
+  // Build region → constituency results mapping
+  function normRegion(s) {
+    return s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, " ").trim().split(/\s+/).sort().join(" ");
+  }
+  const regNameLookup = {};
+  for (const r of regDeduped) regNameLookup[normRegion(r.name)] = r.name;
+  const constByRegion = {};
+  for (const feat of constGeo.features) {
+    const paRegion = regNameLookup[normRegion(feat.properties.SPR_NM)];
+    if (!paRegion) continue;
+    if (!constByRegion[paRegion]) constByRegion[paRegion] = [];
+    const cr = constDeduped.find(r => r.name === feat.properties.SPC_NM);
+    if (cr) constByRegion[paRegion].push(cr);
+  }
+
+  const regContainer = document.getElementById("reg-cards");
+  for (const r of regDeduped.slice(0, 4)) {
+    const div = document.createElement("div");
+    regContainer.appendChild(div);
+    listResultCard(div, r, { typeLabel: "Holyrood Region", constituencies: constByRegion[r.name] || [] });
+  }
+});
+</script>
+</body>
+</html>

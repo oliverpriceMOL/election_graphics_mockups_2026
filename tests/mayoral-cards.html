@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test: Mayoral Cards</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Mayoral Result Cards</h1>
+  <p>Winner highlight with candidate bars</p>
+</div>
+
+<div class="container">
+  <div class="section-title">Mayoral Result Cards</div>
+  <div class="card-grid card-grid--2" id="mayoral-cards"></div>
+</div>
+
+<script src="../js/party-config.js"></script>
+<script src="../js/badge.js"></script>
+<script src="../js/mayoral-card.js"></script>
+<script>
+fetch("../../output/mayoral_results.json")
+  .then(r => r.json())
+  .then(data => {
+    const mayoralByName = {};
+    for (const m of data) {
+      if (m.fileType !== "result") continue;
+      if (!mayoralByName[m.name] || (m.revision || 0) > (mayoralByName[m.name].revision || 0)) {
+        mayoralByName[m.name] = m;
+      }
+    }
+
+    const container = document.getElementById("mayoral-cards");
+    for (const m of Object.values(mayoralByName)) {
+      const div = document.createElement("div");
+      container.appendChild(div);
+      mayoralResultCard(div, m);
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test: Badges</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Gain / Hold Badges</h1>
+  <p>All badge variants</p>
+</div>
+
+<div class="container">
+  <div class="section-title">Badge Variants</div>
+  <div id="badges" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+</div>
+
+<script src="../js/party-config.js"></script>
+<script src="../js/badge.js"></script>
+<script>
+const badgeTests = [
+  { winningParty: "Lab", gainOrHold: "gain", sittingParty: "C" },
+  { winningParty: "C", gainOrHold: "no change", sittingParty: "C" },
+  { winningParty: "LD", gainOrHold: "gain", sittingParty: "Lab" },
+  { winningParty: "NOC", gainOrHold: "lose to NOC", sittingParty: "C" },
+  { winningParty: "Green", gainOrHold: "gain", sittingParty: "Lab" },
+  { winningParty: "Reform", gainOrHold: "no change", sittingParty: "Reform" },
+];
+
+const container = document.getElementById("badges");
+for (const b of badgeTests) {
+  const span = document.createElement("span");
+  container.appendChild(span);
+  gainHoldBadge(span, b);
+}
+</script>
+</body>
+</html>

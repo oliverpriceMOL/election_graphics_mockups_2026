@@ -1,0 +1,1674 @@
+{
+  "Aberdeen Central": {
+    "name": "Aberdeen Central",
+    "constituency": {
+      "C": 24.09,
+      "Green": 6.6,
+      "Lab": 19.89,
+      "LD": 4.48,
+      "SNP": 44.94
+    },
+    "constituencyTotalVotes": 31638,
+    "number": 1,
+    "regional": {
+      "C": 24.2,
+      "Green": 9.86,
+      "Lab": 16.47,
+      "LD": 4.89,
+      "SNP": 38.96,
+      "Alba": 1.89,
+      "Reform": 0.32,
+      "Other": 3.42
+    },
+    "regionalTotalVotes": 31656
+  },
+  "Aberdeen Deeside & North Kincardine": {
+    "name": "Aberdeen Deeside & North Kincardine",
+    "constituency": {
+      "C": 38.01,
+      "Lab": 11.55,
+      "LD": 7.41,
+      "SNP": 42.3,
+      "Other": 0.73
+    },
+    "constituencyTotalVotes": 39009,
+    "number": 2,
+    "regional": {
+      "C": 34.84,
+      "Green": 5.74,
+      "Lab": 12.19,
+      "LD": 5.98,
+      "SNP": 36.22,
+      "Alba": 1.82,
+      "Reform": 0.32,
+      "Other": 2.89
+    },
+    "regionalTotalVotes": 39087
+  },
+  "Aberdeen Donside": {
+    "name": "Aberdeen Donside",
+    "constituency": {
+      "C": 26.42,
+      "Lab": 15.33,
+      "LD": 6.02,
+      "SNP": 51.56,
+      "Other": 0.67
+    },
+    "constituencyTotalVotes": 35909,
+    "number": 3,
+    "regional": {
+      "C": 24.61,
+      "Green": 4.91,
+      "Lab": 14.7,
+      "LD": 4.81,
+      "SNP": 45.15,
+      "Alba": 2.07,
+      "Reform": 0.35,
+      "Other": 3.41
+    },
+    "regionalTotalVotes": 35951
+  },
+  "Aberdeenshire East": {
+    "name": "Aberdeenshire East",
+    "constituency": {
+      "C": 39.8,
+      "Lab": 7.03,
+      "LD": 8.42,
+      "SNP": 44.74
+    },
+    "constituencyTotalVotes": 39066,
+    "number": 4,
+    "regional": {
+      "C": 36.62,
+      "Green": 5.68,
+      "Lab": 7.49,
+      "LD": 7.45,
+      "SNP": 36.33,
+      "Alba": 3.0,
+      "Reform": 0.25,
+      "Other": 3.18
+    },
+    "regionalTotalVotes": 39104
+  },
+  "Aberdeenshire West": {
+    "name": "Aberdeenshire West",
+    "constituency": {
+      "C": 47.18,
+      "Lab": 5.7,
+      "LD": 8.05,
+      "SNP": 39.07
+    },
+    "constituencyTotalVotes": 41773,
+    "number": 5,
+    "regional": {
+      "C": 42.33,
+      "Green": 6.14,
+      "Lab": 6.83,
+      "LD": 8.07,
+      "SNP": 32.0,
+      "Alba": 1.6,
+      "Reform": 0.28,
+      "Other": 2.75
+    },
+    "regionalTotalVotes": 41814
+  },
+  "Airdrie": {
+    "name": "Airdrie",
+    "constituency": {
+      "C": 13.85,
+      "Lab": 33.42,
+      "LD": 1.76,
+      "SNP": 50.55,
+      "Other": 0.41
+    },
+    "constituencyTotalVotes": 31926,
+    "number": 6,
+    "regional": {
+      "C": 20.43,
+      "Green": 4.26,
+      "Lab": 24.92,
+      "LD": 1.55,
+      "SNP": 44.6,
+      "Alba": 1.67,
+      "Reform": 0.17,
+      "Other": 2.4
+    },
+    "regionalTotalVotes": 31955
+  },
+  "Almond Valley": {
+    "name": "Almond Valley",
+    "constituency": {
+      "C": 16.58,
+      "Lab": 25.23,
+      "LD": 3.86,
+      "SNP": 54.33
+    },
+    "constituencyTotalVotes": 40993,
+    "number": 7,
+    "regional": {
+      "C": 18.7,
+      "Green": 7.35,
+      "Lab": 20.22,
+      "LD": 2.96,
+      "SNP": 45.21,
+      "Alba": 1.8,
+      "Reform": 0.23,
+      "Other": 3.53
+    },
+    "regionalTotalVotes": 41098
+  },
+  "Angus North & Mearns": {
+    "name": "Angus North & Mearns",
+    "constituency": {
+      "C": 38.66,
+      "Lab": 7.62,
+      "LD": 5.11,
+      "SNP": 48.61
+    },
+    "constituencyTotalVotes": 35269,
+    "number": 8,
+    "regional": {
+      "C": 35.19,
+      "Green": 6.08,
+      "Lab": 8.23,
+      "LD": 4.53,
+      "SNP": 40.59,
+      "Alba": 2.05,
+      "Reform": 0.23,
+      "Other": 3.1
+    },
+    "regionalTotalVotes": 35379
+  },
+  "Angus South": {
+    "name": "Angus South",
+    "constituency": {
+      "C": 34.84,
+      "Lab": 9.39,
+      "LD": 5.09,
+      "SNP": 50.68
+    },
+    "constituencyTotalVotes": 38608,
+    "number": 9,
+    "regional": {
+      "C": 32.38,
+      "Green": 5.85,
+      "Lab": 9.62,
+      "LD": 4.02,
+      "SNP": 42.69,
+      "Alba": 2.04,
+      "Reform": 0.23,
+      "Other": 3.18
+    },
+    "regionalTotalVotes": 38710
+  },
+  "Argyll & Bute": {
+    "name": "Argyll & Bute",
+    "constituency": {
+      "C": 22.78,
+      "Lab": 7.26,
+      "LD": 20.48,
+      "SNP": 49.48
+    },
+    "constituencyTotalVotes": 33563,
+    "number": 10,
+    "regional": {
+      "C": 25.46,
+      "Green": 7.91,
+      "Lab": 8.41,
+      "LD": 10.88,
+      "SNP": 41.53,
+      "Alba": 1.75,
+      "Reform": 0.19,
+      "Other": 3.86
+    },
+    "regionalTotalVotes": 33628
+  },
+  "Ayr": {
+    "name": "Ayr",
+    "constituency": {
+      "C": 43.08,
+      "Lab": 10.97,
+      "LD": 1.86,
+      "SNP": 43.47,
+      "Other": 0.61
+    },
+    "constituencyTotalVotes": 43433,
+    "number": 11,
+    "regional": {
+      "C": 36.19,
+      "Green": 4.73,
+      "Lab": 13.78,
+      "LD": 2.01,
+      "SNP": 38.67,
+      "Alba": 1.14,
+      "Reform": 0.14,
+      "Other": 3.34
+    },
+    "regionalTotalVotes": 43495
+  },
+  "Banffshire & Buchan Coast": {
+    "name": "Banffshire & Buchan Coast",
+    "constituency": {
+      "C": 42.98,
+      "Lab": 6.65,
+      "LD": 3.37,
+      "SNP": 45.07,
+      "Other": 1.94
+    },
+    "constituencyTotalVotes": 34941,
+    "number": 12,
+    "regional": {
+      "C": 39.82,
+      "Green": 3.63,
+      "Lab": 6.83,
+      "LD": 2.9,
+      "SNP": 38.85,
+      "Alba": 3.42,
+      "Reform": 0.5,
+      "Other": 4.04
+    },
+    "regionalTotalVotes": 34966
+  },
+  "Bathgate": {
+    "name": "Bathgate",
+    "constituency": {
+      "C": 19.92,
+      "Lab": 26.76,
+      "LD": 4.19,
+      "SNP": 49.14
+    },
+    "constituencyTotalVotes": 40481,
+    "number": 13,
+    "regional": {
+      "C": 22.2,
+      "Green": 7.26,
+      "Lab": 21.54,
+      "LD": 3.06,
+      "SNP": 40.59,
+      "Alba": 1.43,
+      "Reform": 0.27,
+      "Other": 3.66
+    },
+    "regionalTotalVotes": 40568
+  },
+  "Caithness, Sutherland & Ross": {
+    "name": "Caithness, Sutherland & Ross",
+    "constituency": {
+      "C": 14.02,
+      "Lab": 5.47,
+      "LD": 36.05,
+      "SNP": 43.08,
+      "Other": 1.39
+    },
+    "constituencyTotalVotes": 36884,
+    "number": 14,
+    "regional": {
+      "C": 21.4,
+      "Green": 5.56,
+      "Lab": 7.43,
+      "LD": 21.17,
+      "SNP": 38.45,
+      "Alba": 1.73,
+      "Reform": 0.28,
+      "Other": 3.97
+    },
+    "regionalTotalVotes": 36931
+  },
+  "Carrick, Cumnock & Doon Valley": {
+    "name": "Carrick, Cumnock & Doon Valley",
+    "constituency": {
+      "C": 30.61,
+      "Lab": 24.15,
+      "LD": 2.46,
+      "SNP": 42.78
+    },
+    "constituencyTotalVotes": 35622,
+    "number": 15,
+    "regional": {
+      "C": 30.31,
+      "Green": 3.36,
+      "Lab": 20.07,
+      "LD": 1.81,
+      "SNP": 39.11,
+      "Alba": 1.19,
+      "Reform": 0.2,
+      "Other": 3.94
+    },
+    "regionalTotalVotes": 35667
+  },
+  "Clackmannanshire & Dunblane": {
+    "name": "Clackmannanshire & Dunblane",
+    "constituency": {
+      "C": 26.44,
+      "Lab": 22.77,
+      "LD": 3.39,
+      "SNP": 47.41
+    },
+    "constituencyTotalVotes": 38084,
+    "number": 16,
+    "regional": {
+      "C": 27.02,
+      "Green": 9.58,
+      "Lab": 18.0,
+      "LD": 3.33,
+      "SNP": 37.5,
+      "Alba": 1.65,
+      "Reform": 0.4,
+      "Other": 2.53
+    },
+    "regionalTotalVotes": 38164
+  },
+  "Clydebank & Milngavie": {
+    "name": "Clydebank & Milngavie",
+    "constituency": {
+      "C": 11.03,
+      "Lab": 33.23,
+      "LD": 7.93,
+      "SNP": 47.23,
+      "Other": 0.58
+    },
+    "constituencyTotalVotes": 37660,
+    "number": 17,
+    "regional": {
+      "C": 17.56,
+      "Green": 8.67,
+      "Lab": 23.51,
+      "LD": 5.75,
+      "SNP": 40.09,
+      "Alba": 1.53,
+      "Reform": 0.13,
+      "Other": 2.77
+    },
+    "regionalTotalVotes": 37714
+  },
+  "Clydesdale": {
+    "name": "Clydesdale",
+    "constituency": {
+      "C": 31.97,
+      "Lab": 22.01,
+      "LD": 2.81,
+      "SNP": 43.21
+    },
+    "constituencyTotalVotes": 40718,
+    "number": 18,
+    "regional": {
+      "C": 29.9,
+      "Green": 5.53,
+      "Lab": 20.19,
+      "LD": 2.8,
+      "SNP": 36.94,
+      "Alba": 1.27,
+      "Reform": 0.21,
+      "Other": 3.16
+    },
+    "regionalTotalVotes": 40824
+  },
+  "Coatbridge & Chryston": {
+    "name": "Coatbridge & Chryston",
+    "constituency": {
+      "C": 8.46,
+      "Lab": 31.14,
+      "LD": 1.74,
+      "SNP": 57.51,
+      "Other": 1.15
+    },
+    "constituencyTotalVotes": 35778,
+    "number": 19,
+    "regional": {
+      "C": 12.69,
+      "Green": 5.93,
+      "Lab": 24.35,
+      "LD": 1.49,
+      "SNP": 50.77,
+      "Alba": 1.91,
+      "Reform": 0.13,
+      "Other": 2.73
+    },
+    "regionalTotalVotes": 35829
+  },
+  "Cowdenbeath": {
+    "name": "Cowdenbeath",
+    "constituency": {
+      "C": 13.92,
+      "Green": 3.93,
+      "Lab": 30.68,
+      "LD": 3.18,
+      "SNP": 48.28
+    },
+    "constituencyTotalVotes": 34175,
+    "number": 20,
+    "regional": {
+      "C": 17.17,
+      "Green": 6.46,
+      "Lab": 24.26,
+      "LD": 3.59,
+      "SNP": 44.05,
+      "Alba": 2.11,
+      "Reform": 0.23,
+      "Other": 2.13
+    },
+    "regionalTotalVotes": 34252
+  },
+  "Cumbernauld & Kilsyth": {
+    "name": "Cumbernauld & Kilsyth",
+    "constituency": {
+      "C": 10.08,
+      "Lab": 29.25,
+      "LD": 2.03,
+      "SNP": 58.64
+    },
+    "constituencyTotalVotes": 33478,
+    "number": 21,
+    "regional": {
+      "C": 13.95,
+      "Green": 6.74,
+      "Lab": 23.21,
+      "LD": 1.71,
+      "SNP": 49.46,
+      "Alba": 1.69,
+      "Reform": 0.16,
+      "Other": 3.07
+    },
+    "regionalTotalVotes": 33546
+  },
+  "Cunninghame North": {
+    "name": "Cunninghame North",
+    "constituency": {
+      "C": 28.11,
+      "Lab": 20.27,
+      "LD": 2.6,
+      "SNP": 49.02
+    },
+    "constituencyTotalVotes": 37181,
+    "number": 22,
+    "regional": {
+      "C": 26.33,
+      "Green": 6.65,
+      "Lab": 17.21,
+      "LD": 2.22,
+      "SNP": 41.63,
+      "Alba": 2.19,
+      "Reform": 0.22,
+      "Other": 3.55
+    },
+    "regionalTotalVotes": 37268
+  },
+  "Cunninghame South": {
+    "name": "Cunninghame South",
+    "constituency": {
+      "C": 21.99,
+      "Lab": 24.96,
+      "LD": 2.45,
+      "SNP": 49.64,
+      "Other": 0.96
+    },
+    "constituencyTotalVotes": 35327,
+    "number": 23,
+    "regional": {
+      "C": 22.12,
+      "Green": 4.35,
+      "Lab": 21.64,
+      "LD": 2.04,
+      "SNP": 44.92,
+      "Alba": 1.38,
+      "Reform": 0.17,
+      "Other": 3.38
+    },
+    "regionalTotalVotes": 35433
+  },
+  "Dumbarton": {
+    "name": "Dumbarton",
+    "constituency": {
+      "C": 8.33,
+      "Lab": 46.35,
+      "LD": 1.76,
+      "SNP": 42.49,
+      "Other": 1.07
+    },
+    "constituencyTotalVotes": 38459,
+    "number": 24,
+    "regional": {
+      "C": 21.08,
+      "Green": 6.35,
+      "Lab": 26.58,
+      "LD": 2.56,
+      "SNP": 38.38,
+      "Alba": 1.89,
+      "Reform": 0.15,
+      "Other": 3.01
+    },
+    "regionalTotalVotes": 38478
+  },
+  "Dumfriesshire": {
+    "name": "Dumfriesshire",
+    "constituency": {
+      "C": 47.65,
+      "Lab": 11.42,
+      "LD": 3.21,
+      "SNP": 37.71
+    },
+    "constituencyTotalVotes": 40893,
+    "number": 25,
+    "regional": {
+      "C": 42.9,
+      "Green": 3.36,
+      "Lab": 11.81,
+      "LD": 2.53,
+      "SNP": 34.94,
+      "Alba": 0.71,
+      "Reform": 0.21,
+      "Other": 3.55
+    },
+    "regionalTotalVotes": 40936
+  },
+  "Dundee City East": {
+    "name": "Dundee City East",
+    "constituency": {
+      "C": 17.34,
+      "Lab": 18.15,
+      "LD": 4.41,
+      "SNP": 59.22,
+      "Other": 0.88
+    },
+    "constituencyTotalVotes": 32471,
+    "number": 26,
+    "regional": {
+      "C": 17.51,
+      "Green": 6.96,
+      "Lab": 15.98,
+      "LD": 3.28,
+      "SNP": 50.39,
+      "Alba": 2.49,
+      "Reform": 0.19,
+      "Other": 3.2
+    },
+    "regionalTotalVotes": 32552
+  },
+  "Dundee City West": {
+    "name": "Dundee City West",
+    "constituency": {
+      "C": 10.35,
+      "Lab": 21.46,
+      "LD": 3.95,
+      "SNP": 61.63,
+      "Other": 2.62
+    },
+    "constituencyTotalVotes": 32155,
+    "number": 27,
+    "regional": {
+      "C": 11.83,
+      "Green": 8.91,
+      "Lab": 18.02,
+      "LD": 2.81,
+      "SNP": 52.06,
+      "Alba": 2.67,
+      "Reform": 0.26,
+      "Other": 3.45
+    },
+    "regionalTotalVotes": 32137
+  },
+  "Dunfermline": {
+    "name": "Dunfermline",
+    "constituency": {
+      "C": 15.42,
+      "Lab": 27.81,
+      "LD": 7.81,
+      "SNP": 48.97
+    },
+    "constituencyTotalVotes": 40942,
+    "number": 28,
+    "regional": {
+      "C": 19.19,
+      "Green": 8.35,
+      "Lab": 20.61,
+      "LD": 7.2,
+      "SNP": 40.46,
+      "Alba": 1.88,
+      "Reform": 0.15,
+      "Other": 2.16
+    },
+    "regionalTotalVotes": 41083
+  },
+  "East Kilbride": {
+    "name": "East Kilbride",
+    "constituency": {
+      "C": 14.53,
+      "Lab": 30.61,
+      "LD": 2.99,
+      "SNP": 51.88
+    },
+    "constituencyTotalVotes": 40766,
+    "number": 29,
+    "regional": {
+      "C": 17.43,
+      "Green": 7.1,
+      "Lab": 23.53,
+      "LD": 2.28,
+      "SNP": 44.82,
+      "Alba": 1.51,
+      "Reform": 0.32,
+      "Other": 3.01
+    },
+    "regionalTotalVotes": 40900
+  },
+  "East Lothian Coast & Lammermuirs": {
+    "name": "East Lothian Coast & Lammermuirs",
+    "constituency": {
+      "C": 21.22,
+      "Lab": 35.66,
+      "LD": 3.73,
+      "SNP": 39.39
+    },
+    "constituencyTotalVotes": 39206,
+    "number": 30,
+    "regional": {
+      "C": 26.36,
+      "Green": 8.42,
+      "Lab": 23.57,
+      "LD": 3.84,
+      "SNP": 33.69,
+      "Alba": 1.26,
+      "Reform": 0.17,
+      "Other": 2.69
+    },
+    "regionalTotalVotes": 39360
+  },
+  "Eastwood": {
+    "name": "Eastwood",
+    "constituency": {
+      "C": 41.94,
+      "Lab": 15.83,
+      "LD": 2.13,
+      "SNP": 36.75,
+      "Other": 3.34
+    },
+    "constituencyTotalVotes": 42703,
+    "number": 31,
+    "regional": {
+      "C": 35.88,
+      "Green": 8.23,
+      "Lab": 19.72,
+      "LD": 2.9,
+      "SNP": 29.02,
+      "Alba": 1.17,
+      "Reform": 0.15,
+      "Other": 2.93
+    },
+    "regionalTotalVotes": 42840
+  },
+  "Edinburgh Central": {
+    "name": "Edinburgh Central",
+    "constituency": {
+      "C": 20.08,
+      "Green": 6.67,
+      "Lab": 28.55,
+      "LD": 4.26,
+      "SNP": 39.24,
+      "Other": 1.2
+    },
+    "constituencyTotalVotes": 42401,
+    "number": 32,
+    "regional": {
+      "C": 20.53,
+      "Green": 20.65,
+      "Lab": 20.27,
+      "LD": 5.45,
+      "SNP": 28.51,
+      "Alba": 1.33,
+      "Reform": 0.21,
+      "Other": 3.05
+    },
+    "regionalTotalVotes": 42579
+  },
+  "Edinburgh Eastern, Musselburgh & Tranent": {
+    "name": "Edinburgh Eastern, Musselburgh & Tranent",
+    "constituency": {
+      "C": 15.71,
+      "Lab": 33.72,
+      "LD": 3.25,
+      "SNP": 47.32,
+      "Other": 0.01
+    },
+    "constituencyTotalVotes": 34310,
+    "number": 33,
+    "regional": {
+      "C": 18.52,
+      "Green": 11.66,
+      "Lab": 24.28,
+      "LD": 2.66,
+      "SNP": 37.62,
+      "Alba": 1.62,
+      "Reform": 0.22,
+      "Other": 3.43
+    },
+    "regionalTotalVotes": 34560
+  },
+  "Edinburgh North Eastern & Leith": {
+    "name": "Edinburgh North Eastern & Leith",
+    "constituency": {
+      "C": 10.54,
+      "Green": 8.79,
+      "Lab": 25.87,
+      "LD": 4.04,
+      "SNP": 50.42,
+      "Other": 0.33
+    },
+    "constituencyTotalVotes": 40945,
+    "number": 34,
+    "regional": {
+      "C": 12.74,
+      "Green": 19.08,
+      "Lab": 20.02,
+      "LD": 3.9,
+      "SNP": 39.94,
+      "Alba": 1.53,
+      "Reform": 0.19,
+      "Other": 2.6
+    },
+    "regionalTotalVotes": 41019
+  },
+  "Edinburgh North Western": {
+    "name": "Edinburgh North Western",
+    "constituency": {
+      "C": 9.78,
+      "Green": 0.82,
+      "Lab": 7.29,
+      "LD": 48.76,
+      "SNP": 32.88,
+      "Other": 0.47
+    },
+    "constituencyTotalVotes": 43493,
+    "number": 35,
+    "regional": {
+      "C": 20.45,
+      "Green": 8.85,
+      "Lab": 12.26,
+      "LD": 24.53,
+      "SNP": 30.15,
+      "Alba": 1.31,
+      "Reform": 0.13,
+      "Other": 2.32
+    },
+    "regionalTotalVotes": 43206
+  },
+  "Edinburgh Northern": {
+    "name": "Edinburgh Northern",
+    "constituency": {
+      "C": 16.0,
+      "Green": 8.26,
+      "Lab": 16.33,
+      "LD": 17.02,
+      "SNP": 41.43,
+      "Other": 0.95
+    },
+    "constituencyTotalVotes": 39305,
+    "number": 36,
+    "regional": {
+      "C": 20.42,
+      "Green": 15.8,
+      "Lab": 15.06,
+      "LD": 9.96,
+      "SNP": 33.07,
+      "Alba": 1.77,
+      "Reform": 0.25,
+      "Other": 3.68
+    },
+    "regionalTotalVotes": 39772
+  },
+  "Edinburgh South Western": {
+    "name": "Edinburgh South Western",
+    "constituency": {
+      "C": 27.78,
+      "Lab": 22.82,
+      "LD": 5.38,
+      "SNP": 42.81,
+      "Other": 1.22
+    },
+    "constituencyTotalVotes": 38676,
+    "number": 37,
+    "regional": {
+      "C": 26.14,
+      "Green": 12.18,
+      "Lab": 18.37,
+      "LD": 5.65,
+      "SNP": 32.56,
+      "Alba": 1.54,
+      "Reform": 0.2,
+      "Other": 3.35
+    },
+    "regionalTotalVotes": 38942
+  },
+  "Edinburgh Southern": {
+    "name": "Edinburgh Southern",
+    "constituency": {
+      "C": 15.73,
+      "Green": 0.01,
+      "Lab": 34.52,
+      "LD": 6.01,
+      "SNP": 43.3,
+      "Other": 0.42
+    },
+    "constituencyTotalVotes": 42182,
+    "number": 38,
+    "regional": {
+      "C": 21.07,
+      "Green": 13.71,
+      "Lab": 21.72,
+      "LD": 7.4,
+      "SNP": 31.78,
+      "Alba": 1.5,
+      "Reform": 0.17,
+      "Other": 2.64
+    },
+    "regionalTotalVotes": 41963
+  },
+  "Ettrick, Roxburgh & Berwickshire": {
+    "name": "Ettrick, Roxburgh & Berwickshire",
+    "constituency": {
+      "C": 51.51,
+      "Green": 3.01,
+      "Lab": 5.69,
+      "LD": 6.53,
+      "SNP": 32.47,
+      "Other": 0.8
+    },
+    "constituencyTotalVotes": 36041,
+    "number": 39,
+    "regional": {
+      "C": 47.37,
+      "Green": 4.62,
+      "Lab": 6.76,
+      "LD": 6.73,
+      "SNP": 30.12,
+      "Alba": 0.88,
+      "Reform": 0.32,
+      "Other": 3.19
+    },
+    "regionalTotalVotes": 36044
+  },
+  "Falkirk East & Linlithgow": {
+    "name": "Falkirk East & Linlithgow",
+    "constituency": {
+      "C": 20.52,
+      "Lab": 27.06,
+      "LD": 3.4,
+      "SNP": 47.05,
+      "Other": 1.97
+    },
+    "constituencyTotalVotes": 42470,
+    "number": 40,
+    "regional": {
+      "C": 23.21,
+      "Green": 6.88,
+      "Lab": 21.14,
+      "LD": 2.85,
+      "SNP": 40.78,
+      "Alba": 1.83,
+      "Reform": 0.24,
+      "Other": 3.05
+    },
+    "regionalTotalVotes": 42688
+  },
+  "Falkirk West": {
+    "name": "Falkirk West",
+    "constituency": {
+      "C": 18.1,
+      "Lab": 25.38,
+      "LD": 2.61,
+      "SNP": 53.6,
+      "Other": 0.31
+    },
+    "constituencyTotalVotes": 43156,
+    "number": 41,
+    "regional": {
+      "C": 20.24,
+      "Green": 6.64,
+      "Lab": 20.56,
+      "LD": 2.29,
+      "SNP": 45.53,
+      "Alba": 1.62,
+      "Reform": 0.22,
+      "Other": 2.91
+    },
+    "regionalTotalVotes": 43191
+  },
+  "Fife North East": {
+    "name": "Fife North East",
+    "constituency": {
+      "C": 5.77,
+      "Lab": 2.62,
+      "LD": 55.05,
+      "SNP": 36.55
+    },
+    "constituencyTotalVotes": 40257,
+    "number": 42,
+    "regional": {
+      "C": 20.09,
+      "Green": 10.08,
+      "Lab": 6.01,
+      "LD": 29.05,
+      "SNP": 30.93,
+      "Alba": 1.45,
+      "Reform": 0.18,
+      "Other": 2.22
+    },
+    "regionalTotalVotes": 40360
+  },
+  "Galloway & West Dumfries": {
+    "name": "Galloway & West Dumfries",
+    "constituency": {
+      "C": 47.02,
+      "Green": 2.61,
+      "Lab": 7.88,
+      "LD": 2.55,
+      "SNP": 39.94
+    },
+    "constituencyTotalVotes": 37187,
+    "number": 43,
+    "regional": {
+      "C": 42.01,
+      "Green": 4.26,
+      "Lab": 9.37,
+      "LD": 2.65,
+      "SNP": 36.82,
+      "Alba": 0.7,
+      "Reform": 0.22,
+      "Other": 3.97
+    },
+    "regionalTotalVotes": 37161
+  },
+  "Glasgow Anniesland": {
+    "name": "Glasgow Anniesland",
+    "constituency": {
+      "C": 10.78,
+      "Green": 1.75,
+      "Lab": 31.57,
+      "LD": 3.19,
+      "SNP": 52.71
+    },
+    "constituencyTotalVotes": 35636,
+    "number": 44,
+    "regional": {
+      "C": 13.49,
+      "Green": 11.51,
+      "Lab": 23.65,
+      "LD": 2.75,
+      "SNP": 42.36,
+      "Alba": 2.12,
+      "Reform": 0.18,
+      "Other": 3.95
+    },
+    "regionalTotalVotes": 35817
+  },
+  "Glasgow Baillieston & Shettleston": {
+    "name": "Glasgow Baillieston & Shettleston",
+    "constituency": {
+      "C": 13.74,
+      "Green": 2.08,
+      "Lab": 28.65,
+      "LD": 2.1,
+      "SNP": 53.42
+    },
+    "constituencyTotalVotes": 32172,
+    "number": 45,
+    "regional": {
+      "C": 15.38,
+      "Green": 6.66,
+      "Lab": 24.25,
+      "LD": 1.32,
+      "SNP": 46.95,
+      "Alba": 1.83,
+      "Reform": 0.15,
+      "Other": 3.45
+    },
+    "regionalTotalVotes": 32170
+  },
+  "Glasgow Cathcart & Pollok": {
+    "name": "Glasgow Cathcart & Pollok",
+    "constituency": {
+      "C": 8.36,
+      "Green": 1.78,
+      "Lab": 32.36,
+      "LD": 2.3,
+      "SNP": 54.53,
+      "Other": 0.67
+    },
+    "constituencyTotalVotes": 39648,
+    "number": 46,
+    "regional": {
+      "C": 11.89,
+      "Green": 10.65,
+      "Lab": 26.17,
+      "LD": 1.85,
+      "SNP": 43.91,
+      "Alba": 1.37,
+      "Reform": 0.17,
+      "Other": 3.99
+    },
+    "regionalTotalVotes": 39454
+  },
+  "Glasgow Central": {
+    "name": "Glasgow Central",
+    "constituency": {
+      "C": 6.27,
+      "Green": 8.76,
+      "Lab": 32.32,
+      "LD": 2.02,
+      "SNP": 50.03,
+      "Other": 0.6
+    },
+    "constituencyTotalVotes": 37299,
+    "number": 47,
+    "regional": {
+      "C": 8.46,
+      "Green": 13.62,
+      "Lab": 26.53,
+      "LD": 1.83,
+      "SNP": 43.29,
+      "Alba": 1.16,
+      "Reform": 0.21,
+      "Other": 4.91
+    },
+    "regionalTotalVotes": 37367
+  },
+  "Glasgow Easterhouse & Springburn": {
+    "name": "Glasgow Easterhouse & Springburn",
+    "constituency": {
+      "C": 7.8,
+      "Green": 5.48,
+      "Lab": 27.66,
+      "LD": 1.69,
+      "SNP": 57.36
+    },
+    "constituencyTotalVotes": 31696,
+    "number": 48,
+    "regional": {
+      "C": 9.85,
+      "Green": 8.36,
+      "Lab": 23.27,
+      "LD": 1.37,
+      "SNP": 51.07,
+      "Alba": 1.73,
+      "Reform": 0.19,
+      "Other": 4.16
+    },
+    "regionalTotalVotes": 31588
+  },
+  "Glasgow Kelvin & Maryhill": {
+    "name": "Glasgow Kelvin & Maryhill",
+    "constituency": {
+      "C": 9.22,
+      "Green": 15.03,
+      "Lab": 27.78,
+      "LD": 2.7,
+      "SNP": 45.27
+    },
+    "constituencyTotalVotes": 35792,
+    "number": 49,
+    "regional": {
+      "C": 12.32,
+      "Green": 18.38,
+      "Lab": 22.31,
+      "LD": 2.45,
+      "SNP": 39.39,
+      "Alba": 1.56,
+      "Reform": 0.17,
+      "Other": 3.42
+    },
+    "regionalTotalVotes": 36038
+  },
+  "Glasgow Southside": {
+    "name": "Glasgow Southside",
+    "constituency": {
+      "C": 7.8,
+      "Green": 0.19,
+      "Lab": 28.01,
+      "LD": 2.09,
+      "SNP": 60.91,
+      "Other": 1.0
+    },
+    "constituencyTotalVotes": 39500,
+    "number": 50,
+    "regional": {
+      "C": 10.76,
+      "Green": 19.11,
+      "Lab": 20.63,
+      "LD": 1.93,
+      "SNP": 41.73,
+      "Alba": 2.23,
+      "Reform": 0.11,
+      "Other": 3.51
+    },
+    "regionalTotalVotes": 40092
+  },
+  "Hamilton, Larkhall & Stonehouse": {
+    "name": "Hamilton, Larkhall & Stonehouse",
+    "constituency": {
+      "C": 17.45,
+      "Lab": 33.57,
+      "LD": 2.79,
+      "SNP": 46.19
+    },
+    "constituencyTotalVotes": 36284,
+    "number": 51,
+    "regional": {
+      "C": 21.78,
+      "Green": 5.21,
+      "Lab": 25.24,
+      "LD": 2.22,
+      "SNP": 41.01,
+      "Alba": 1.34,
+      "Reform": 0.16,
+      "Other": 3.04
+    },
+    "regionalTotalVotes": 36394
+  },
+  "Inverclyde": {
+    "name": "Inverclyde",
+    "constituency": {
+      "C": 10.5,
+      "Lab": 31.4,
+      "LD": 2.86,
+      "SNP": 53.19,
+      "Other": 2.04
+    },
+    "constituencyTotalVotes": 39382,
+    "number": 52,
+    "regional": {
+      "C": 15.43,
+      "Green": 6.28,
+      "Lab": 23.45,
+      "LD": 2.68,
+      "SNP": 47.29,
+      "Alba": 1.94,
+      "Reform": 0.13,
+      "Other": 2.8
+    },
+    "regionalTotalVotes": 39460
+  },
+  "Inverness & Nairn": {
+    "name": "Inverness & Nairn",
+    "constituency": {
+      "C": 27.12,
+      "Green": 5.76,
+      "Lab": 11.84,
+      "LD": 6.19,
+      "SNP": 48.32,
+      "Other": 0.77
+    },
+    "constituencyTotalVotes": 42445,
+    "number": 53,
+    "regional": {
+      "C": 25.78,
+      "Green": 7.42,
+      "Lab": 11.26,
+      "LD": 6.04,
+      "SNP": 43.66,
+      "Alba": 1.61,
+      "Reform": 0.21,
+      "Other": 4.02
+    },
+    "regionalTotalVotes": 42487
+  },
+  "Kilmarnock & Irvine Valley": {
+    "name": "Kilmarnock & Irvine Valley",
+    "constituency": {
+      "C": 20.18,
+      "Lab": 23.09,
+      "LD": 2.17,
+      "SNP": 53.91,
+      "Other": 0.65
+    },
+    "constituencyTotalVotes": 35413,
+    "number": 54,
+    "regional": {
+      "C": 21.3,
+      "Green": 4.84,
+      "Lab": 19.39,
+      "LD": 2.04,
+      "SNP": 46.82,
+      "Alba": 1.59,
+      "Reform": 0.22,
+      "Other": 3.81
+    },
+    "regionalTotalVotes": 35515
+  },
+  "Kirkcaldy": {
+    "name": "Kirkcaldy",
+    "constituency": {
+      "C": 13.9,
+      "Lab": 30.09,
+      "LD": 2.89,
+      "SNP": 52.35,
+      "Other": 0.76
+    },
+    "constituencyTotalVotes": 35178,
+    "number": 55,
+    "regional": {
+      "C": 17.4,
+      "Green": 7.05,
+      "Lab": 23.09,
+      "LD": 2.91,
+      "SNP": 44.6,
+      "Alba": 1.95,
+      "Reform": 0.2,
+      "Other": 2.8
+    },
+    "regionalTotalVotes": 35278
+  },
+  "Mid Fife & Glenrothes": {
+    "name": "Mid Fife & Glenrothes",
+    "constituency": {
+      "C": 13.77,
+      "Lab": 24.12,
+      "LD": 5.48,
+      "SNP": 55.45,
+      "Other": 1.18
+    },
+    "constituencyTotalVotes": 32670,
+    "number": 56,
+    "regional": {
+      "C": 17.28,
+      "Green": 5.46,
+      "Lab": 19.34,
+      "LD": 4.8,
+      "SNP": 48.53,
+      "Alba": 1.57,
+      "Reform": 0.18,
+      "Other": 2.84
+    },
+    "regionalTotalVotes": 32717
+  },
+  "Midlothian North": {
+    "name": "Midlothian North",
+    "constituency": {
+      "C": 15.96,
+      "Green": 0.36,
+      "Lab": 30.04,
+      "LD": 4.4,
+      "SNP": 49.23,
+      "Other": 0.02
+    },
+    "constituencyTotalVotes": 32805,
+    "number": 57,
+    "regional": {
+      "C": 18.29,
+      "Green": 8.35,
+      "Lab": 23.56,
+      "LD": 3.86,
+      "SNP": 41.27,
+      "Alba": 1.51,
+      "Reform": 0.19,
+      "Other": 2.98
+    },
+    "regionalTotalVotes": 32889
+  },
+  "Midlothian South, Tweeddale & Lauderdale": {
+    "name": "Midlothian South, Tweeddale & Lauderdale",
+    "constituency": {
+      "C": 30.5,
+      "Green": 5.08,
+      "Lab": 12.23,
+      "LD": 6.0,
+      "SNP": 46.03,
+      "Other": 0.15
+    },
+    "constituencyTotalVotes": 40105,
+    "number": 58,
+    "regional": {
+      "C": 28.33,
+      "Green": 7.07,
+      "Lab": 12.81,
+      "LD": 6.49,
+      "SNP": 41.51,
+      "Alba": 0.94,
+      "Reform": 0.27,
+      "Other": 2.57
+    },
+    "regionalTotalVotes": 40189
+  },
+  "Moray": {
+    "name": "Moray",
+    "constituency": {
+      "C": 40.9,
+      "Lab": 7.22,
+      "LD": 2.83,
+      "SNP": 48.59,
+      "Other": 0.46
+    },
+    "constituencyTotalVotes": 41135,
+    "number": 59,
+    "regional": {
+      "C": 38.6,
+      "Green": 6.15,
+      "Lab": 7.79,
+      "LD": 2.75,
+      "SNP": 40.33,
+      "Alba": 1.31,
+      "Reform": 0.2,
+      "Other": 2.87
+    },
+    "regionalTotalVotes": 41162
+  },
+  "Motherwell & Wishaw": {
+    "name": "Motherwell & Wishaw",
+    "constituency": {
+      "C": 13.1,
+      "Lab": 30.29,
+      "LD": 1.63,
+      "SNP": 53.17,
+      "Other": 1.82
+    },
+    "constituencyTotalVotes": 34149,
+    "number": 60,
+    "regional": {
+      "C": 17.31,
+      "Green": 5.71,
+      "Lab": 24.68,
+      "LD": 1.52,
+      "SNP": 45.88,
+      "Alba": 1.45,
+      "Reform": 0.18,
+      "Other": 3.26
+    },
+    "regionalTotalVotes": 34155
+  },
+  "Na h-Eileanan an Iar": {
+    "name": "Na h-Eileanan an Iar",
+    "constituency": {
+      "C": 14.59,
+      "Lab": 27.66,
+      "LD": 2.43,
+      "SNP": 51.38,
+      "Other": 3.94
+    },
+    "constituencyTotalVotes": 14507,
+    "number": 61,
+    "regional": {
+      "C": 17.83,
+      "Green": 5.85,
+      "Lab": 21.29,
+      "LD": 2.23,
+      "SNP": 43.11,
+      "Alba": 2.17,
+      "Reform": 0.22,
+      "Other": 7.29
+    },
+    "regionalTotalVotes": 14534
+  },
+  "Orkney Islands": {
+    "name": "Orkney Islands",
+    "constituency": {
+      "C": 6.03,
+      "Lab": 2.5,
+      "LD": 62.42,
+      "SNP": 29.05
+    },
+    "constituencyTotalVotes": 11596,
+    "number": 62,
+    "regional": {
+      "C": 19.01,
+      "Green": 9.53,
+      "Lab": 6.26,
+      "LD": 31.21,
+      "SNP": 29.21,
+      "Alba": 0.85,
+      "Reform": 0.27,
+      "Other": 3.68
+    },
+    "regionalTotalVotes": 11586
+  },
+  "Paisley": {
+    "name": "Paisley",
+    "constituency": {
+      "C": 10.04,
+      "Green": 4.21,
+      "Lab": 32.01,
+      "LD": 3.26,
+      "SNP": 50.39,
+      "Other": 0.09
+    },
+    "constituencyTotalVotes": 36793,
+    "number": 63,
+    "regional": {
+      "C": 14.33,
+      "Green": 7.22,
+      "Lab": 24.69,
+      "LD": 2.66,
+      "SNP": 46.1,
+      "Alba": 1.68,
+      "Reform": 0.22,
+      "Other": 3.11
+    },
+    "regionalTotalVotes": 36936
+  },
+  "Perthshire North": {
+    "name": "Perthshire North",
+    "constituency": {
+      "C": 39.17,
+      "Lab": 5.74,
+      "LD": 4.58,
+      "SNP": 49.71,
+      "Other": 0.79
+    },
+    "constituencyTotalVotes": 42205,
+    "number": 64,
+    "regional": {
+      "C": 36.3,
+      "Green": 8.08,
+      "Lab": 7.01,
+      "LD": 4.39,
+      "SNP": 40.26,
+      "Alba": 1.61,
+      "Reform": 0.28,
+      "Other": 2.06
+    },
+    "regionalTotalVotes": 42224
+  },
+  "Perthshire South & Kinross-shire": {
+    "name": "Perthshire South & Kinross-shire",
+    "constituency": {
+      "C": 41.57,
+      "Lab": 6.77,
+      "LD": 6.41,
+      "SNP": 45.26
+    },
+    "constituencyTotalVotes": 41992,
+    "number": 65,
+    "regional": {
+      "C": 37.18,
+      "Green": 8.65,
+      "Lab": 8.2,
+      "LD": 6.1,
+      "SNP": 36.0,
+      "Alba": 1.54,
+      "Reform": 0.32,
+      "Other": 2.02
+    },
+    "regionalTotalVotes": 42116
+  },
+  "Renfrewshire North & Cardonald": {
+    "name": "Renfrewshire North & Cardonald",
+    "constituency": {
+      "C": 17.73,
+      "Green": 1.57,
+      "Lab": 28.01,
+      "LD": 2.19,
+      "SNP": 49.37,
+      "Other": 1.14
+    },
+    "constituencyTotalVotes": 40096,
+    "number": 66,
+    "regional": {
+      "C": 20.88,
+      "Green": 6.4,
+      "Lab": 22.82,
+      "LD": 2.13,
+      "SNP": 42.56,
+      "Alba": 1.91,
+      "Reform": 0.13,
+      "Other": 3.16
+    },
+    "regionalTotalVotes": 40314
+  },
+  "Renfrewshire West & Levern Valley": {
+    "name": "Renfrewshire West & Levern Valley",
+    "constituency": {
+      "C": 15.89,
+      "Green": 0.09,
+      "Lab": 30.05,
+      "LD": 2.39,
+      "SNP": 49.53,
+      "Other": 2.05
+    },
+    "constituencyTotalVotes": 40256,
+    "number": 67,
+    "regional": {
+      "C": 19.07,
+      "Green": 6.98,
+      "Lab": 24.03,
+      "LD": 2.3,
+      "SNP": 42.52,
+      "Alba": 1.58,
+      "Reform": 0.16,
+      "Other": 3.37
+    },
+    "regionalTotalVotes": 40421
+  },
+  "Rutherglen & Cambuslang": {
+    "name": "Rutherglen & Cambuslang",
+    "constituency": {
+      "C": 9.13,
+      "Lab": 37.61,
+      "LD": 2.77,
+      "SNP": 50.49
+    },
+    "constituencyTotalVotes": 40107,
+    "number": 68,
+    "regional": {
+      "C": 14.7,
+      "Green": 7.18,
+      "Lab": 27.41,
+      "LD": 2.52,
+      "SNP": 42.26,
+      "Alba": 1.77,
+      "Reform": 0.26,
+      "Other": 3.9
+    },
+    "regionalTotalVotes": 40154
+  },
+  "Shetland Islands": {
+    "name": "Shetland Islands",
+    "constituency": {
+      "C": 4.22,
+      "Lab": 3.55,
+      "LD": 48.63,
+      "SNP": 41.88,
+      "Other": 1.73
+    },
+    "constituencyTotalVotes": 11933,
+    "number": 69,
+    "regional": {
+      "C": 15.66,
+      "Green": 9.69,
+      "Lab": 8.42,
+      "LD": 26.52,
+      "SNP": 34.5,
+      "Alba": 0.87,
+      "Reform": 0.48,
+      "Other": 3.85
+    },
+    "regionalTotalVotes": 11906
+  },
+  "Skye, Lochaber & Badenoch": {
+    "name": "Skye, Lochaber & Badenoch",
+    "constituency": {
+      "C": 20.45,
+      "Green": 0.41,
+      "Lab": 9.05,
+      "LD": 15.16,
+      "SNP": 54.85,
+      "Other": 0.08
+    },
+    "constituencyTotalVotes": 46442,
+    "number": 70,
+    "regional": {
+      "C": 23.16,
+      "Green": 9.05,
+      "Lab": 9.26,
+      "LD": 9.63,
+      "SNP": 41.46,
+      "Alba": 1.84,
+      "Reform": 0.19,
+      "Other": 5.41
+    },
+    "regionalTotalVotes": 46687
+  },
+  "Stirling": {
+    "name": "Stirling",
+    "constituency": {
+      "C": 31.45,
+      "Lab": 16.37,
+      "LD": 3.63,
+      "SNP": 48.56
+    },
+    "constituencyTotalVotes": 37750,
+    "number": 71,
+    "regional": {
+      "C": 28.91,
+      "Green": 10.45,
+      "Lab": 14.98,
+      "LD": 3.4,
+      "SNP": 38.42,
+      "Alba": 1.67,
+      "Reform": 0.15,
+      "Other": 2.02
+    },
+    "regionalTotalVotes": 37865
+  },
+  "Strathkelvin & Bearsden": {
+    "name": "Strathkelvin & Bearsden",
+    "constituency": {
+      "C": 20.72,
+      "Lab": 18.4,
+      "LD": 14.43,
+      "SNP": 45.55,
+      "Other": 0.9
+    },
+    "constituencyTotalVotes": 46244,
+    "number": 72,
+    "regional": {
+      "C": 22.04,
+      "Green": 8.35,
+      "Lab": 19.62,
+      "LD": 8.84,
+      "SNP": 36.7,
+      "Alba": 1.46,
+      "Reform": 0.13,
+      "Other": 2.86
+    },
+    "regionalTotalVotes": 46391
+  },
+  "Uddingston & Bellshill": {
+    "name": "Uddingston & Bellshill",
+    "constituency": {
+      "C": 12.7,
+      "Lab": 35.14,
+      "LD": 2.28,
+      "SNP": 49.88
+    },
+    "constituencyTotalVotes": 35990,
+    "number": 73,
+    "regional": {
+      "C": 17.34,
+      "Green": 5.21,
+      "Lab": 26.5,
+      "LD": 1.64,
+      "SNP": 44.26,
+      "Alba": 1.74,
+      "Reform": 0.17,
+      "Other": 3.14
+    },
+    "regionalTotalVotes": 36070
+  }
+}

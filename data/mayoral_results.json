@@ -1,0 +1,1533 @@
+[
+  {
+    "number": 1,
+    "name": "Croydon",
+    "electorate": 280996,
+    "turnout": 167508,
+    "percentageTurnout": 59.61,
+    "winningParty": "Lab",
+    "gainOrHold": "gain",
+    "sittingParty": "C",
+    "majority": 42055,
+    "percentageMajority": 25.11,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300908",
+        "firstName": "Daniel",
+        "surname": "Baker Test",
+        "ballotName": "Baker Test, Daniel Michael",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 72594,
+          "percentageShare": 43.34
+        }
+      },
+      {
+        "paId": "300907",
+        "firstName": "Paul",
+        "surname": "Lloyd Test",
+        "ballotName": "Lloyd Test, Paul Matthew",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 30539,
+          "percentageShare": 18.23
+        }
+      },
+      {
+        "paId": "300909",
+        "firstName": "Noah",
+        "surname": "Jones Test",
+        "ballotName": "Jones Test, Noah John",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 23804,
+          "percentageShare": 14.21
+        }
+      },
+      {
+        "paId": "300910",
+        "firstName": "Ruth",
+        "surname": "Gregory Test",
+        "ballotName": "Gregory Test, Ruth Janet",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 22769,
+          "percentageShare": 13.59
+        }
+      },
+      {
+        "paId": "300911",
+        "firstName": "Lesley",
+        "surname": "Lloyd Test",
+        "ballotName": "Lloyd Test, Lesley",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 16110,
+          "percentageShare": 9.62
+        }
+      },
+      {
+        "paId": "300912",
+        "firstName": "Micky",
+        "surname": "Barker Test",
+        "ballotName": "Barker Test, Michael",
+        "party": {
+          "paId": "13933",
+          "name": "Independent Micky Barker Test",
+          "abbreviation": "Ind",
+          "votes": 1009,
+          "percentageShare": 0.6
+        }
+      },
+      {
+        "paId": "300913",
+        "firstName": "Olive",
+        "surname": "Rogers Test",
+        "ballotName": "Rogers Test, Olive Mary",
+        "party": {
+          "paId": "13934",
+          "name": "Independent Olive Rogers Test",
+          "abbreviation": "Ind",
+          "votes": 683,
+          "percentageShare": 0.41
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T10:17:02+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Croydon_1.xml"
+  },
+  {
+    "number": 2,
+    "name": "Hackney",
+    "electorate": 182136,
+    "turnout": 122910,
+    "percentageTurnout": 67.48,
+    "winningParty": "Lab",
+    "gainOrHold": "hold",
+    "sittingParty": "Lab",
+    "majority": 37566,
+    "percentageMajority": 30.56,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300915",
+        "firstName": "John",
+        "surname": "Cooper Test",
+        "ballotName": "Cooper Test, John David",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 59902,
+          "percentageShare": 48.74
+        }
+      },
+      {
+        "paId": "300914",
+        "firstName": "Phil",
+        "surname": "Griffin Test",
+        "ballotName": "Griffin Test, Philip Simon",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 22336,
+          "percentageShare": 18.17
+        }
+      },
+      {
+        "paId": "300916",
+        "firstName": "Isla",
+        "surname": "Barker Test",
+        "ballotName": "Barker Test, Isla Aria",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 14935,
+          "percentageShare": 12.15
+        }
+      },
+      {
+        "paId": "300917",
+        "firstName": "Jim",
+        "surname": "Harvey Test",
+        "ballotName": "Harvey Test, James Steven",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 12806,
+          "percentageShare": 10.42
+        }
+      },
+      {
+        "paId": "300918",
+        "firstName": "Funke",
+        "surname": "Owens Test",
+        "ballotName": "Owens Test, Funke Edith",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 10678,
+          "percentageShare": 8.69
+        }
+      },
+      {
+        "paId": "300919",
+        "firstName": "Ian",
+        "surname": "Hutton Test",
+        "ballotName": "Hutton Test, Ian David",
+        "party": {
+          "paId": "13935",
+          "name": "Independent Ian Hutton Test",
+          "abbreviation": "Ind",
+          "votes": 2089,
+          "percentageShare": 1.7
+        }
+      },
+      {
+        "paId": "300920",
+        "firstName": "Michael",
+        "surname": "Leach Test",
+        "ballotName": "Leach Test, Michael Peter",
+        "party": {
+          "paId": "13936",
+          "name": "Independent Michael Leach Test",
+          "abbreviation": "Ind",
+          "votes": 164,
+          "percentageShare": 0.13
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T10:36:52+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Hackney_1.xml"
+  },
+  {
+    "number": 2,
+    "name": "Hackney",
+    "electorate": 182136,
+    "turnout": 138910,
+    "percentageTurnout": 76.27,
+    "winningParty": "Green",
+    "gainOrHold": "gain",
+    "sittingParty": "Lab",
+    "majority": 36904,
+    "percentageMajority": 26.57,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300917",
+        "firstName": "Jim",
+        "surname": "Harvey Test",
+        "ballotName": "Harvey Test, James Steven",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 62806,
+          "percentageShare": 45.21
+        }
+      },
+      {
+        "paId": "300915",
+        "firstName": "John",
+        "surname": "Cooper Test",
+        "ballotName": "Cooper Test, John David",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 25902,
+          "percentageShare": 18.65
+        }
+      },
+      {
+        "paId": "300914",
+        "firstName": "Phil",
+        "surname": "Griffin Test",
+        "ballotName": "Griffin Test, Philip Simon",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 22336,
+          "percentageShare": 16.08
+        }
+      },
+      {
+        "paId": "300916",
+        "firstName": "Isla",
+        "surname": "Barker Test",
+        "ballotName": "Barker Test, Isla Aria",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 14935,
+          "percentageShare": 10.75
+        }
+      },
+      {
+        "paId": "300918",
+        "firstName": "Funke",
+        "surname": "Owens Test",
+        "ballotName": "Owens Test, Funke Edith",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 10678,
+          "percentageShare": 7.69
+        }
+      },
+      {
+        "paId": "300919",
+        "firstName": "Ian",
+        "surname": "Hutton Test",
+        "ballotName": "Hutton Test, Ian David",
+        "party": {
+          "paId": "13935",
+          "name": "Independent Ian Hutton Test",
+          "abbreviation": "Ind",
+          "votes": 2089,
+          "percentageShare": 1.5
+        }
+      },
+      {
+        "paId": "300920",
+        "firstName": "Michael",
+        "surname": "Leach Test",
+        "ballotName": "Leach Test, Michael Peter",
+        "party": {
+          "paId": "13936",
+          "name": "Independent Michael Leach Test",
+          "abbreviation": "Ind",
+          "votes": 164,
+          "percentageShare": 0.12
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 3,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T12:38:10+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Hackney_3.xml"
+  },
+  {
+    "number": 3,
+    "name": "Lewisham",
+    "electorate": 202517,
+    "turnout": 133066,
+    "percentageTurnout": 65.71,
+    "winningParty": "Lab",
+    "gainOrHold": "hold",
+    "sittingParty": "Lab",
+    "majority": 41552,
+    "percentageMajority": 31.23,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300922",
+        "firstName": "Michael",
+        "surname": "Daniels Test",
+        "ballotName": "Daniels Test, Michael Richard",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 64048,
+          "percentageShare": 48.13
+        }
+      },
+      {
+        "paId": "300921",
+        "firstName": "Ruth",
+        "surname": "Rose Test",
+        "ballotName": "Rose Test, Ruth",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 22496,
+          "percentageShare": 16.91
+        }
+      },
+      {
+        "paId": "300923",
+        "firstName": "Chris",
+        "surname": "Watts Test",
+        "ballotName": "Watts Test, Christopher Richard",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 16806,
+          "percentageShare": 12.63
+        }
+      },
+      {
+        "paId": "300925",
+        "firstName": "Michael",
+        "surname": "Lloyd Test",
+        "ballotName": "Lloyd Test, Michael Robert",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 13705,
+          "percentageShare": 10.3
+        }
+      },
+      {
+        "paId": "300924",
+        "firstName": "Mike",
+        "surname": "Roberts Test",
+        "ballotName": "Roberts Test, Michael Peter",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 13505,
+          "percentageShare": 10.15
+        }
+      },
+      {
+        "paId": "300927",
+        "firstName": "Jeremy",
+        "surname": "Riley Test",
+        "ballotName": "Riley Test, Jeremy Robert",
+        "party": {
+          "paId": "13938",
+          "name": "Independent Jeremy Riley Test",
+          "abbreviation": "Ind",
+          "votes": 2014,
+          "percentageShare": 1.51
+        }
+      },
+      {
+        "paId": "300926",
+        "firstName": "Martin",
+        "surname": "Sullivan Test",
+        "ballotName": "Sullivan Test, Martin Iain",
+        "party": {
+          "paId": "13937",
+          "name": "Independent Martin Sullivan Test",
+          "abbreviation": "Ind",
+          "votes": 492,
+          "percentageShare": 0.37
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T10:57:12+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Lewisham_1.xml"
+  },
+  {
+    "number": 4,
+    "name": "Newham",
+    "electorate": 226690,
+    "turnout": 138093,
+    "percentageTurnout": 60.92,
+    "winningParty": "Lab",
+    "gainOrHold": "hold",
+    "sittingParty": "Lab",
+    "majority": 30625,
+    "percentageMajority": 22.18,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300929",
+        "firstName": "Ivan",
+        "surname": "Brooks Test",
+        "ballotName": "Brooks Test, Ivan",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 55669,
+          "percentageShare": 40.31
+        }
+      },
+      {
+        "paId": "300928",
+        "firstName": "Agnieszka",
+        "surname": "Hammond Test",
+        "ballotName": "Hammond Test, Agnieszka Daisy",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 25044,
+          "percentageShare": 18.14
+        }
+      },
+      {
+        "paId": "300930",
+        "firstName": "Rob",
+        "surname": "Harrison Test",
+        "ballotName": "Harrison Test, Robert Charles",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 21351,
+          "percentageShare": 15.46
+        }
+      },
+      {
+        "paId": "300932",
+        "firstName": "Janet",
+        "surname": "Evans Test",
+        "ballotName": "Evans Test, Janet Margaret",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 17596,
+          "percentageShare": 12.74
+        }
+      },
+      {
+        "paId": "300931",
+        "firstName": "Micky",
+        "surname": "Morris Test",
+        "ballotName": "Morris Test, Michael Kofi",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 15838,
+          "percentageShare": 11.47
+        }
+      },
+      {
+        "paId": "300934",
+        "firstName": "Jacob",
+        "surname": "Stuart Test",
+        "ballotName": "Stuart Test, Jacob Christopher",
+        "party": {
+          "paId": "13940",
+          "name": "Independent Jacob Stuart Test",
+          "abbreviation": "Ind",
+          "votes": 1889,
+          "percentageShare": 1.37
+        }
+      },
+      {
+        "paId": "300933",
+        "firstName": "Graham",
+        "surname": "Poole Test",
+        "ballotName": "Poole Test, Graham Carl",
+        "party": {
+          "paId": "13939",
+          "name": "Independent Graham Poole Test",
+          "abbreviation": "Ind",
+          "votes": 706,
+          "percentageShare": 0.51
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T11:17:16+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Newham_1.xml"
+  },
+  {
+    "number": 5,
+    "name": "Tower Hamlets",
+    "electorate": 205189,
+    "turnout": 134393,
+    "percentageTurnout": 65.5,
+    "winningParty": "Lab",
+    "gainOrHold": "gain",
+    "sittingParty": "Aspire",
+    "majority": 12693,
+    "percentageMajority": 9.44,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300936",
+        "firstName": "Pete",
+        "surname": "Clarke Test",
+        "ballotName": "Clarke Test, Peter David",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 42485,
+          "percentageShare": 31.61
+        }
+      },
+      {
+        "paId": "300935",
+        "firstName": "Hugh",
+        "surname": "Roberts Test",
+        "ballotName": "Roberts Test, Hugh",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 29792,
+          "percentageShare": 22.17
+        }
+      },
+      {
+        "paId": "300937",
+        "firstName": "David",
+        "surname": "Parsons Test",
+        "ballotName": "Parsons Test, David John",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 22958,
+          "percentageShare": 17.08
+        }
+      },
+      {
+        "paId": "300938",
+        "firstName": "Millie",
+        "surname": "Barrett Test",
+        "ballotName": "Barrett Test, Millicent Jane",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 20332,
+          "percentageShare": 15.13
+        }
+      },
+      {
+        "paId": "300939",
+        "firstName": "Matt",
+        "surname": "Marsh Test",
+        "ballotName": "Marsh Test, Matthew Timothy",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 13216,
+          "percentageShare": 9.83
+        }
+      },
+      {
+        "paId": "300941",
+        "firstName": "Yetunde",
+        "surname": "Patterson Test",
+        "ballotName": "Patterson Test, Yetunde",
+        "party": {
+          "paId": "13942",
+          "name": "Independent Yetunde Patterson Test",
+          "abbreviation": "Ind",
+          "votes": 2407,
+          "percentageShare": 1.79
+        }
+      },
+      {
+        "previousSittingMember": "*",
+        "paId": "300955",
+        "firstName": "Douglas",
+        "surname": "George Test",
+        "ballotName": "George Test, Douglas",
+        "party": {
+          "paId": "13931",
+          "name": "Aspire",
+          "abbreviation": "Aspire",
+          "votes": 1738,
+          "percentageShare": 1.29
+        }
+      },
+      {
+        "paId": "300940",
+        "firstName": "Rajan",
+        "surname": "Fisher Test",
+        "ballotName": "Fisher Test, Rajan George",
+        "party": {
+          "paId": "13941",
+          "name": "Independent Rajan Fisher Test",
+          "abbreviation": "Ind",
+          "votes": 1465,
+          "percentageShare": 1.09
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T11:37:26+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Tower_Hamlets_1.xml"
+  },
+  {
+    "number": 6,
+    "name": "Watford",
+    "electorate": 71887,
+    "turnout": 50337,
+    "percentageTurnout": 70.02,
+    "winningParty": "C",
+    "gainOrHold": "gain",
+    "sittingParty": "LD",
+    "majority": 481,
+    "percentageMajority": 0.96,
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300942",
+        "firstName": "Theresa",
+        "surname": "Byrne Test",
+        "ballotName": "Byrne Test, Theresa Amelia",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C",
+          "votes": 14107,
+          "percentageShare": 28.03
+        }
+      },
+      {
+        "paId": "300943",
+        "firstName": "Paul",
+        "surname": "Chapman Test",
+        "ballotName": "Chapman Test, Paul James",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab",
+          "votes": 13626,
+          "percentageShare": 27.07
+        }
+      },
+      {
+        "paId": "300946",
+        "firstName": "Paul",
+        "surname": "Stewart Test",
+        "ballotName": "Stewart Test, Paul Timothy",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform",
+          "votes": 11761,
+          "percentageShare": 23.36
+        }
+      },
+      {
+        "paId": "300944",
+        "firstName": "Alan",
+        "surname": "Brown Test",
+        "ballotName": "Brown Test, Alan Liam",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD",
+          "votes": 6782,
+          "percentageShare": 13.47
+        }
+      },
+      {
+        "paId": "300945",
+        "firstName": "Pete",
+        "surname": "Day Test",
+        "ballotName": "Day Test, Peter David",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green",
+          "votes": 3351,
+          "percentageShare": 6.66
+        }
+      },
+      {
+        "paId": "300947",
+        "firstName": "Nick",
+        "surname": "Wall Test",
+        "ballotName": "Wall Test, Nicholas Ieuan",
+        "party": {
+          "paId": "13943",
+          "name": "Independent Nick Wall Test",
+          "abbreviation": "Ind",
+          "votes": 634,
+          "percentageShare": 1.26
+        }
+      },
+      {
+        "paId": "300948",
+        "firstName": "Aisha",
+        "surname": "Murray Test",
+        "ballotName": "Murray Test, Aisha Dorothy",
+        "party": {
+          "paId": "13944",
+          "name": "Independent Aisha Murray Test",
+          "abbreviation": "Ind",
+          "votes": 76,
+          "percentageShare": 0.15
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "result",
+    "declarationTime": "2026-04-01T11:57:28+00:00",
+    "_sourceFile": "Mayoral_Elections_Test_result_Watford_1.xml"
+  },
+  {
+    "number": 1,
+    "name": "Croydon",
+    "electorate": 280996,
+    "gainOrHold": "gain",
+    "winningPartyAbbreviation": "Lab",
+    "winningPartyName": "Labour",
+    "sittingPartyAbbreviation": "C",
+    "sittingPartyName": "Conservative",
+    "change": "true",
+    "paStyleMessageText": "Labour gain from Conservative in Croydon",
+    "candidates": [
+      {
+        "paId": "300907",
+        "firstName": "Paul",
+        "surname": "Lloyd Test",
+        "ballotName": "Lloyd Test, Paul Matthew",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "elected": "*",
+        "paId": "300908",
+        "firstName": "Daniel",
+        "surname": "Baker Test",
+        "ballotName": "Baker Test, Daniel Michael",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300909",
+        "firstName": "Noah",
+        "surname": "Jones Test",
+        "ballotName": "Jones Test, Noah John",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "paId": "300910",
+        "firstName": "Ruth",
+        "surname": "Gregory Test",
+        "ballotName": "Gregory Test, Ruth Janet",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300911",
+        "firstName": "Lesley",
+        "surname": "Lloyd Test",
+        "ballotName": "Lloyd Test, Lesley",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "paId": "300912",
+        "firstName": "Micky",
+        "surname": "Barker Test",
+        "ballotName": "Barker Test, Michael",
+        "party": {
+          "paId": "13933",
+          "name": "Independent Micky Barker Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300913",
+        "firstName": "Olive",
+        "surname": "Rogers Test",
+        "ballotName": "Rogers Test, Olive Mary",
+        "party": {
+          "paId": "13934",
+          "name": "Independent Olive Rogers Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Croydon_1.xml"
+  },
+  {
+    "number": 2,
+    "name": "Hackney",
+    "electorate": 182136,
+    "gainOrHold": "hold",
+    "winningPartyAbbreviation": "Lab",
+    "winningPartyName": "Labour",
+    "sittingPartyAbbreviation": "Lab",
+    "sittingPartyName": "Labour",
+    "change": "false",
+    "paStyleMessageText": "Labour hold Hackney",
+    "candidates": [
+      {
+        "paId": "300914",
+        "firstName": "Phil",
+        "surname": "Griffin Test",
+        "ballotName": "Griffin Test, Philip Simon",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "elected": "*",
+        "paId": "300915",
+        "firstName": "John",
+        "surname": "Cooper Test",
+        "ballotName": "Cooper Test, John David",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300916",
+        "firstName": "Isla",
+        "surname": "Barker Test",
+        "ballotName": "Barker Test, Isla Aria",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "paId": "300917",
+        "firstName": "Jim",
+        "surname": "Harvey Test",
+        "ballotName": "Harvey Test, James Steven",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300918",
+        "firstName": "Funke",
+        "surname": "Owens Test",
+        "ballotName": "Owens Test, Funke Edith",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "paId": "300919",
+        "firstName": "Ian",
+        "surname": "Hutton Test",
+        "ballotName": "Hutton Test, Ian David",
+        "party": {
+          "paId": "13935",
+          "name": "Independent Ian Hutton Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300920",
+        "firstName": "Michael",
+        "surname": "Leach Test",
+        "ballotName": "Leach Test, Michael Peter",
+        "party": {
+          "paId": "13936",
+          "name": "Independent Michael Leach Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Hackney_1.xml"
+  },
+  {
+    "number": 2,
+    "name": "Hackney",
+    "electorate": 182136,
+    "gainOrHold": "gain",
+    "winningPartyAbbreviation": "Green",
+    "winningPartyName": "Green",
+    "sittingPartyAbbreviation": "Lab",
+    "sittingPartyName": "Labour",
+    "change": "true",
+    "paStyleMessageText": "Correction: Green gain from Labour in Hackney",
+    "candidates": [
+      {
+        "paId": "300914",
+        "firstName": "Phil",
+        "surname": "Griffin Test",
+        "ballotName": "Griffin Test, Philip Simon",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "paId": "300915",
+        "firstName": "John",
+        "surname": "Cooper Test",
+        "ballotName": "Cooper Test, John David",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300916",
+        "firstName": "Isla",
+        "surname": "Barker Test",
+        "ballotName": "Barker Test, Isla Aria",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "elected": "*",
+        "paId": "300917",
+        "firstName": "Jim",
+        "surname": "Harvey Test",
+        "ballotName": "Harvey Test, James Steven",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300918",
+        "firstName": "Funke",
+        "surname": "Owens Test",
+        "ballotName": "Owens Test, Funke Edith",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "paId": "300919",
+        "firstName": "Ian",
+        "surname": "Hutton Test",
+        "ballotName": "Hutton Test, Ian David",
+        "party": {
+          "paId": "13935",
+          "name": "Independent Ian Hutton Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300920",
+        "firstName": "Michael",
+        "surname": "Leach Test",
+        "ballotName": "Leach Test, Michael Peter",
+        "party": {
+          "paId": "13936",
+          "name": "Independent Michael Leach Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 2,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Hackney_2.xml"
+  },
+  {
+    "number": 3,
+    "name": "Lewisham",
+    "electorate": 202517,
+    "gainOrHold": "hold",
+    "winningPartyAbbreviation": "Lab",
+    "winningPartyName": "Labour",
+    "sittingPartyAbbreviation": "Lab",
+    "sittingPartyName": "Labour",
+    "change": "false",
+    "paStyleMessageText": "Labour hold Lewisham",
+    "candidates": [
+      {
+        "paId": "300921",
+        "firstName": "Ruth",
+        "surname": "Rose Test",
+        "ballotName": "Rose Test, Ruth",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "elected": "*",
+        "paId": "300922",
+        "firstName": "Michael",
+        "surname": "Daniels Test",
+        "ballotName": "Daniels Test, Michael Richard",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300923",
+        "firstName": "Chris",
+        "surname": "Watts Test",
+        "ballotName": "Watts Test, Christopher Richard",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "paId": "300924",
+        "firstName": "Mike",
+        "surname": "Roberts Test",
+        "ballotName": "Roberts Test, Michael Peter",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300925",
+        "firstName": "Michael",
+        "surname": "Lloyd Test",
+        "ballotName": "Lloyd Test, Michael Robert",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "paId": "300927",
+        "firstName": "Jeremy",
+        "surname": "Riley Test",
+        "ballotName": "Riley Test, Jeremy Robert",
+        "party": {
+          "paId": "13938",
+          "name": "Independent Jeremy Riley Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300926",
+        "firstName": "Martin",
+        "surname": "Sullivan Test",
+        "ballotName": "Sullivan Test, Martin Iain",
+        "party": {
+          "paId": "13937",
+          "name": "Independent Martin Sullivan Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Lewisham_1.xml"
+  },
+  {
+    "number": 4,
+    "name": "Newham",
+    "electorate": 226690,
+    "gainOrHold": "hold",
+    "winningPartyAbbreviation": "Lab",
+    "winningPartyName": "Labour",
+    "sittingPartyAbbreviation": "Lab",
+    "sittingPartyName": "Labour",
+    "change": "false",
+    "paStyleMessageText": "Labour hold Newham",
+    "candidates": [
+      {
+        "paId": "300928",
+        "firstName": "Agnieszka",
+        "surname": "Hammond Test",
+        "ballotName": "Hammond Test, Agnieszka Daisy",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "elected": "*",
+        "paId": "300929",
+        "firstName": "Ivan",
+        "surname": "Brooks Test",
+        "ballotName": "Brooks Test, Ivan",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300930",
+        "firstName": "Rob",
+        "surname": "Harrison Test",
+        "ballotName": "Harrison Test, Robert Charles",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "paId": "300931",
+        "firstName": "Micky",
+        "surname": "Morris Test",
+        "ballotName": "Morris Test, Michael Kofi",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300932",
+        "firstName": "Janet",
+        "surname": "Evans Test",
+        "ballotName": "Evans Test, Janet Margaret",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "paId": "300933",
+        "firstName": "Graham",
+        "surname": "Poole Test",
+        "ballotName": "Poole Test, Graham Carl",
+        "party": {
+          "paId": "13939",
+          "name": "Independent Graham Poole Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300934",
+        "firstName": "Jacob",
+        "surname": "Stuart Test",
+        "ballotName": "Stuart Test, Jacob Christopher",
+        "party": {
+          "paId": "13940",
+          "name": "Independent Jacob Stuart Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Newham_1.xml"
+  },
+  {
+    "number": 5,
+    "name": "Tower Hamlets",
+    "electorate": 205189,
+    "gainOrHold": "gain",
+    "winningPartyAbbreviation": "Lab",
+    "winningPartyName": "Labour",
+    "sittingPartyAbbreviation": "Aspire",
+    "sittingPartyName": "Aspire",
+    "change": "true",
+    "paStyleMessageText": "Labour gain from Aspire in Tower Hamlets",
+    "candidates": [
+      {
+        "paId": "300935",
+        "firstName": "Hugh",
+        "surname": "Roberts Test",
+        "ballotName": "Roberts Test, Hugh",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "elected": "*",
+        "paId": "300936",
+        "firstName": "Pete",
+        "surname": "Clarke Test",
+        "ballotName": "Clarke Test, Peter David",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300937",
+        "firstName": "David",
+        "surname": "Parsons Test",
+        "ballotName": "Parsons Test, David John",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "paId": "300938",
+        "firstName": "Millie",
+        "surname": "Barrett Test",
+        "ballotName": "Barrett Test, Millicent Jane",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300939",
+        "firstName": "Matt",
+        "surname": "Marsh Test",
+        "ballotName": "Marsh Test, Matthew Timothy",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "previousSittingMember": "*",
+        "paId": "300955",
+        "firstName": "Douglas",
+        "surname": "George Test",
+        "ballotName": "George Test, Douglas",
+        "party": {
+          "paId": "13931",
+          "name": "Aspire",
+          "abbreviation": "Aspire"
+        }
+      },
+      {
+        "paId": "300940",
+        "firstName": "Rajan",
+        "surname": "Fisher Test",
+        "ballotName": "Fisher Test, Rajan George",
+        "party": {
+          "paId": "13941",
+          "name": "Independent Rajan Fisher Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300941",
+        "firstName": "Yetunde",
+        "surname": "Patterson Test",
+        "ballotName": "Patterson Test, Yetunde",
+        "party": {
+          "paId": "13942",
+          "name": "Independent Yetunde Patterson Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Tower_Hamlets_1.xml"
+  },
+  {
+    "number": 6,
+    "name": "Watford",
+    "electorate": 71887,
+    "gainOrHold": "gain",
+    "winningPartyAbbreviation": "C",
+    "winningPartyName": "Conservative",
+    "sittingPartyAbbreviation": "LD",
+    "sittingPartyName": "Liberal Democrat",
+    "change": "true",
+    "paStyleMessageText": "Conservative gain from Liberal Democrat in Watford",
+    "candidates": [
+      {
+        "elected": "*",
+        "paId": "300942",
+        "firstName": "Theresa",
+        "surname": "Byrne Test",
+        "ballotName": "Byrne Test, Theresa Amelia",
+        "party": {
+          "paId": "13899",
+          "name": "Conservative",
+          "abbreviation": "C"
+        }
+      },
+      {
+        "paId": "300943",
+        "firstName": "Paul",
+        "surname": "Chapman Test",
+        "ballotName": "Chapman Test, Paul James",
+        "party": {
+          "paId": "13900",
+          "name": "Labour",
+          "abbreviation": "Lab"
+        }
+      },
+      {
+        "paId": "300944",
+        "firstName": "Alan",
+        "surname": "Brown Test",
+        "ballotName": "Brown Test, Alan Liam",
+        "party": {
+          "paId": "13894",
+          "name": "Liberal Democrat",
+          "abbreviation": "LD"
+        }
+      },
+      {
+        "paId": "300945",
+        "firstName": "Pete",
+        "surname": "Day Test",
+        "ballotName": "Day Test, Peter David",
+        "party": {
+          "paId": "13895",
+          "name": "Green",
+          "abbreviation": "Green"
+        }
+      },
+      {
+        "paId": "300946",
+        "firstName": "Paul",
+        "surname": "Stewart Test",
+        "ballotName": "Stewart Test, Paul Timothy",
+        "party": {
+          "paId": "13896",
+          "name": "Reform UK",
+          "abbreviation": "Reform"
+        }
+      },
+      {
+        "paId": "300948",
+        "firstName": "Aisha",
+        "surname": "Murray Test",
+        "ballotName": "Murray Test, Aisha Dorothy",
+        "party": {
+          "paId": "13944",
+          "name": "Independent Aisha Murray Test",
+          "abbreviation": "Ind"
+        }
+      },
+      {
+        "paId": "300947",
+        "firstName": "Nick",
+        "surname": "Wall Test",
+        "ballotName": "Wall Test, Nicholas Ieuan",
+        "party": {
+          "paId": "13943",
+          "name": "Independent Nick Wall Test",
+          "abbreviation": "Ind"
+        }
+      }
+    ],
+    "election": {
+      "name": "Mayoral Elections Test",
+      "date": "2026-05-06",
+      "type": "M"
+    },
+    "revision": 1,
+    "fileType": "rush",
+    "_sourceFile": "Mayoral_Elections_Test_rush_Watford_1.xml"
+  }
+]

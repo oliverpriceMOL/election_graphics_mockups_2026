@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Elections 2026 — All Components</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="site-nav__link site-nav__link--active">England</a>
+  <a href="scotland.html" class="site-nav__link">Scotland</a>
+  <a href="wales.html" class="site-nav__link">Wales</a>
+</nav>
+
+<div class="container">
+
+  <!-- Party Totals Strip -->
+  <div class="section-title" style="margin-top:0">Party totals</div>
+  <div id="party-strip"></div>
+
+  <!-- Change in Councillors / Councils Column Chart -->
+  <div class="section-title">Change in seats</div>
+  <div id="change-cols"></div>
+
+  <!-- England Map -->
+  <div class="section-title">England local elections map</div>
+  <div id="england-map"></div>
+
+  <!-- Party Scoreboard -->
+  <div class="section-title">Party scoreboard</div>
+  <div id="scoreboard"></div>
+
+  <!-- Hemicycle Tests -->
+  <div class="section-title">Hemicycle — various sizes</div>
+  <div class="hemi-row" id="hemicycles"></div>
+
+  <!-- Gain/Hold Badge Tests -->
+  <div class="section-title">Gain / hold badges</div>
+  <div id="badges" style="display:flex; gap:10px; flex-wrap:wrap;"></div>
+
+  <!-- Council Result Cards -->
+  <div class="section-title">Council result cards (full)</div>
+  <div class="card-grid card-grid--2" id="council-cards-full"></div>
+
+  <div class="section-title">Council result cards (mini)</div>
+  <div class="card-grid card-grid--4" id="council-cards-mini"></div>
+
+  <!-- Change Bar Charts -->
+  <div class="section-title">Change in councillors (bar chart)</div>
+  <div class="card-grid card-grid--3" id="change-bars"></div>
+
+  <!-- Mayoral Result Cards -->
+  <div class="section-title">Mayoral result cards</div>
+  <div class="card-grid card-grid--2" id="mayoral-cards"></div>
+
+</div>
+
+<!-- Component scripts (loaded in dependency order) -->
+<script src="js/tooltip.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/party-config.js"></script>
+<script src="js/hemicycle.js"></script>
+<script src="js/badge.js"></script>
+<script src="js/progress.js"></script>
+<script src="js/council-card.js"></script>
+<script src="js/scoreboard.js"></script>
+<script src="js/party-strip.js"></script>
+<script src="js/change-bar.js"></script>
+<script src="js/council-lookup.js"></script>
+<script src="js/election-map.js"></script>
+<script src="js/england-map.js"></script>
+<script src="js/fptp-card.js"></script>
+<script src="js/change-columns.js"></script>
+<script src="js/party-change-columns.js"></script>
+<script>
+// Load data and render all test components
+Promise.all([
+  fetch("data/local_results.json").then(r => r.json()),
+  fetch("data/mayoral_results.json").then(r => r.json()),
+  fetch("map_data/lad_map.geojson").then(r => r.json()),
+  fetch("map_data/counties_map.geojson").then(r => r.json()),
+]).then(([localData, mayoralData, ladGeo, countyGeo]) => {
+  const results = localData.results || localData;
+
+  const deduped = dedupByRevision(results);
+
+  // ── Party totals strip ──
+  partyTotalsStrip(document.getElementById("party-strip"), results);
+
+  // ── Declared badge (inside strip toggle row) ──
+  const toggleRow = document.querySelector(".party-strip-toggle-row");
+  if (toggleRow) {
+    const badge = document.createElement("div");
+    badge.className = "scoreboard__declared" + (deduped.length >= 136 ? " scoreboard__declared--complete" : "");
+    badge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>136</strong> councils declared";
+    toggleRow.appendChild(badge);
+  }
+
+  // ── England map ──
+  englandMap(document.getElementById("england-map"), results, ladGeo, countyGeo, mayoralData);
+
+  // ── Party scoreboard ──
+  partyScoreboard(document.getElementById("scoreboard"), results);
+
+  // ── Change column charts ──
+  partyChangeColumns(document.getElementById("change-cols"), results);
+
+  // ── Hemicycle tests: pick a range of council sizes ──
+  const testCouncils = ["Adur", "Broxbourne", "Barnsley", "Camden", "Manchester", "Birmingham"];
+  const hemiContainer = document.getElementById("hemicycles");
+  for (const name of testCouncils) {
+    const council = deduped.find(r => r.name === name);
+    if (!council) continue;
+
+    const cell = document.createElement("div");
+    cell.className = "hemi-cell";
+    hemiContainer.appendChild(cell);
+
+    const label = document.createElement("div");
+    label.className = "hemi-cell__label";
+    label.textContent = council.name;
+    cell.appendChild(label);
+
+    const hemi = document.createElement("div");
+    cell.appendChild(hemi);
+
+    const sorted = [...(council.newCouncil || [])].sort((a, b) => b.seats - a.seats);
+    hemicycle(hemi, sorted, { width: 260 });
+  }
+
+  // ── Gain/Hold badges ──
+  const badgeTests = [
+    { winningParty: "Lab", gainOrHold: "gain", sittingParty: "C" },
+    { winningParty: "C", gainOrHold: "no change", sittingParty: "C" },
+    { winningParty: "LD", gainOrHold: "gain", sittingParty: "Lab" },
+    { winningParty: "NOC", gainOrHold: "lose to NOC", sittingParty: "C" },
+    { winningParty: "Green", gainOrHold: "gain", sittingParty: "Lab" },
+    { winningParty: "Reform", gainOrHold: "no change", sittingParty: "Reform" },
+  ];
+  const badgeContainer = document.getElementById("badges");
+  for (const b of badgeTests) {
+    const span = document.createElement("span");
+    badgeContainer.appendChild(span);
+    gainHoldBadge(span, b);
+  }
+
+  // ── Council cards (full) — one of each type ──
+  const typeExamples = {};
+  for (const r of deduped) {
+    if (!typeExamples[r.type]) typeExamples[r.type] = r;
+  }
+  const fullContainer = document.getElementById("council-cards-full");
+  for (const council of Object.values(typeExamples)) {
+    const div = document.createElement("div");
+    fullContainer.appendChild(div);
+    councilResultCard(div, council, { size: "full" });
+  }
+
+  // ── Council cards (mini) — first 8 ──
+  const miniContainer = document.getElementById("council-cards-mini");
+  for (const council of deduped.slice(0, 8)) {
+    const div = document.createElement("div");
+    miniContainer.appendChild(div);
+    councilResultCard(div, council, { size: "mini" });
+  }
+
+  // ── Change bar charts — sample councils with changes ──
+  const changeContainer = document.getElementById("change-bars");
+  const changeExamples = deduped.filter(r => r.changes && r.changes.length > 0).slice(0, 6);
+  for (const council of changeExamples) {
+    const card = document.createElement("div");
+    card.className = "hemi-cell";
+    changeContainer.appendChild(card);
+
+    const label = document.createElement("div");
+    label.className = "hemi-cell__label";
+    label.textContent = council.name;
+    card.appendChild(label);
+
+    const chart = document.createElement("div");
+    card.appendChild(chart);
+    changeBarChart(chart, council.changes);
+  }
+
+  // ── Mayoral cards — deduplicate ──
+  const mayoralDeduped = dedupByRevision(mayoralData, "result");
+  const mayoralContainer = document.getElementById("mayoral-cards");
+  for (const m of mayoralDeduped) {
+    const div = document.createElement("div");
+    mayoralContainer.appendChild(div);
+    mayoralResultCard(div, m);
+  }
+});
+</script>
+</body>
+</html>

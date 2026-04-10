@@ -1,0 +1,7221 @@
+[
+  {
+    "name": "Adur",
+    "paId": "4764",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 17,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 8,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Adur.xml"
+  },
+  {
+    "name": "Barking & Dagenham",
+    "paId": "4818",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 47,
+        "seatsOffered": 47,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Barking___Dagenham.xml"
+  },
+  {
+    "name": "Barnet",
+    "paId": "4819",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 19,
+        "seatsOffered": 19,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 40,
+        "seatsOffered": 40,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Barnet.xml"
+  },
+  {
+    "name": "Barnsley",
+    "paId": "4732",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 46,
+        "seatsOffered": 46,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 12,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Barnsley.xml"
+  },
+  {
+    "name": "Basildon",
+    "paId": "4765",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 13,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 16,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 11,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Basildon.xml"
+  },
+  {
+    "name": "Basingstoke & Deane",
+    "paId": "4766",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 10,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 17,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 14,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 10,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Basingstoke___Deane.xml"
+  },
+  {
+    "name": "Bexley",
+    "paId": "4821",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 30,
+        "seatsOffered": 30,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 12,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Bexley.xml"
+  },
+  {
+    "name": "Birmingham",
+    "paId": "4733",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 22,
+        "seatsOffered": 22,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 13,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 55,
+        "seatsOffered": 55,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Birmingham.xml"
+  },
+  {
+    "name": "Blackburn with Darwen",
+    "paId": "4717",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 27,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 15,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Blackburn_with_Darwen.xml"
+  },
+  {
+    "name": "Bolton",
+    "paId": "4735",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 13,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 15,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 25,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Bolton.xml"
+  },
+  {
+    "name": "Bradford",
+    "paId": "4734",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 13,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 46,
+        "seatsOffered": 46,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 16,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Bradford.xml"
+  },
+  {
+    "name": "Brent",
+    "paId": "4820",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 42,
+        "seatsOffered": 42,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Brent.xml"
+  },
+  {
+    "name": "Brentwood",
+    "paId": "4767",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 16,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 17,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Brentwood.xml"
+  },
+  {
+    "name": "Bromley",
+    "paId": "4822",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 11,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 34,
+        "seatsOffered": 34,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Bromley.xml"
+  },
+  {
+    "name": "Broxbourne",
+    "paId": "4768",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 24,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Broxbourne.xml"
+  },
+  {
+    "name": "Burnley",
+    "paId": "4769",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 7,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 13,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 11,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Burnley.xml"
+  },
+  {
+    "name": "Bury",
+    "paId": "4736",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 32,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 5,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 12,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Bury.xml"
+  },
+  {
+    "name": "Calderdale",
+    "paId": "4737",
+    "type": "Metro",
+    "proportion": "all",
+    "boundaryChange": "true",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 27,
+        "seatsOffered": 27,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Calderdale.xml"
+  },
+  {
+    "name": "Cambridge",
+    "paId": "4770",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Your Party",
+        "abbreviation": "Your",
+        "paId": "671",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 23,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 11,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 6,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Cambridge.xml"
+  },
+  {
+    "name": "Camden",
+    "paId": "4823",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 45,
+        "seatsOffered": 45,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Camden.xml"
+  },
+  {
+    "name": "Cannock Chase",
+    "paId": "4771",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 19,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Cannock_Chase.xml"
+  },
+  {
+    "name": "Cheltenham",
+    "paId": "4773",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 36,
+        "seatsOffered": 18,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Cheltenham.xml"
+  },
+  {
+    "name": "Cherwell",
+    "paId": "4774",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 12,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 11,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 17,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Cherwell.xml"
+  },
+  {
+    "name": "Chorley",
+    "paId": "4775",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 36,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Chorley.xml"
+  },
+  {
+    "name": "Colchester",
+    "paId": "4776",
+    "type": "Non-Met",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 19,
+        "seatsOffered": 19,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 14,
+        "seatsOffered": 14,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 14,
+        "seatsOffered": 14,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Colchester.xml"
+  },
+  {
+    "name": "Coventry",
+    "paId": "4738",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 39,
+        "seatsOffered": 39,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Your Party",
+        "abbreviation": "Your",
+        "paId": "671",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Coventry.xml"
+  },
+  {
+    "name": "Crawley",
+    "paId": "4777",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 11,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 25,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Crawley.xml"
+  },
+  {
+    "name": "Croydon",
+    "paId": "4824",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 33,
+        "seatsOffered": 33,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 34,
+        "seatsOffered": 34,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Croydon.xml"
+  },
+  {
+    "name": "Dudley",
+    "paId": "4739",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 33,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 24,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 3,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Dudley.xml"
+  },
+  {
+    "name": "Ealing",
+    "paId": "4825",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 57,
+        "seatsOffered": 57,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Ealing.xml"
+  },
+  {
+    "name": "East Surrey",
+    "paId": "4858",
+    "type": "Unitary",
+    "proportion": "all",
+    "boundaryChange": "true",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 12,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 24,
+        "seatsOffered": 24,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 19,
+        "seatsOffered": 19,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_East_Surrey.xml"
+  },
+  {
+    "name": "East Sussex",
+    "paId": "4852",
+    "type": "England",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 22,
+        "seatsOffered": 22,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 11,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_East_Sussex.xml"
+  },
+  {
+    "name": "Eastleigh",
+    "paId": "4778",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 35,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Eastleigh.xml"
+  },
+  {
+    "name": "Enfield",
+    "paId": "4826",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 25,
+        "seatsOffered": 25,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 35,
+        "seatsOffered": 35,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Enfield.xml"
+  },
+  {
+    "name": "Epping Forest",
+    "paId": "4780",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 13,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 26,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Epping_Forest.xml"
+  },
+  {
+    "name": "Essex",
+    "paId": "4814",
+    "type": "England",
+    "proportion": "all",
+    "boundaryChange": "true",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 50,
+        "seatsOffered": 50,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Essex.xml"
+  },
+  {
+    "name": "Exeter",
+    "paId": "4781",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 22,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Exeter.xml"
+  },
+  {
+    "name": "Fareham",
+    "paId": "4782",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 24,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Fareham.xml"
+  },
+  {
+    "name": "Gateshead",
+    "paId": "4740",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 46,
+        "seatsOffered": 46,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 18,
+        "seatsOffered": 18,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Gateshead.xml"
+  },
+  {
+    "name": "Gosport",
+    "paId": "4783",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 11,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 13,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Gosport.xml"
+  },
+  {
+    "name": "Greenwich",
+    "paId": "4827",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 47,
+        "seatsOffered": 47,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Greenwich.xml"
+  },
+  {
+    "name": "Hackney",
+    "paId": "4828",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 43,
+        "seatsOffered": 43,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hackney.xml"
+  },
+  {
+    "name": "Halton",
+    "paId": "4718",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 47,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Halton.xml"
+  },
+  {
+    "name": "Hammersmith & Fulham",
+    "paId": "4829",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 37,
+        "seatsOffered": 37,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hammersmith___Fulham.xml"
+  },
+  {
+    "name": "Hampshire",
+    "paId": "4815",
+    "type": "England",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 19,
+        "seatsOffered": 19,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 49,
+        "seatsOffered": 49,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hampshire.xml"
+  },
+  {
+    "name": "Haringey",
+    "paId": "4830",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 45,
+        "seatsOffered": 45,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Haringey.xml"
+  },
+  {
+    "name": "Harlow",
+    "paId": "4784",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 17,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 15,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Harlow.xml"
+  },
+  {
+    "name": "Harrow",
+    "paId": "4831",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 31,
+        "seatsOffered": 31,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 23,
+        "seatsOffered": 23,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Harrow.xml"
+  },
+  {
+    "name": "Hart",
+    "paId": "4785",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 11,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 12,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hart.xml"
+  },
+  {
+    "name": "Hartlepool",
+    "paId": "4719",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 22,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hartlepool.xml"
+  },
+  {
+    "name": "Hastings",
+    "paId": "4786",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 5,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 12,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 9,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hastings.xml"
+  },
+  {
+    "name": "Havant",
+    "paId": "4787",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 5,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 9,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 5,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Havant.xml"
+  },
+  {
+    "name": "Havering",
+    "paId": "4832",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 8,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 30,
+        "seatsOffered": 30,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 14,
+        "seatsOffered": 14,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Havering.xml"
+  },
+  {
+    "name": "Hillingdon",
+    "paId": "4833",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 31,
+        "seatsOffered": 31,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 16,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hillingdon.xml"
+  },
+  {
+    "name": "Hounslow",
+    "paId": "4834",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 44,
+        "seatsOffered": 44,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hounslow.xml"
+  },
+  {
+    "name": "Hull",
+    "paId": "4848",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 23,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 29,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hull.xml"
+  },
+  {
+    "name": "Huntingdonshire",
+    "paId": "4788",
+    "type": "Non-Met",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 16,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 18,
+        "seatsOffered": 18,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 13,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Huntingdonshire.xml"
+  },
+  {
+    "name": "Hyndburn",
+    "paId": "4789",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 13,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 21,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Hyndburn.xml"
+  },
+  {
+    "name": "Ipswich",
+    "paId": "4790",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 38,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Ipswich.xml"
+  },
+  {
+    "name": "Isle of Wight",
+    "paId": "4849",
+    "type": "Unitary",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 13,
+        "seatsOffered": 13,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 18,
+        "seatsOffered": 18,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Isle_of_Wight.xml"
+  },
+  {
+    "name": "Islington",
+    "paId": "4835",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 44,
+        "seatsOffered": 44,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Islington.xml"
+  },
+  {
+    "name": "Kensington & Chelsea",
+    "paId": "4836",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 36,
+        "seatsOffered": 36,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Kensington___Chelsea.xml"
+  },
+  {
+    "name": "Kingston-upon-Thames",
+    "paId": "4837",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 42,
+        "seatsOffered": 42,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Kingston_upon_Thames.xml"
+  },
+  {
+    "name": "Kirklees",
+    "paId": "4741",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 16,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 23,
+        "seatsOffered": 23,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 17,
+        "seatsOffered": 17,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Kirklees.xml"
+  },
+  {
+    "name": "Knowsley",
+    "paId": "4742",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 30,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Knowsley.xml"
+  },
+  {
+    "name": "Lambeth",
+    "paId": "4838",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 54,
+        "seatsOffered": 54,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Lambeth.xml"
+  },
+  {
+    "name": "Leeds",
+    "paId": "4743",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 13,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 58,
+        "seatsOffered": 19,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 14,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Leeds.xml"
+  },
+  {
+    "name": "Lewisham",
+    "paId": "4839",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 50,
+        "seatsOffered": 50,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Lewisham.xml"
+  },
+  {
+    "name": "Lincoln",
+    "paId": "4791",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 20,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 5,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Lincoln.xml"
+  },
+  {
+    "name": "Manchester",
+    "paId": "4744",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 87,
+        "seatsOffered": 30,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Manchester.xml"
+  },
+  {
+    "name": "Merton",
+    "paId": "4840",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 30,
+        "seatsOffered": 30,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 17,
+        "seatsOffered": 17,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Merton.xml"
+  },
+  {
+    "name": "Milton Keynes",
+    "paId": "4721",
+    "type": "Unitary",
+    "proportion": "all",
+    "boundaryChange": "true",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 30,
+        "seatsOffered": 30,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 18,
+        "seatsOffered": 18,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Milton_Keynes.xml"
+  },
+  {
+    "name": "Newcastle-under-Lyme",
+    "paId": "4792",
+    "type": "Non-Met",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 26,
+        "seatsOffered": 26,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 17,
+        "seatsOffered": 17,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Newcastle_under_Lyme.xml"
+  },
+  {
+    "name": "Newcastle-upon-Tyne",
+    "paId": "4745",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 22,
+        "seatsOffered": 22,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 15,
+        "seatsOffered": 15,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 36,
+        "seatsOffered": 36,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Newcastle_upon_Tyne.xml"
+  },
+  {
+    "name": "Newham",
+    "paId": "4841",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 56,
+        "seatsOffered": 56,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Newham.xml"
+  },
+  {
+    "name": "Norfolk",
+    "paId": "4816",
+    "type": "England",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 53,
+        "seatsOffered": 53,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Norfolk.xml"
+  },
+  {
+    "name": "North East Lincolnshire",
+    "paId": "4722",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 18,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 15,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_North_East_Lincolnshire.xml"
+  },
+  {
+    "name": "North Tyneside",
+    "paId": "4746",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 8,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 50,
+        "seatsOffered": 17,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_North_Tyneside.xml"
+  },
+  {
+    "name": "Norwich",
+    "paId": "4793",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 19,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 16,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Norwich.xml"
+  },
+  {
+    "name": "Nuneaton & Bedworth",
+    "paId": "4794",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 17,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 18,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Nuneaton___Bedworth.xml"
+  },
+  {
+    "name": "Oldham",
+    "paId": "4747",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 9,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 3,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 26,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 16,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Oldham.xml"
+  },
+  {
+    "name": "Oxford",
+    "paId": "4795",
+    "type": "Non-Met",
+    "proportion": "half",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 21,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 9,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 9,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 9,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Oxford.xml"
+  },
+  {
+    "name": "Pendle",
+    "paId": "4796",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 9,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 12,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 11,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Pendle.xml"
+  },
+  {
+    "name": "Peterborough",
+    "paId": "4723",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 22,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 14,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Peterborough.xml"
+  },
+  {
+    "name": "Plymouth",
+    "paId": "4724",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 7,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 39,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Plymouth.xml"
+  },
+  {
+    "name": "Portsmouth",
+    "paId": "4725",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 9,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 18,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 10,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Portsmouth.xml"
+  },
+  {
+    "name": "Preston",
+    "paId": "4797",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 5,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 14,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 26,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Preston.xml"
+  },
+  {
+    "name": "Reading",
+    "paId": "4726",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 32,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Reading.xml"
+  },
+  {
+    "name": "Redbridge",
+    "paId": "4842",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 54,
+        "seatsOffered": 54,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Redbridge.xml"
+  },
+  {
+    "name": "Redditch",
+    "paId": "4798",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 18,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Redditch.xml"
+  },
+  {
+    "name": "Richmond-upon-Thames",
+    "paId": "4843",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 49,
+        "seatsOffered": 49,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Richmond_upon_Thames.xml"
+  },
+  {
+    "name": "Rochdale",
+    "paId": "4748",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 43,
+        "seatsOffered": 14,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Rochdale.xml"
+  },
+  {
+    "name": "Rochford",
+    "paId": "4799",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 12,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 8,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 8,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Rochford.xml"
+  },
+  {
+    "name": "Rugby",
+    "paId": "4801",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 17,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 15,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 10,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Rugby.xml"
+  },
+  {
+    "name": "Rushmoor",
+    "paId": "4802",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 14,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 16,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Rushmoor.xml"
+  },
+  {
+    "name": "Salford",
+    "paId": "4749",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 48,
+        "seatsOffered": 15,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Your Party",
+        "abbreviation": "Your",
+        "paId": "671",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Salford.xml"
+  },
+  {
+    "name": "Sandwell",
+    "paId": "4750",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 61,
+        "seatsOffered": 61,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Sandwell.xml"
+  },
+  {
+    "name": "Sefton",
+    "paId": "4751",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 51,
+        "seatsOffered": 51,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Sefton.xml"
+  },
+  {
+    "name": "Sheffield",
+    "paId": "4752",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 14,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 36,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 28,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 5,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Sheffield.xml"
+  },
+  {
+    "name": "Solihull",
+    "paId": "4753",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 8,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 8,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 27,
+        "seatsOffered": 27,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Solihull.xml"
+  },
+  {
+    "name": "South Cambridgeshire",
+    "paId": "4803",
+    "type": "Non-Met",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 35,
+        "seatsOffered": 35,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_South_Cambridgeshire.xml"
+  },
+  {
+    "name": "South Tyneside",
+    "paId": "4754",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 27,
+        "seatsOffered": 27,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 18,
+        "seatsOffered": 18,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_South_Tyneside.xml"
+  },
+  {
+    "name": "Southampton",
+    "paId": "4727",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 31,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Southampton.xml"
+  },
+  {
+    "name": "Southend-on-Sea",
+    "paId": "4728",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 14,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 19,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 4,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Southend_on_Sea.xml"
+  },
+  {
+    "name": "Southwark",
+    "paId": "4844",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 11,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 45,
+        "seatsOffered": 45,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Southwark.xml"
+  },
+  {
+    "name": "St Albans",
+    "paId": "4804",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 45,
+        "seatsOffered": 20,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_St_Albans.xml"
+  },
+  {
+    "name": "St Helens",
+    "paId": "4755",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 28,
+        "seatsOffered": 28,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 3,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_St_Helens.xml"
+  },
+  {
+    "name": "Stevenage",
+    "paId": "4805",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 30,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Stevenage.xml"
+  },
+  {
+    "name": "Stockport",
+    "paId": "4756",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 19,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 30,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 10,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Stockport.xml"
+  },
+  {
+    "name": "Suffolk",
+    "paId": "4817",
+    "type": "England",
+    "proportion": "all",
+    "boundaryChange": "true",
+    "parties": [
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 5,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 45,
+        "seatsOffered": 45,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Suffolk.xml"
+  },
+  {
+    "name": "Sunderland",
+    "paId": "4757",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 12,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 51,
+        "seatsOffered": 51,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Sunderland.xml"
+  },
+  {
+    "name": "Sutton",
+    "paId": "4845",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 28,
+        "seatsOffered": 28,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 21,
+        "seatsOffered": 21,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Sutton.xml"
+  },
+  {
+    "name": "Swindon",
+    "paId": "4729",
+    "type": "Unitary",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 16,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 34,
+        "seatsOffered": 34,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Swindon.xml"
+  },
+  {
+    "name": "Tameside",
+    "paId": "4758",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 10,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 39,
+        "seatsOffered": 15,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Tameside.xml"
+  },
+  {
+    "name": "Tamworth",
+    "paId": "4806",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 9,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 15,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Tamworth.xml"
+  },
+  {
+    "name": "Three Rivers",
+    "paId": "4807",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 11,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 19,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Three_Rivers.xml"
+  },
+  {
+    "name": "Thurrock",
+    "paId": "4730",
+    "type": "Unitary",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 11,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 26,
+        "seatsOffered": 26,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 8,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Thurrock.xml"
+  },
+  {
+    "name": "Tower Hamlets",
+    "paId": "4846",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 27,
+        "seatsOffered": 27,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 16,
+        "seatsOffered": 16,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Tower_Hamlets.xml"
+  },
+  {
+    "name": "Trafford",
+    "paId": "4759",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 41,
+        "seatsOffered": 14,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 7,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 10,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 5,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Trafford.xml"
+  },
+  {
+    "name": "Tunbridge Wells",
+    "paId": "4808",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 8,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 22,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 4,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Tunbridge_Wells.xml"
+  },
+  {
+    "name": "Wakefield",
+    "paId": "4760",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 9,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 48,
+        "seatsOffered": 48,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Wakefield.xml"
+  },
+  {
+    "name": "Walsall",
+    "paId": "4761",
+    "type": "Metro",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 11,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 29,
+        "seatsOffered": 29,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 14,
+        "seatsOffered": 14,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Your Party",
+        "abbreviation": "Your",
+        "paId": "671",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Walsall.xml"
+  },
+  {
+    "name": "Waltham Forest",
+    "paId": "4847",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 12,
+        "seatsOffered": 12,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 45,
+        "seatsOffered": 45,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Waltham_Forest.xml"
+  },
+  {
+    "name": "Wandsworth",
+    "paId": "4854",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 21,
+        "seatsOffered": 21,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 34,
+        "seatsOffered": 34,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Wandsworth.xml"
+  },
+  {
+    "name": "Watford",
+    "paId": "4809",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 6,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 30,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Watford.xml"
+  },
+  {
+    "name": "Welwyn Hatfield",
+    "paId": "4810",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 15,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 12,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 17,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Welwyn_Hatfield.xml"
+  },
+  {
+    "name": "West Lancashire",
+    "paId": "4811",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 14,
+        "seatsOffered": 5,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 9,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 21,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Your Party",
+        "abbreviation": "Your",
+        "paId": "671",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_West_Lancashire.xml"
+  },
+  {
+    "name": "West Oxfordshire",
+    "paId": "4853",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 13,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 10,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 21,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_West_Oxfordshire.xml"
+  },
+  {
+    "name": "West Surrey",
+    "paId": "4859",
+    "type": "Unitary",
+    "proportion": "all",
+    "boundaryChange": "true",
+    "parties": [
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 42,
+        "seatsOffered": 42,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 11,
+        "seatsOffered": 11,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Ratepayers or Residents",
+        "abbreviation": "R",
+        "paId": "663",
+        "seatsHeld": 6,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 20,
+        "seatsOffered": 20,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 8,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_West_Surrey.xml"
+  },
+  {
+    "name": "West Sussex",
+    "paId": "4856",
+    "type": "England",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 4,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 10,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 40,
+        "seatsOffered": 40,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 8,
+        "seatsOffered": 8,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 7,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_West_Sussex.xml"
+  },
+  {
+    "name": "Westminster",
+    "paId": "4855",
+    "type": "London",
+    "proportion": "all",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 28,
+        "seatsOffered": 28,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 24,
+        "seatsOffered": 24,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Westminster.xml"
+  },
+  {
+    "name": "Wigan",
+    "paId": "4762",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 62,
+        "seatsOffered": 20,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 10,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Wigan.xml"
+  },
+  {
+    "name": "Winchester",
+    "paId": "4812",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 8,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 32,
+        "seatsOffered": 9,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 4,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Winchester.xml"
+  },
+  {
+    "name": "Wokingham",
+    "paId": "4731",
+    "type": "Unitary",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 1,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 19,
+        "seatsOffered": 6,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 5,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Liberal Democrat",
+        "abbreviation": "LD",
+        "paId": "667",
+        "seatsHeld": 28,
+        "seatsOffered": 10,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 1,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Wokingham.xml"
+  },
+  {
+    "name": "Wolverhampton",
+    "paId": "4857",
+    "type": "Metro",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 44,
+        "seatsOffered": 15,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 11,
+        "seatsOffered": 4,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Wolverhampton.xml"
+  },
+  {
+    "name": "Worthing",
+    "paId": "4813",
+    "type": "Non-Met",
+    "proportion": "third",
+    "parties": [
+      {
+        "name": "Independent/Other",
+        "abbreviation": "Ind",
+        "paId": "661",
+        "seatsHeld": 3,
+        "seatsOffered": 1,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Reform UK",
+        "abbreviation": "Reform",
+        "paId": "664",
+        "seatsHeld": 2,
+        "seatsOffered": 2,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Conservative",
+        "abbreviation": "C",
+        "paId": "659",
+        "seatsHeld": 9,
+        "seatsOffered": 3,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Labour",
+        "abbreviation": "Lab",
+        "paId": "662",
+        "seatsHeld": 21,
+        "seatsOffered": 7,
+        "unopposedReturns": 0,
+        "candidates": 0
+      },
+      {
+        "name": "Green Party",
+        "abbreviation": "Green",
+        "paId": "660",
+        "seatsHeld": 2,
+        "seatsOffered": 0,
+        "unopposedReturns": 0,
+        "candidates": 0
+      }
+    ],
+    "election": {
+      "date": "2026-05-07",
+      "paId": "252"
+    },
+    "_sourceFile": "Local_Test_nominations_Worthing.xml"
+  }
+]

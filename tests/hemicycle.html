@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test: Hemicycle</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Hemicycle Component</h1>
+  <p>Various council sizes</p>
+</div>
+
+<div class="container">
+  <div class="section-title">Hemicycle — Various Sizes</div>
+  <div class="hemi-row" id="hemicycles"></div>
+</div>
+
+<script src="../js/party-config.js"></script>
+<script src="../js/hemicycle.js"></script>
+<script>
+fetch("../../output/local_results.json")
+  .then(r => r.json())
+  .then(data => {
+    const results = data.results || data;
+
+    const byName = {};
+    for (const r of results) {
+      if (!byName[r.name] || (r.revision || 0) > (byName[r.name].revision || 0)) {
+        byName[r.name] = r;
+      }
+    }
+    const deduped = Object.values(byName);
+
+    const testCouncils = ["Adur", "Broxbourne", "Camden", "Manchester", "Birmingham"];
+    const container = document.getElementById("hemicycles");
+
+    for (const name of testCouncils) {
+      const council = deduped.find(r => r.name === name);
+      if (!council) continue;
+
+      const cell = document.createElement("div");
+      cell.className = "hemi-cell";
+      container.appendChild(cell);
+
+      const label = document.createElement("div");
+      label.className = "hemi-cell__label";
+      label.textContent = council.name;
+      cell.appendChild(label);
+
+      const hemi = document.createElement("div");
+      cell.appendChild(hemi);
+
+      const sorted = [...(council.newCouncil || [])].sort((a, b) => b.seats - a.seats);
+      hemicycle(hemi, sorted, { width: 260 });
+    }
+  });
+</script>
+</body>
+</html>
