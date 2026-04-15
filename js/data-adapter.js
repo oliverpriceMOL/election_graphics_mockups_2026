@@ -13,11 +13,12 @@ var PA_DATA_BASE = "https://scripts.dailymail.co.uk/static/uk_elections/2026/loc
 var PA_DATA_ENV  = "test";   // flip to "live" on election night
 
 function paUrl(category, filename) {
-  // Serve from local data/ when running on localhost (CDN blocks CORS)
-  if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
-    return "data/" + filename;
+  // Use CDN only on the production domain; everywhere else serve from local data/
+  if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1"
+      && !location.hostname.endsWith("github.io")) {
+    return PA_DATA_BASE + "/" + category + "/" + PA_DATA_ENV + "/" + filename;
   }
-  return PA_DATA_BASE + "/" + category + "/" + PA_DATA_ENV + "/" + filename;
+  return "data/" + filename;
 }
 
 /* ── Helpers ───────────────────────────────────────────────────────────── */
