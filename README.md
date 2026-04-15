@@ -2,29 +2,35 @@
 
 Interactive D3.js visualisations for UK May 2026 election night coverage (Daily Mail).
 
-**Live preview**: [oliverpricemol.github.io/election_graphics_mockups_2026](https://oliverpricemol.github.io/election_graphics_mockups_2026/)
-
-This is a standalone mirror of the `mock_up_designs/` folder from the [main project repo](https://github.com/oliverpriceMOL/local_elections_2026). It contains only the front-end HTML/CSS/JS and pre-built JSON data — no Python scripts, XML data, or GeoJSON source files.
-
-## Pages
-
-- **index.html** — England: 136 local councils + 6 mayoral elections
-- **scotland.html** — Scottish Parliament (Holyrood): 73 constituencies + 8 regions
-- **wales.html** — Welsh Parliament (Senedd): 16 constituencies
-
 ## Running locally
 
-```bash
+```
+cd mock_up_designs
 python3 -m http.server 8080
-# Open http://localhost:8080
 ```
 
-## Tech Stack
+Then open `http://localhost:8080/`.
 
-- **D3.js v7** (CDN) — all visualisation and DOM manipulation
-- **Vanilla JavaScript** — no frameworks, no modules, no build system
-- **Inter** (Google Fonts) — weights 400/500/700
-- **CSS custom properties** — no preprocessor
+## Data
+
+The front-end consumes **raw PA wire JSON** — xmltodict-converted XML served from a CDN in production. For local development, downloaded copies of these files live in `data/`.
+
+`data-adapter.js` normalizes the raw format at runtime:
+- Strips `@`-prefixed attribute keys → plain keys
+- Converts string values to numbers
+- Unwraps deeply nested `Election → Council/Constituency` structure
+- Filters out State of Parties (SOP) entries
+- Tags items as `fileType: "result"` or `"rush"`
+
+`paUrl(category, filename)` automatically routes to local `data/` on localhost and to the CDN in production.
+
+### Rush vs Result
+
+PA sends two message types for each constituency/council:
+- **Rush** — arrives first with winner info but no vote counts
+- **Result** — follows with full candidate vote data
+
+`dedupByRevision()` always prefers a Result over a Rush for the same name, then picks the highest revision number.
 
 ## Known limitations
 
