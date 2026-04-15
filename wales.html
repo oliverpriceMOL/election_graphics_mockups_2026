@@ -46,6 +46,7 @@
 <!-- Component scripts -->
 <script src="js/tooltip.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/data-adapter.js"></script>
 <script src="js/party-config.js"></script>
 <script src="js/hemicycle.js"></script>
 <script src="js/badge.js"></script>
@@ -59,9 +60,9 @@
 <script src="js/wales-map.js"></script>
 <script>
 Promise.all([
-  fetch("data/welsh_results.json").then(r => r.json()),
+  fetch(paUrl("results", "welsh_results.json")).then(r => r.json()).then(normalizeTopUpResults),
   fetch("map_data/senedd_constituencies.geojson").then(r => r.json()),
-  fetch("data/welsh_nominations.json").then(r => r.json()),
+  fetch(paUrl("nominations", "welsh_nominations.json")).then(r => r.json()).then(normalizeTopUpNominations),
 ]).then(([welshData, constGeo, welshNominations]) => {
     const results = Array.isArray(welshData) ? welshData : (welshData.results || []);
 

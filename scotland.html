@@ -54,6 +54,7 @@
 <!-- Component scripts -->
 <script src="js/tooltip.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/data-adapter.js"></script>
 <script src="js/party-config.js"></script>
 <script src="js/hemicycle.js"></script>
 <script src="js/badge.js"></script>
@@ -70,15 +71,15 @@
 <script src="js/scotland-map.js"></script>
 <script>
 Promise.all([
-  fetch("data/scottish_fptp_results.json").then(r => r.json()),
-  fetch("data/scottish_topup_results.json").then(r => r.json()),
+  fetch(paUrl("results", "scottish_fptp_results.json")).then(r => r.json()).then(normalizeFPTPResults),
+  fetch(paUrl("results", "scottish_topup_results.json")).then(r => r.json()).then(normalizeTopUpResults),
   fetch("map_data/scottish_constituencies.geojson").then(r => r.json()),
   fetch("map_data/scottish_regions.geojson").then(r => r.json()),
   fetch("data/scottish_notionals.json").then(r => r.json()).catch(() => ({})),
-  fetch("data/scottish_fptp_nominations.json").then(r => r.json()),
-  fetch("data/scottish_topup_nominations.json").then(r => r.json()),
+  fetch(paUrl("nominations", "scottish_fptp_nominations.json")).then(r => r.json()).then(normalizeFPTPNominations),
+  fetch(paUrl("nominations", "scottish_topup_nominations.json")).then(r => r.json()).then(normalizeTopUpNominations),
 ]).then(([fptpData, topupData, constGeo, regGeo, notionals, constNominations, regNominations]) => {
-  const constResults = fptpData.results || fptpData;
+  const constResults = Array.isArray(fptpData) ? fptpData : (fptpData.results || fptpData);
   const regResults = Array.isArray(topupData) ? topupData : (topupData.results || []);
 
   const constDeduped = dedupByRevision(constResults);

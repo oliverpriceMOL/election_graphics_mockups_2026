@@ -63,6 +63,7 @@
 <!-- Component scripts (loaded in dependency order) -->
 <script src="js/tooltip.js"></script>
 <script src="js/utils.js"></script>
+<script src="js/data-adapter.js"></script>
 <script src="js/party-config.js"></script>
 <script src="js/hemicycle.js"></script>
 <script src="js/badge.js"></script>
@@ -80,12 +81,12 @@
 <script>
 // Load data and render all test components
 Promise.all([
-  fetch("data/local_results.json").then(r => r.json()),
-  fetch("data/mayoral_results.json").then(r => r.json()),
+  fetch(paUrl("results", "local_results.json")).then(r => r.json()).then(normalizeLocalResults),
+  fetch(paUrl("results", "mayoral_results.json")).then(r => r.json()).then(normalizeFPTPResults),
   fetch("map_data/lad_map.geojson").then(r => r.json()),
   fetch("map_data/counties_map.geojson").then(r => r.json()),
-  fetch("data/local_nominations.json").then(r => r.json()),
-  fetch("data/mayoral_nominations.json").then(r => r.json()),
+  fetch(paUrl("nominations", "local_nominations.json")).then(r => r.json()).then(normalizeLocalNominations),
+  fetch(paUrl("nominations", "mayoral_nominations.json")).then(r => r.json()).then(normalizeFPTPNominations),
 ]).then(([localData, mayoralData, ladGeo, countyGeo, localNominations, mayoralNominations]) => {
   const results = localData.results || localData;
 
