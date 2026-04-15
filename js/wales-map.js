@@ -10,14 +10,10 @@ function walesMap(container, results, constGeo, options) {
 
   var m = createMapScaffold(container, width, height, constGeo, "Search constituency or postcode...");
 
-  // Deduplicate results by highest revision
+  // Deduplicate results (prefer result over rush, then highest revision)
+  var dedupArr = dedupByRevision(results);
   var byName = {};
-  for (var i = 0; i < results.length; i++) {
-    var r = results[i];
-    if (!byName[r.name] || (r.revision || 0) > (byName[r.name].revision || 0)) {
-      byName[r.name] = r;
-    }
-  }
+  for (var i = 0; i < dedupArr.length; i++) byName[dedupArr[i].name] = dedupArr[i];
 
   // Map GeoJSON name → result
   var constMap = {};

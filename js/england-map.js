@@ -36,15 +36,10 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
 
   var m = createMapScaffold(container, width, height, englandLad, "Search area or postcode...");
 
-  // Deduplicate local results by highest revision
+  // Deduplicate local results (prefer result over rush, then highest revision)
+  var deduped = dedupByRevision(results);
   var byName = {};
-  for (var i = 0; i < results.length; i++) {
-    var r = results[i];
-    if (!byName[r.name] || (r.revision || 0) > (byName[r.name].revision || 0)) {
-      byName[r.name] = r;
-    }
-  }
-  var deduped = Object.values(byName);
+  for (var i = 0; i < deduped.length; i++) byName[deduped[i].name] = deduped[i];
 
   // Build lookup
   var ladNames = englandLad.features.map(function (f) { return f.properties.LAD25NM; });

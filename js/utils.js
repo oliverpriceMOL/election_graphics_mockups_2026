@@ -105,9 +105,13 @@ function dedupByRevision(arr, fileType) {
   const byName = {};
   for (const r of arr) {
     if (fileType && r.fileType !== fileType) continue;
-    if (!byName[r.name] || (r.revision || 0) > (byName[r.name].revision || 0)) {
-      byName[r.name] = r;
-    }
+    const existing = byName[r.name];
+    if (!existing) { byName[r.name] = r; continue; }
+    // Always prefer "result" over "rush"; then highest revision wins
+    var rIsResult = r.fileType === "result", eIsResult = existing.fileType === "result";
+    if (rIsResult && !eIsResult) { byName[r.name] = r; continue; }
+    if (!rIsResult && eIsResult) continue;
+    if ((r.revision || 0) > (existing.revision || 0)) byName[r.name] = r;
   }
   return Object.values(byName);
 }

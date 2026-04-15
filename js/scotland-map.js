@@ -11,15 +11,11 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
 
   var m = createMapScaffold(container, width, height, constGeo, "Search constituency or region...");
 
-  // Deduplicate results by highest revision
+  // Deduplicate results (prefer result over rush, then highest revision)
   function dedup(arr) {
+    var items = dedupByRevision(arr);
     var byName = {};
-    for (var i = 0; i < arr.length; i++) {
-      var r = arr[i];
-      if (!byName[r.name] || (r.revision || 0) > (byName[r.name].revision || 0)) {
-        byName[r.name] = r;
-      }
-    }
+    for (var i = 0; i < items.length; i++) byName[items[i].name] = items[i];
     return byName;
   }
 
