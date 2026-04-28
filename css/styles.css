@@ -313,6 +313,9 @@ body {
   font-size: 14px;
   color: #16a34a;
 }
+.scoreboard__mode-toggle {
+  margin: 12px 0;
+}
 .party-logo {
   display: inline-flex;
   align-items: center;
@@ -328,15 +331,20 @@ body {
 }
 .scoreboard__party-cell {
   vertical-align: middle;
+  white-space: nowrap;
+  width: 1%;
 }
 .scoreboard__party-inner {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 .scoreboard__party-name {
   font-size: 16px;
   font-weight: 600;
+}
+.scoreboard__party-name--short {
+  display: none;
 }
 .scoreboard__num-cell {
   text-align: right;
@@ -346,6 +354,9 @@ body {
 .scoreboard__num {
   font-size: 20px;
   font-weight: 700;
+}
+.scoreboard__num--total {
+  font-size: 24px;
 }
 .scoreboard__change {
   font-size: 13px;
@@ -406,6 +417,7 @@ body {
   padding: 10px 10px;
   border-bottom: 1px solid #f0f0f0;
   vertical-align: middle;
+  height: 76px;
 }
 
 /* -- FPTP card (mayoral & constituency) -- */
@@ -474,6 +486,7 @@ body {
   height: 22px;
   min-width: 0;
   overflow: visible;
+  padding-right: 44px;
 }
 .fptp-card__bar-fill {
   height: 100%;
@@ -1013,6 +1026,12 @@ body {
     grid-template-columns: var(--name-col, 100px) 1fr auto;
   }
   .scoreboard__table { font-size: 13px; }
+  .scoreboard__party-name--full {
+    display: none;
+  }
+  .scoreboard__party-name--short {
+    display: inline;
+  }
   .card-grid--2 { grid-template-columns: 1fr; }
   .card-grid--3 { grid-template-columns: 1fr; }
 }
@@ -1063,10 +1082,13 @@ body {
     height: 28px;
     font-size: 10px;
   }
-  .scoreboard__party-name {
+  .scoreboard__party-name--short {
     font-size: 13px;
   }
   .scoreboard__num {
+    font-size: 16px;
+  }
+  .scoreboard__num--total {
     font-size: 16px;
   }
   .scoreboard__change {
@@ -1076,9 +1098,13 @@ body {
   .scoreboard__table th {
     padding: 6px 4px;
   }
+  .scoreboard__table td {
+    height: 54px;
+  }
   .scoreboard__table th {
     font-size: 10px;
   }
+
 
   /* Council card */
   .council-card {

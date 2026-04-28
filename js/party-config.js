@@ -20,12 +20,18 @@ const PARTY = {
   Other:  { name: "Other",               short: "Other",   colour: "#CCCCCC" },
 };
 
+// Parties always grouped into "Other" (per nation)
+var MINOR_PARTIES_ENGLAND  = ["R", "Your"];
+var MINOR_PARTIES_SCOTLAND = ["Alba"];
+var MINOR_PARTIES_WALES    = ["Gwlad", "Propel", "Abolish"];
+
 function partyColour(abbr) {
   return (PARTY[abbr] || PARTY.Other).colour;
 }
 
 function partyName(abbr) {
-  return (PARTY[abbr] || PARTY.Other).name;
+  var p = PARTY[abbr];
+  return p ? p.name : abbr;
 }
 
 function partyShortName(abbr) {

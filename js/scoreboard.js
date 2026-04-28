@@ -44,8 +44,11 @@ function electionScoreboard(container, options) {
       .style("color", textColourForBg(hex));
     logo.append("span").text(partyShortName(name));
     inner.append("span")
-      .attr("class", "scoreboard__party-name")
+      .attr("class", "scoreboard__party-name scoreboard__party-name--full")
       .text(partyName(name));
+    inner.append("span")
+      .attr("class", "scoreboard__party-name scoreboard__party-name--short")
+      .text(partyShortName(name));
   }
 
   for (const p of partyRows) {

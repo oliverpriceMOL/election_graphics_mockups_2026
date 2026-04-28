@@ -33,7 +33,27 @@ function welshScoreboard(container, results) {
     p.voteShare = totalVotes ? (p.votes / totalVotes * 100) : 0;
   }
 
-  const sorted = Object.values(partyTotals).sort((a, b) => b.seats - a.seats);
+  var sorted = Object.values(partyTotals).sort((a, b) => b.seats - a.seats);
+
+  // Group sub-1% zero-seat parties into Other (keep Ind and Alba always)
+  var keepNames = ["Ind", "Alba"];
+  var minorNames = [];
+  for (var i = 0; i < sorted.length; i++) {
+    var s = sorted[i];
+    if (keepNames.indexOf(s.name) === -1 && s.seats === 0 && s.voteShare < 1) {
+      minorNames.push(s.name);
+    }
+  }
+  if (minorNames.length) {
+    sorted = groupMinorParties(sorted, minorNames);
+    // Recalculate vote share for grouped Other entry
+    for (var j = 0; j < sorted.length; j++) {
+      if (sorted[j].name === "Other") {
+        sorted[j].voteShare = totalVotes ? (sorted[j].votes / totalVotes * 100) : 0;
+      }
+    }
+  }
+
   const maxVoteShare = Math.max(...sorted.map(p => p.voteShare), 1);
 
   // Aggregate turnout
@@ -67,25 +87,51 @@ function welshScoreboard(container, results) {
             return;
           }
           const hex = partyColour(p.name);
-          const vsWrap = td.append("div")
-            .style("display", "flex").style("align-items", "center")
-            .style("gap", "8px").style("justify-content", "flex-end");
-          vsWrap.append("div")
-            .style("width", "80px").style("height", "14px")
-            .style("background", "#f0f0f4").style("border-radius", "3px")
-            .style("overflow", "hidden").style("flex-shrink", "0")
-            .append("div")
-              .style("width", (p.voteShare / maxVoteShare * 100) + "%")
-              .style("height", "100%").style("background", hex)
-              .style("border-radius", "3px");
-          vsWrap.append("span")
-            .style("font-size", "13px").style("font-weight", "600")
+          var barWrap = td.append("div").attr("class", "scoreboard__vs-bar-wrap")
+            .style("position", "relative").style("height", "20px")
+            .style("min-width", "0");
+          barWrap.append("div").attr("class", "scoreboard__vs-bar-fill")
+            .style("width", (p.voteShare / maxVoteShare * 100) + "%")
+            .style("height", "100%").style("background", hex)
+            .style("border-radius", "3px");
+          barWrap.append("span").attr("class", "scoreboard__vs-bar-label")
+            .attr("data-party-colour", hex)
+            .style("position", "absolute").style("top", "50%")
+            .style("transform", "translateY(-50%)")
+            .style("font-size", "11px").style("font-weight", "600")
             .style("font-variant-numeric", "tabular-nums")
-            .style("min-width", "42px").style("text-align", "right")
+            .style("white-space", "nowrap").style("pointer-events", "none")
             .text(formatPct(p.voteShare) + "%");
+          // Total votes below bar
+          td.append("div")
+            .style("font-size", "10px").style("color", "#666")
+            .style("text-align", "left")
+            .text("(" + p.votes.toLocaleString() + ")");
         }
       }
     ],
     partyRows: sorted.filter(p => p.seats > 0 || p.votes > 0)
   });
+
+  // Position labels inside/outside bars (FPTP style) + reposition on resize
+  function positionBarLabels() {
+    d3.select(container).selectAll(".scoreboard__vs-bar-wrap").each(function () {
+      var wrap = this;
+      var fill = wrap.querySelector(".scoreboard__vs-bar-fill");
+      var label = wrap.querySelector(".scoreboard__vs-bar-label");
+      if (!fill || !label) return;
+      var fillW = fill.getBoundingClientRect().width;
+      var labelW = label.getBoundingClientRect().width;
+      var hex = label.getAttribute("data-party-colour");
+      if (labelW + 8 <= fillW) {
+        label.style.left = (fillW - labelW - 4) + "px";
+        label.style.color = textColourForBg(hex);
+      } else {
+        label.style.left = (fillW + 4) + "px";
+        label.style.color = "#1a1a2e";
+      }
+    });
+  }
+  requestAnimationFrame(positionBarLabels);
+  onResize(positionBarLabels);
 }

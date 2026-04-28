@@ -148,20 +148,37 @@ function formatChange(val) {
  */
 function formatPercentageChange(val) {
   if (val == null) return null;
-  if (val > 0) return { text: "\u25B2" + formatPct(val) + "pp", colour: "#2e7d32" };
-  if (val < 0) return { text: "\u25BC" + formatPct(Math.abs(val)) + "pp", colour: "#c62828" };
+  if (val > 0) return { text: "\u25B2" + formatPct(val), colour: "#2e7d32" };
+  if (val < 0) return { text: "\u25BC" + formatPct(Math.abs(val)), colour: "#c62828" };
   return { text: "—", colour: "#999" };
 }
 
 /**
- * Calculate the maximum number of party columns that fit in a container.
- * @param {Element} containerEl - DOM element to measure
- * @returns {number} Max number of party slots
+ * Group minor parties into a single "Other" entry.
+ * Sums all numeric properties from the minor entries.
+ * @param {Array} parties — sorted [{name, ...}]
+ * @param {string[]} minorNames — party names to fold into Other
+ * @returns {Array} new array with minor parties replaced by one Other entry (or original if none matched)
  */
-function maxPartySlots(containerEl) {
-  const w = containerEl.getBoundingClientRect().width;
-  const minCellWidth = w < 400 ? 46 : 56;
-  return Math.max(3, Math.floor(w / minCellWidth));
+function groupMinorParties(parties, minorNames) {
+  if (!minorNames || !minorNames.length) return parties;
+  var kept = [];
+  var other = { name: "Other" };
+  var hasMinor = false;
+  for (var i = 0; i < parties.length; i++) {
+    var p = parties[i];
+    if (minorNames.indexOf(p.name) !== -1) {
+      hasMinor = true;
+      for (var key in p) {
+        if (key === "name") continue;
+        if (typeof p[key] === "number") other[key] = (other[key] || 0) + p[key];
+      }
+    } else {
+      kept.push(p);
+    }
+  }
+  if (hasMinor) kept.push(other);
+  return kept;
 }
 
 /**
