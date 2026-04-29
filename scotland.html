@@ -68,6 +68,7 @@
 <script src="js/change-columns.js"></script>
 <script src="js/devolved-change-columns.js"></script>
 <script src="js/election-map.js"></script>
+<script src="js/pa-ons-lookup.js"></script>
 <script src="js/scotland-map.js"></script>
 <script>
 Promise.all([
@@ -105,11 +106,33 @@ Promise.all([
   // Seat changes
   devolvedChangeColumns(document.getElementById("change-cols"), constResults, regResults, { nation: "scotland", mode: "total" });
 
+  // Declared badge (inside change-cols toggle row)
+  var changeToggleRow = document.querySelector("#change-cols .party-strip-toggle-row");
+  if (changeToggleRow) {
+    var changeBadge = document.createElement("div");
+    var changeTotalConst = constNominations.length || 73;
+    var changeTotalReg = regNominations.length || 8;
+    changeBadge.className = "scoreboard__declared" + (constDeduped.length >= changeTotalConst && regDeduped.length >= changeTotalReg ? " scoreboard__declared--complete" : "");
+    changeBadge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>" + changeTotalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + changeTotalReg + "</strong> regions declared";
+    changeToggleRow.appendChild(changeBadge);
+  }
+
   // Map
   scotlandMap(document.getElementById("scotland-map"), constResults, regResults, constGeo, regGeo, {
     constNominations: constNominations,
     regNominations: regNominations,
   });
+
+  // Declared badge (bottom-right of map)
+  var mapWrapper = document.querySelector("#scotland-map .map-wrapper");
+  if (mapWrapper) {
+    var mapBadge = document.createElement("div");
+    var mapTotalConst = constNominations.length || 73;
+    var mapTotalReg = regNominations.length || 8;
+    mapBadge.className = "scoreboard__declared" + (constDeduped.length >= mapTotalConst && regDeduped.length >= mapTotalReg ? " scoreboard__declared--complete" : "");
+    mapBadge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>" + mapTotalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + mapTotalReg + "</strong> regions declared";
+    mapWrapper.appendChild(mapBadge);
+  }
 
   // Parliament hemicycle — build seat array from both result types
   const seatParties = {};

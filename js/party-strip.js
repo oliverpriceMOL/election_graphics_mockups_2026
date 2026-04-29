@@ -1,13 +1,13 @@
 /**
  * Party Strip — shared core
- * Horizontal party totals with optional toggle and responsive culling.
+ * Horizontal party totals with optional toggle and fixed minor-party grouping.
  * Requires: d3.js, party-config.js, utils.js
  *
  * options.toggleLabels   — string[] toggle button labels (empty = no buttons)
  * options.getData        — function(modeIndex) → {
  *     parties: [{name, value, change}],  sorted
  *     showChange: boolean,
- *     protectedNames: string[]  — names exempt from culling into Other
+ *     groupIntoOther: string[]  — party names folded into Other
  *   }
  */
 function partyStrip(container, options) {
@@ -42,33 +42,11 @@ function partyStrip(container, options) {
     stripContainer.selectAll("*").remove();
     const data = getData(currentMode);
     var parties = data.parties.slice();
-    var protectedNames = data.protectedNames || [];
 
     var table = stripContainer.append("div").attr("class", "party-strip");
-    var maxParties = maxPartySlots(el.node());
 
-    // Pull out protected names before culling
-    var protectedEntries = [];
-    if (protectedNames.length) {
-      protectedEntries = parties.filter(function (p) { return protectedNames.indexOf(p.name) !== -1; });
-      parties = parties.filter(function (p) { return protectedNames.indexOf(p.name) === -1; });
-    }
-
-    var slotsForRegular = maxParties - protectedEntries.length;
-    if (parties.length > slotsForRegular) {
-      var limit = slotsForRegular - 1; // leave room for "Other"
-      var visible = parties.slice(0, limit);
-      var rest = parties.slice(limit);
-      var other = { name: "Other", value: 0, change: 0 };
-      for (var k = 0; k < rest.length; k++) {
-        other.value += (rest[k].value || 0);
-        other.change += (rest[k].change || 0);
-      }
-      parties = visible.concat(other);
-    }
-
-    // Append protected entries at end
-    parties = parties.concat(protectedEntries);
+    // Group minor parties into Other
+    parties = groupMinorParties(parties, data.groupIntoOther || []);
 
     // Row 1: party names
     var nameRow = table.append("div").attr("class", "party-strip__row party-strip__row--name");
@@ -105,7 +83,6 @@ function partyStrip(container, options) {
   }
 
   render();
-  onResize(render);
 }
 
 /**
@@ -158,7 +135,7 @@ function partyTotalsStrip(container, results) {
       return {
         parties: parties,
         showChange: true,
-        protectedNames: isCouncils ? ["NOC"] : []
+        groupIntoOther: MINOR_PARTIES_ENGLAND
       };
     }
   });

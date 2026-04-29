@@ -154,7 +154,7 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
     // pp change — absolutely positioned, placed by rAF right after label
     if (ppChange != null) {
       var arrow = ppChange > 0 ? "\u25B2" : ppChange < 0 ? "\u25BC" : "";
-      var ppCol = ppChange > 0 ? "#2e7d32" : ppChange < 0 ? "#c62828" : "#999";
+      var ppCol = ppChange > 0 ? "#007F67" : ppChange < 0 ? "#AD0025" : "#595959";
       var ppText = ppChange === 0 ? "—" : arrow + formatPct(Math.abs(ppChange));
       barWrap.append("span").attr("class", "scoreboard__vs-bar-change")
         .style("position", "absolute").style("top", "0")

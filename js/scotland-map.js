@@ -260,12 +260,17 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
   }
 
   // ── Search ──
+  var switchFilter = null; // assigned after filter tabs are built
+
+  // Switch filter if elections don't match current view
+  function ensureFilterForElection(elType) {
+    var needed = elType === "region" ? "region" : "constituency";
+    if (needed !== activeMode && switchFilter) switchFilter(needed);
+  }
+
   setupMapSearch(m.searchInput, m.dropdown, m.searchWrap,
     function onNameSearch(query) {
-      var q = query.toLowerCase();
-      var matches = searchIndex.filter(function (s) {
-        return s.label.toLowerCase().indexOf(q) >= 0;
-      }).slice(0, 8);
+      var matches = rankSearchMatches(searchIndex, query);
       showMapSearchResults(m.dropdown, matches.map(function (s) {
         var types = s.elections.map(function (e) { return e.type === "region" ? "Region" : "Constituency"; }).join(", ");
         return {
@@ -274,7 +279,9 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           onClick: function () {
             m.dropdown.style("display", "none");
             m.searchInput.property("value", s.label);
-            showScotlandOverlay(s.elections);
+            if (s.elections.length > 0) ensureFilterForElection(s.elections[0].type);
+            var feature = findScotlandFeature(s.label);
+            scotlandZoomThenOverlay(feature, function () { showScotlandOverlay(s.elections); });
           }
         };
       }));
@@ -292,9 +299,19 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
             var constName = data.result.scottish_parliamentary_constituency;
             var elections = resolvePostcodeElections(constName);
             if (elections.length > 0) {
-              m.searchInput.property("value", elections[0].result.name);
-              m.dropdown.style("display", "none");
-              showScotlandOverlay(elections);
+              showMapSearchResults(m.dropdown, elections.map(function (e) {
+                return {
+                  label: e.result.name,
+                  typesText: e.type === "region" ? "Region" : "Constituency",
+                  onClick: function () {
+                    m.dropdown.style("display", "none");
+                    m.searchInput.property("value", e.result.name);
+                    ensureFilterForElection(e.type);
+                    var feature = findScotlandFeature(e.result.name);
+                    scotlandZoomThenOverlay(feature, function () { showScotlandOverlay([e]); });
+                  }
+                };
+              }));
               return;
             }
           }
@@ -318,9 +335,19 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
                 }
               }
               if (elections.length > 0) {
-                m.searchInput.property("value", elections[0].result.name);
-                m.dropdown.style("display", "none");
-                showScotlandOverlay(elections);
+                showMapSearchResults(m.dropdown, elections.map(function (e) {
+                  return {
+                    label: e.result.name,
+                    typesText: e.type === "region" ? "Region" : "Constituency",
+                    onClick: function () {
+                      m.dropdown.style("display", "none");
+                      m.searchInput.property("value", e.result.name);
+                      ensureFilterForElection(e.type);
+                      var feature = findScotlandFeature(e.result.name);
+                      scotlandZoomThenOverlay(feature, function () { showScotlandOverlay([e]); });
+                    }
+                  };
+                }));
               } else {
                 m.dropdown.html('<div class="map-search__item map-search__item--empty">No elections found for ' + (pc.scottish_parliamentary_constituency || postcode) + '</div>');
               }
@@ -328,6 +355,55 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
         })
         .catch(function () {
           m.dropdown.html('<div class="map-search__item map-search__item--empty">Postcode lookup failed</div>');
+        });
+    },
+    function onOutcode(outcode) {
+      var clean = outcode.replace(/\s+/g, "").toUpperCase();
+      m.dropdown.style("display", "block")
+        .html('<div class="map-search__item map-search__item--empty">Looking up ' + clean + '...</div>');
+
+      fetch("https://api.postcodes.io/outcodes/" + encodeURIComponent(clean))
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.status !== 200 || !data.result) {
+            m.dropdown.html('<div class="map-search__item map-search__item--empty">No areas found for ' + clean + '</div>');
+            return;
+          }
+          // Use admin_district names to find matching constituencies via searchIndex
+          var districts = data.result.admin_district || [];
+          var dropdownItems = [];
+          var seen = {};
+          searchIndex.forEach(function (s) {
+            for (var i = 0; i < districts.length; i++) {
+              if (s.label.toLowerCase().indexOf(districts[i].toLowerCase()) >= 0 ||
+                  districts[i].toLowerCase().indexOf(s.label.toLowerCase()) >= 0) {
+                if (!seen[s.label]) {
+                  seen[s.label] = true;
+                  var types = s.elections.map(function (e) { return e.type === "region" ? "Region" : "Constituency"; }).join(", ");
+                  dropdownItems.push({
+                    label: s.label,
+                    typesText: types,
+                    onClick: function () {
+                      m.dropdown.style("display", "none");
+                      m.searchInput.property("value", s.label);
+                      if (s.elections.length > 0) ensureFilterForElection(s.elections[0].type);
+                      var feature = findScotlandFeature(s.label);
+                      scotlandZoomThenOverlay(feature, function () { showScotlandOverlay(s.elections); });
+                    }
+                  });
+                }
+                break;
+              }
+            }
+          });
+          if (dropdownItems.length > 0) {
+            showMapSearchResults(m.dropdown, dropdownItems.slice(0, 8));
+          } else {
+            m.dropdown.html('<div class="map-search__item map-search__item--empty">No constituencies found for ' + clean + '</div>');
+          }
+        })
+        .catch(function () {
+          m.dropdown.html('<div class="map-search__item map-search__item--empty">Outcode lookup failed</div>');
         });
     }
   );
@@ -341,7 +417,6 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
     { key: "region", label: "Region" },
   ];
 
-  m.searchWrap.classed("map-search--has-filters", true);
   var filterBar = m.el.insert("div", ".map-wrapper").attr("class", "map-filters");
   filters.forEach(function (f) {
     filterBar.append("button")
@@ -355,6 +430,13 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
         renderView(f.key);
       });
   });
+
+  switchFilter = function (mode) {
+    activeMode = mode;
+    filterBar.selectAll(".map-filter").classed("map-filter--active", false);
+    filterBar.select('[data-filter="' + mode + '"]').classed("map-filter--active", true);
+    renderView(mode);
+  };
 
   // ── Render ──
   var mapBounds;
@@ -377,7 +459,7 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           var nm = d.properties.SPR_NM;
           var wp = regionWinningParty(nm);
           if (wp) return partyColour(wp);
-          return regNomSet[nm] ? "url(#crosshatch)" : "#f0f0f2";
+          return regNomSet[nm] ? "url(#crosshatch)" : "#fff";
         })
         .attr("stroke", "#fff")
         .attr("stroke-width", 1)
@@ -391,33 +473,36 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           var nm = d.properties.SPR_NM;
           var r = regMap[nm];
           if (r) {
-            var html = "<strong>" + r.name + " Region</strong><br>";
+            var html = "<strong>" + r.name + "</strong><br>";
             var tally = regionTallyHtml(nm);
             if (tally) html += tally;
+            html += '<div style="color:#888;font-size:11px;font-style:italic;margin-top:4px">Click for full results</div>';
             mapBounds = getMapBounds();
             Tooltip.show("map-tooltip", html, event.clientX, event.clientY, mapBounds);
           } else if (regNomSet[nm]) {
             mapBounds = getMapBounds();
-            Tooltip.show("map-tooltip", "<strong>" + nm + " Region</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
+            Tooltip.show("map-tooltip", "<strong>" + nm + "</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
           } else { return; }
-          d3.select(this).attr("stroke", "#222").attr("stroke-width", 2).raise();
         })
         .on("mousemove", function (event) {
           var el = document.getElementById("map-tooltip");
           if (el) Tooltip.position(el, event.clientX, event.clientY, mapBounds);
         })
         .on("mouseleave", function () {
-          d3.select(this).attr("stroke", "#fff").attr("stroke-width", 1);
           Tooltip.hide("map-tooltip");
         })
         .on("click", function (event, d) {
           var rName = d.properties.SPR_NM;
-          if (regMap[rName]) { showRegionOverlay(rName); }
-          else if (regNomSet[rName]) { showAwaitingOverlay(rName + " Region"); }
+          var feature = d;
+          if (regMap[rName]) {
+            scotlandZoomThenOverlay(feature, function () { showRegionOverlay(rName); });
+          } else if (regNomSet[rName]) {
+            scotlandZoomThenOverlay(feature, function () { showAwaitingOverlay(rName); });
+          }
         });
     } else {
       // Constituency view: colour by FPTP winner
-      m.zoomGroup.append("g")
+      var constPaths = m.zoomGroup.append("g")
         .attr("class", "map-const-layer")
         .selectAll("path")
         .data(constGeo.features)
@@ -427,13 +512,20 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           var nm = d.properties.SPC_NM;
           var r = constMap[nm];
           if (r) return partyColour(r.winningParty);
-          return constNomSet[nm] ? "url(#crosshatch)" : "#f0f0f2";
+          return constNomSet[nm] ? "url(#crosshatch)" : "#fff";
         })
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 0.3)
+        .attr("stroke", function (d) {
+          var r = constMap[d.properties.SPC_NM];
+          return (r && r.gainOrHold === "gain") ? "#000" : "#fff";
+        })
+        .attr("stroke-width", function (d) {
+          var r = constMap[d.properties.SPC_NM];
+          return (r && r.gainOrHold === "gain") ? 1 : 0.3;
+        })
         .attr("class", function (d) {
           var nm = d.properties.SPC_NM;
-          if (constMap[nm]) return "map-area map-area--has-result";
+          var r = constMap[nm];
+          if (r) return "map-area map-area--has-result";
           if (constNomSet[nm]) return "map-area map-area--awaiting";
           return "map-area";
         })
@@ -450,28 +542,35 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
                 gainOrHold: r.gainOrHold === "hold" ? "no change" : r.gainOrHold,
                 sittingParty: r.sittingParty,
               });
-              Tooltip.position(el, event.clientX, event.clientY, mapBounds);
             }
+            d3.select(el).append("div").style("color", "#888").style("font-size", "11px").style("font-style", "italic").style("margin-top", "4px").text("Click for full results");
+            Tooltip.position(el, event.clientX, event.clientY, mapBounds);
           } else if (constNomSet[nm]) {
             mapBounds = getMapBounds();
             Tooltip.show("map-tooltip", "<strong>" + nm + "</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
           } else { return; }
-          d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
         })
         .on("mousemove", function (event) {
           var el = document.getElementById("map-tooltip");
           if (el) Tooltip.position(el, event.clientX, event.clientY, mapBounds);
         })
         .on("mouseleave", function () {
-          d3.select(this).attr("stroke", "#fff").attr("stroke-width", 0.3);
           Tooltip.hide("map-tooltip");
         })
         .on("click", function (event, d) {
           var nm = d.properties.SPC_NM;
           var r = constMap[nm];
-          if (r) { showScotlandOverlay(findAllElections(nm)); }
-          else if (constNomSet[nm]) { showAwaitingOverlay(nm); }
+          var feature = d;
+          if (r) {
+            scotlandZoomThenOverlay(feature, function () { showScotlandOverlay(findAllElections(nm)); });
+          } else if (constNomSet[nm]) {
+            scotlandZoomThenOverlay(feature, function () { showAwaitingOverlay(nm); });
+          }
         });
+      constPaths.filter(function (d) {
+        var r = constMap[d.properties.SPC_NM];
+        return r && r.gainOrHold === "gain";
+      }).raise();
 
       // Region borders overlay
       m.zoomGroup.append("g")
@@ -484,20 +583,120 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
         .attr("stroke", "#fff")
         .attr("stroke-width", 1)
         .style("pointer-events", "none");
+
+      // Gain borders on top of region borders
+      var gainFeatures = constGeo.features.filter(function (f) {
+        var r = constMap[f.properties.SPC_NM];
+        return r && r.gainOrHold === "gain";
+      });
+      if (gainFeatures.length) {
+        m.zoomGroup.append("g")
+          .attr("class", "gain-border-layer")
+          .style("pointer-events", "none")
+          .selectAll("path")
+          .data(gainFeatures)
+          .join("path")
+          .attr("d", m.path)
+          .attr("fill", "none")
+          .attr("stroke", "#000")
+          .attr("stroke-width", 1);
+      }
     }
+
+    // Rebuild legend for current view
+    updateScotlandLegend(mode);
+
+    // Zoom to fit visible areas
+    var visibleFeatures = mode === "region" ? regGeo.features : constGeo.features;
+    zoomToFeatures(m.svg, m.zoom, m.path, visibleFeatures, { duration: 600 });
+  }
+
+  // ── Legend ──
+  function getScotlandVisibleParties(mode) {
+    var counts = {};
+    if (mode === "region") {
+      for (var nm in regMap) {
+        var wp = regionWinningParty(nm);
+        if (wp) counts[wp] = (counts[wp] || 0) + 1;
+      }
+    } else {
+      for (var nm in constMap) {
+        var wp = constMap[nm].winningParty;
+        if (wp) counts[wp] = (counts[wp] || 0) + 1;
+      }
+    }
+    var parties = Object.keys(counts)
+      .filter(function (n) { return n !== "NOC"; })
+      .map(function (name) {
+        return { name: name, colour: partyColour(name), count: counts[name] };
+      });
+    parties.sort(function (a, b) { return b.count - a.count; });
+    if (counts["NOC"]) parties.push({ name: "NOC", colour: partyColour("NOC"), count: counts["NOC"] });
+    return parties;
+  }
+
+  function updateScotlandLegend(mode) {
+    var parties = getScotlandVisibleParties(mode);
+    buildMapLegend(m.wrapper, parties);
+  }
+
+  // ── Feature lookup for zoom ──
+  function findScotlandFeature(name) {
+    for (var i = 0; i < constGeo.features.length; i++) {
+      if (constGeo.features[i].properties.SPC_NM === name) return constGeo.features[i];
+    }
+    for (var i = 0; i < regGeo.features.length; i++) {
+      if (regGeo.features[i].properties.SPR_NM === name) return regGeo.features[i];
+    }
+    // Reverse: result name → geo name
+    for (var gn in constMap) {
+      if (constMap[gn].name === name) {
+        for (var ci = 0; ci < constGeo.features.length; ci++) {
+          if (constGeo.features[ci].properties.SPC_NM === gn) return constGeo.features[ci];
+        }
+      }
+    }
+    for (var gn in regMap) {
+      if (regMap[gn].name === name) {
+        for (var ri = 0; ri < regGeo.features.length; ri++) {
+          if (regGeo.features[ri].properties.SPR_NM === gn) return regGeo.features[ri];
+        }
+      }
+    }
+    return null;
+  }
+
+  function scotlandZoomThenOverlay(feature, overlayFn) {
+    if (!feature) { overlayFn(); return; }
+    var pathEl = m.zoomGroup.selectAll(".map-area").filter(function (d) { return d === feature; }).node();
+    dimOtherAreas(m.zoomGroup, pathEl);
+    zoomToFeature(m.svg, m.zoom, m.path, feature, { onEnd: overlayFn });
   }
 
   // ── Overlay ──
   var overlayApi = null;
 
+  // Click-away: clicking empty map background closes overlay
+  m.svg.on("click", function (event) {
+    if (!overlayApi) return;
+    var target = event.target;
+    if (!target.classList || !target.classList.contains("map-area")) {
+      overlayApi.close();
+      overlayApi = null;
+    }
+  });
+
   function showAwaitingOverlay(label) {
-    createMapOverlay([{
+    overlayApi = createMapOverlay([{
       tabLabel: label,
       renderPanel: function (panel) {
         panel.append("div")
           .html("<p style=\"color:#888; text-align:center; padding:40px 20px; font-size:15px;\">Awaiting declaration</p>");
       }
-    }]);
+    }], { container: m.el, onClose: function () {
+      overlayApi = null;
+      resetAreaDim(m.zoomGroup);
+    }});
   }
 
   function showScotlandOverlay(elections) {
@@ -528,7 +727,7 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
 
     overlayApi = createMapOverlay(sorted.map(function (e) {
       return {
-        tabLabel: e.type === "region" ? e.result.name + " Region" : e.result.name,
+        tabLabel: e.result.name,
         tabKey: e.type === "region" ? "region" : "constituency",
         renderPanel: function (panel) {
           if (e.type === "region") {
@@ -541,7 +740,7 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
             renderRegionPanel(panel, regionKey, e.result, consts, tally);
           } else {
             var cardContainer = panel.append("div");
-            constituencyResultCard(cardContainer.node(), e.result);
+            fptpResultCard(cardContainer.node(), e.result, { showDeclarationTime: true });
             cardContainer.append("div")
               .attr("class", "map-overlay__footer")
               .text("Vote share change vs notional 2021 results on 2026 boundaries (Hanretty)");
@@ -549,7 +748,10 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
           }
         }
       };
-    }));
+    }), { container: m.el, onClose: function () {
+      overlayApi = null;
+      resetAreaDim(m.zoomGroup);
+    }});
   }
 
   function showRegionOverlay(regionName) {
@@ -559,61 +761,124 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
     var tally = regionTotalTally(regionName);
 
     overlayApi = createMapOverlay([{
-      tabLabel: rr.name + " Region",
+      tabLabel: rr.name,
       tabKey: "region",
       renderPanel: function (panel) {
         renderRegionPanel(panel, regionName, rr, consts, tally);
       }
-    }]);
+    }], { container: m.el, onClose: function () {
+      overlayApi = null;
+      resetAreaDim(m.zoomGroup);
+    }});
   }
 
   function renderRegionPanel(panel, regionName, rr, consts, tally) {
     var card = panel.append("div").attr("class", "region-overlay");
 
-    // ── Regional vote share bars ──
     var parties = (rr.parties || []).slice().sort(function (a, b) {
       return b.percentageShare - a.percentageShare;
     }).filter(function (p) { return p.percentageShare >= 0.5; });
     var totalVotes = (rr.parties || []).reduce(function (s, p) { return s + (p.votes || 0); }, 0);
 
-    if (parties.length) {
-      var section = card.append("div").attr("class", "map-overlay__section");
-      section.append("div").attr("class", "map-overlay__title").text("Regional vote share");
+    // ── Toggle: MSPs elected / Vote share ──
+    var toggleRow = card.append("div")
+      .attr("class", "party-strip-toggle")
+      .style("width", "100%")
+      .style("margin-top", "8px")
+      .style("margin-bottom", "10px");
 
-      var maxShare = parties[0].percentageShare;
-      var barsWrap = section.append("div").attr("class", "fptp-card__bars");
+    var electedBtn = toggleRow.append("button")
+      .attr("class", "party-strip-toggle__btn party-strip-toggle__btn--active")
+      .style("flex", "1")
+      .text("MSPs elected");
 
-      for (var pi = 0; pi < parties.length; pi++) {
-        var p = parties[pi];
-        var hex = partyColour(p.abbreviation);
-        var row = barsWrap.append("div").attr("class", "fptp-card__bar-row fptp-card__bar-row--two-col");
+    var voteBtn = toggleRow.append("button")
+      .attr("class", "party-strip-toggle__btn")
+      .style("flex", "1")
+      .text("Vote share");
 
-        row.append("div")
-          .attr("class", "fptp-card__bar-name")
-          .text(partyShortName(p.abbreviation));
+    var contentArea = card.append("div");
 
-        var barWrap = row.append("div").attr("class", "fptp-card__bar-wrap");
-        barWrap.append("div")
-          .attr("class", "fptp-card__bar-fill")
-          .style("width", ((p.percentageShare / maxShare) * 90) + "%")
-          .style("background", hex);
-        var labelText = (p.votes || 0).toLocaleString() + " (" + formatPct(p.percentageShare) + "%)";
-        barWrap.append("span")
-          .attr("class", "fptp-card__bar-label")
-          .attr("data-party-colour", hex)
-          .text(labelText);
-
-        var pctChg = formatPercentageChange(p.percentageShareChange);
-        var chgText = pctChg ? pctChg.text : "";
-        var chgColour = pctChg ? pctChg.colour : "#888";
-        barWrap.append("span")
-          .attr("class", "fptp-card__bar-change-inline")
-          .style("color", chgColour)
-          .text(chgText);
-      }
-
-      requestAnimationFrame(function () { repositionBarLabels(barsWrap.node()); });
+    function showElected() {
+      electedBtn.classed("party-strip-toggle__btn--active", true);
+      voteBtn.classed("party-strip-toggle__btn--active", false);
+      contentArea.html("");
+      var electedContent = contentArea.append("div").attr("class", "region-overlay__elected-content");
+      renderAdditionalMembers(electedContent, rr);
     }
+
+    function showVoteShare() {
+      voteBtn.classed("party-strip-toggle__btn--active", true);
+      electedBtn.classed("party-strip-toggle__btn--active", false);
+      contentArea.html("");
+      if (parties.length) {
+        var section = contentArea.append("div");
+        var maxShare = parties[0].percentageShare;
+        var barsWrap = section.append("div").attr("class", "fptp-card__bars");
+
+        for (var pi = 0; pi < parties.length; pi++) {
+          var p = parties[pi];
+          var hex = partyColour(p.abbreviation);
+          var row = barsWrap.append("div").attr("class", "fptp-card__bar-row fptp-card__bar-row--two-col");
+
+          row.append("div")
+            .attr("class", "fptp-card__bar-name")
+            .text(partyShortName(p.abbreviation));
+
+          var barWrap = row.append("div").attr("class", "fptp-card__bar-wrap");
+          barWrap.append("div")
+            .attr("class", "fptp-card__bar-fill")
+            .style("width", ((p.percentageShare / maxShare) * 90) + "%")
+            .style("background", hex);
+          var labelText = (p.votes || 0).toLocaleString() + " (" + formatPct(p.percentageShare) + "%)";
+          barWrap.append("span")
+            .attr("class", "fptp-card__bar-label")
+            .attr("data-party-colour", hex)
+            .text(labelText);
+
+          var pctChg = formatPercentageChange(p.percentageShareChange);
+          var chgText = pctChg ? pctChg.text : "";
+          var chgColour = pctChg ? pctChg.colour : "#888";
+          barWrap.append("span")
+            .attr("class", "fptp-card__bar-change-inline")
+            .style("color", chgColour)
+            .text(chgText);
+        }
+
+        // Collapse to top 6 if more parties
+        var MAX_VISIBLE = 6;
+        var allRows = barsWrap.selectAll(".fptp-card__bar-row").nodes();
+        if (allRows.length > MAX_VISIBLE) {
+          for (var h = MAX_VISIBLE; h < allRows.length; h++) {
+            d3.select(allRows[h]).style("display", "none");
+          }
+          var expandBtn = section.append("button")
+            .attr("class", "map-overlay__expand-btn")
+            .text("Show all " + allRows.length + " parties \u25BE");
+          expandBtn.on("click", function () {
+            var expanded = expandBtn.classed("map-overlay__expand-btn--expanded");
+            if (!expanded) {
+              for (var j = MAX_VISIBLE; j < allRows.length; j++) {
+                d3.select(allRows[j]).style("display", null);
+              }
+              expandBtn.text("Show fewer \u25B4").classed("map-overlay__expand-btn--expanded", true);
+            } else {
+              for (var j = MAX_VISIBLE; j < allRows.length; j++) {
+                d3.select(allRows[j]).style("display", "none");
+              }
+              expandBtn.text("Show all " + allRows.length + " parties \u25BE").classed("map-overlay__expand-btn--expanded", false);
+            }
+            requestAnimationFrame(function () { repositionBarLabels(section.node()); });
+          });
+        }
+
+        requestAnimationFrame(function () { repositionBarLabels(section.node()); });
+      }
+    }
+
+    electedBtn.on("click", showElected);
+    voteBtn.on("click", showVoteShare);
+    showElected();
 
     // ── Turnout bar ──
     if (rr.percentageTurnout != null || totalVotes) {
@@ -624,120 +889,20 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
       });
     }
 
-    // ── Elected toggle: Additional vs Constituency ──
-    var electedSection = card.append("div").attr("class", "map-overlay__section");
-
-    var totalElected = tally.reduce(function (s, t) { return s + t.total; }, 0);
-    electedSection.append("div").attr("class", "map-overlay__title")
-      .style("margin-bottom", "8px")
-      .text("MSPs elected (" + totalElected + ")");
-
-    var toggleRow = electedSection.append("div")
-      .attr("class", "party-strip-toggle")
-      .style("width", "100%")
-      .style("margin-bottom", "10px");
-
-    var addBtn = toggleRow.append("button")
-      .attr("class", "party-strip-toggle__btn party-strip-toggle__btn--active")
-      .style("flex", "1")
-      .text("Additional Members");
-
-    var constBtn = toggleRow.append("button")
-      .attr("class", "party-strip-toggle__btn")
-      .style("flex", "1")
-      .text("Constituency MSPs");
-
-    var electedContent = electedSection.append("div").attr("class", "region-overlay__elected-content");
-
-    function showAdditionalMembers() {
-      addBtn.classed("party-strip-toggle__btn--active", true);
-      constBtn.classed("party-strip-toggle__btn--active", false);
-      electedContent.html("");
-      renderAdditionalMembers(electedContent, rr);
+    // ── Declaration time ──
+    if (rr.declarationTime) {
+      var t = new Date(rr.declarationTime);
+      var dateStr = t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+      var timeStr = t.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+      card.append("div")
+        .attr("class", "council-card__declared")
+        .text("Declared " + timeStr + ", " + dateStr);
     }
-
-    function showConstituencyMSPs() {
-      constBtn.classed("party-strip-toggle__btn--active", true);
-      addBtn.classed("party-strip-toggle__btn--active", false);
-      electedContent.html("");
-      renderConstituencyBadges(electedContent, consts, regionName);
-    }
-
-    addBtn.on("click", showAdditionalMembers);
-    constBtn.on("click", showConstituencyMSPs);
-
-    // Default: show Additional Members
-    showAdditionalMembers();
   }
 
   function renderAdditionalMembers(container, rr) {
     var elected = (rr.candidates || []).filter(function (c) { return c.elected === "*"; });
     renderElectedPills(container.node(), elected, { winningParty: rr.winningParty });
-  }
-
-  function renderConstituencyBadges(container, consts, regionName) {
-    if (!consts.length) {
-      container.append("div")
-        .style("color", "#888").style("font-size", "13px").style("padding", "8px 0")
-        .text("No constituency results yet");
-      return;
-    }
-
-    // Sort by constituency name
-    var sorted = consts.slice().sort(function (a, b) { return a.localeCompare(b); });
-
-    // Group by winning party
-    var groups = {};
-    var partyOrder = [];
-    for (var i = 0; i < sorted.length; i++) {
-      var cr = constMap[sorted[i]];
-      var abbr = cr ? cr.winningParty || "Other" : "Other";
-      if (!groups[abbr]) { groups[abbr] = []; partyOrder.push(abbr); }
-      groups[abbr].push({ name: sorted[i], result: cr });
-    }
-    partyOrder.sort(function (a, b) { return groups[b].length - groups[a].length; });
-
-    var wrap = container.append("div").attr("class", "elected-pills");
-    for (var gi = 0; gi < partyOrder.length; gi++) {
-      var abbr = partyOrder[gi];
-      var items = groups[abbr];
-      var hex = partyColour(abbr);
-      var fg = textColourForBg(hex);
-      var row = wrap.append("div").attr("class", "elected-pills__row");
-      for (var bi = 0; bi < items.length; bi++) {
-        (function (item) {
-          // Find the winning candidate name
-          var winner = null;
-          if (item.result && item.result.candidates) {
-            for (var ci = 0; ci < item.result.candidates.length; ci++) {
-              if (item.result.candidates[ci].elected === "*") { winner = item.result.candidates[ci]; break; }
-            }
-          }
-          var mpName = winner ? winner.firstName + " " + winner.surname : item.name;
-          var badge = row.append("div")
-            .attr("class", "elected-pills__cell elected-pills__cell--clickable")
-            .style("background", hex)
-            .style("color", fg);
-          var badgeText = badge.append("span").attr("class", "elected-pills__text")
-            .text(mpName);
-          badge
-            .on("mouseenter", function () { badgeText.text(item.name); })
-            .on("mouseleave", function () { badgeText.text(mpName); });
-          badge.on("click", function () {
-            if (!overlayApi || !item.result) return;
-            overlayApi.addOrReplaceTab("constituency", item.name, function (panel) {
-              var cardContainer = panel.append("div");
-              constituencyResultCard(cardContainer.node(), item.result);
-              cardContainer.append("div")
-                .attr("class", "map-overlay__footer")
-                .text("Vote share change vs notional 2021 results on 2026 boundaries (Hanretty)");
-              cardContainer.select(".council-card__name").remove();
-            });
-          });
-        })(items[bi]);
-      }
-    }
-    _fitElectedPills(wrap);
   }
 
   renderView("constituency");

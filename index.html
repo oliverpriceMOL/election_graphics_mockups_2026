@@ -73,6 +73,7 @@
 <script src="js/party-strip.js"></script>
 <script src="js/change-bar.js"></script>
 <script src="js/council-lookup.js"></script>
+<script src="js/pa-ons-lookup.js"></script>
 <script src="js/election-map.js"></script>
 <script src="js/england-map.js"></script>
 <script src="js/fptp-card.js"></script>
@@ -111,11 +112,31 @@ Promise.all([
     mayoralNominations: mayoralNominations,
   });
 
+  // ── Declared badge (bottom-right of map) ──
+  var mapWrapper = document.querySelector("#england-map .map-wrapper");
+  if (mapWrapper) {
+    var mapBadge = document.createElement("div");
+    var mapTotalCouncils = localNominations.length || 136;
+    mapBadge.className = "scoreboard__declared" + (deduped.length >= mapTotalCouncils ? " scoreboard__declared--complete" : "");
+    mapBadge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + mapTotalCouncils + "</strong> councils declared";
+    mapWrapper.appendChild(mapBadge);
+  }
+
   // ── Party scoreboard ──
   partyScoreboard(document.getElementById("scoreboard"), results);
 
   // ── Change column charts ──
   partyChangeColumns(document.getElementById("change-cols"), results);
+
+  // ── Declared badge (inside change-cols toggle row) ──
+  var changeToggleRow = document.querySelector("#change-cols .party-strip-toggle-row");
+  if (changeToggleRow) {
+    var changeBadge = document.createElement("div");
+    var changeTotalCouncils = localNominations.length || 136;
+    changeBadge.className = "scoreboard__declared" + (deduped.length >= changeTotalCouncils ? " scoreboard__declared--complete" : "");
+    changeBadge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + changeTotalCouncils + "</strong> councils declared";
+    changeToggleRow.appendChild(changeBadge);
+  }
 
   // ── Hemicycle tests: pick a range of council sizes ──
   const testCouncils = ["Adur", "Broxbourne", "Barnsley", "Camden", "Manchester", "Birmingham"];

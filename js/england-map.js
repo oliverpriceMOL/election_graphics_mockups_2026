@@ -251,14 +251,28 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
 
   // Track current active filter mode
   var activeMode = "district";
+  var switchFilter = null; // assigned after filter tabs are built
+
+  // Resolve the best filter mode for a name and switch if needed
+  function findFeatureAndSwitch(name) {
+    var feature = findFeature(name, activeMode);
+    if (feature) return feature;
+    var modes = ["district", "county", "mayoral"];
+    for (var i = 0; i < modes.length; i++) {
+      if (modes[i] === activeMode) continue;
+      feature = findFeature(name, modes[i]);
+      if (feature) {
+        if (switchFilter) switchFilter(modes[i]);
+        return feature;
+      }
+    }
+    return null;
+  }
 
   // ── Search ──
   setupMapSearch(m.searchInput, m.dropdown, m.searchWrap,
     function onNameSearch(query) {
-      var q = query.toLowerCase();
-      var matches = searchIndex.filter(function (s) {
-        return s.label.toLowerCase().indexOf(q) >= 0;
-      }).slice(0, 8);
+      var matches = rankSearchMatches(searchIndex, query);
       showMapSearchResults(m.dropdown, matches.map(function (s) {
         var types = s.elections.map(function (e) {
           return e.type === "mayoral" ? "Mayoral" : "Council";
@@ -269,7 +283,8 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           onClick: function () {
             m.dropdown.style("display", "none");
             m.searchInput.property("value", s.label);
-            showOverlay(s.elections);
+            var feature = findFeatureAndSwitch(s.label);
+            zoomThenOverlay(feature, function () { showOverlay(s.elections); });
           }
         };
       }));
@@ -322,16 +337,83 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
             }
           }
           if (allElections.length > 0) {
-            var label = allElections[0].result.name;
-            m.searchInput.property("value", label);
-            m.dropdown.style("display", "none");
-            showOverlay(allElections);
+            // Group elections by area name for dropdown items
+            var areaMap = {};
+            allElections.forEach(function (e) {
+              var name = e.result.name;
+              if (!areaMap[name]) areaMap[name] = [];
+              areaMap[name].push(e);
+            });
+            var dropdownItems = Object.keys(areaMap).map(function (name) {
+              var elecs = areaMap[name];
+              var types = elecs.map(function (e) {
+                return e.type === "mayoral" ? "Mayoral" : "Council";
+              }).join(", ");
+              return {
+                label: name,
+                typesText: types,
+                onClick: function () {
+                  m.dropdown.style("display", "none");
+                  m.searchInput.property("value", name);
+                  var feature = findFeatureAndSwitch(name);
+                  zoomThenOverlay(feature, function () { showOverlay(elecs); });
+                }
+              };
+            });
+            showMapSearchResults(m.dropdown, dropdownItems);
           } else {
             m.dropdown.html('<div class="map-search__item map-search__item--empty">No elections found for ' + (pc.admin_district || postcode) + '</div>');
           }
         })
         .catch(function () {
           m.dropdown.html('<div class="map-search__item map-search__item--empty">Postcode lookup failed</div>');
+        });
+    },
+    function onOutcode(outcode) {
+      var clean = outcode.replace(/\s+/g, "").toUpperCase();
+      m.dropdown.style("display", "block")
+        .html('<div class="map-search__item map-search__item--empty">Looking up ' + clean + '...</div>');
+
+      fetch("https://api.postcodes.io/outcodes/" + encodeURIComponent(clean))
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data.status !== 200 || !data.result) {
+            m.dropdown.html('<div class="map-search__item map-search__item--empty">No areas found for ' + clean + '</div>');
+            return;
+          }
+          var districts = data.result.admin_district || [];
+          var counties = data.result.admin_county || [];
+          var allNames = districts.concat(counties);
+          var seen = {};
+          var dropdownItems = [];
+          allNames.forEach(function (name) {
+            if (!name || seen[name]) return;
+            seen[name] = true;
+            var entry = indexByNorm[normaliseName(name)];
+            if (entry) {
+              var types = entry.elections.map(function (e) {
+                return e.type === "mayoral" ? "Mayoral" : "Council";
+              }).join(", ");
+              dropdownItems.push({
+                label: entry.label,
+                typesText: types,
+                onClick: function () {
+                  m.dropdown.style("display", "none");
+                  m.searchInput.property("value", entry.label);
+                  var feature = findFeatureAndSwitch(entry.label);
+                  zoomThenOverlay(feature, function () { showOverlay(entry.elections); });
+                }
+              });
+            }
+          });
+          if (dropdownItems.length > 0) {
+            showMapSearchResults(m.dropdown, dropdownItems);
+          } else {
+            m.dropdown.html('<div class="map-search__item map-search__item--empty">No elections found for ' + clean + '</div>');
+          }
+        })
+        .catch(function () {
+          m.dropdown.html('<div class="map-search__item map-search__item--empty">Outcode lookup failed</div>');
         });
     }
   );
@@ -343,7 +425,6 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
     { key: "mayoral", label: "Mayoral" },
   ];
 
-  m.searchWrap.classed("map-search--has-filters", true);
   var filterBar = m.el.insert("div", ".map-wrapper").attr("class", "map-filters");
   filters.forEach(function (f) {
     filterBar.append("button")
@@ -357,6 +438,14 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         renderView(f.key);
       });
   });
+
+  // Wire up filter switching for search
+  switchFilter = function (mode) {
+    activeMode = mode;
+    filterBar.selectAll(".map-filter").classed("map-filter--active", false);
+    filterBar.select('[data-filter="' + mode + '"]').classed("map-filter--active", true);
+    renderView(mode);
+  };
 
   // ── Tooltip helper ──
   var mapBounds;
@@ -373,6 +462,7 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
       gainOrHold: result.gainOrHold === "hold" ? "no change" : result.gainOrHold,
       sittingParty: result.sittingParty,
     });
+    d3.select(el).append("div").style("color", "#888").style("font-size", "11px").style("font-style", "italic").style("margin-top", "4px").text("Click for full results");
     Tooltip.position(el, event.clientX, event.clientY, mapBounds);
   }
   function showAwaitingTooltip(event, name) {
@@ -398,7 +488,7 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         .attr("class", "map-area");
 
       // County boundaries on top
-      m.zoomGroup.append("g")
+      var countyPaths = m.zoomGroup.append("g")
         .attr("class", "map-county-layer")
         .selectAll("path")
         .data(countyGeo.features)
@@ -407,13 +497,20 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         .attr("fill", function (d) {
           var r = countyResults[d.properties.CTY24NM];
           if (r) return partyColour(r.winningParty);
-          return countyNominations[d.properties.CTY24NM] ? "url(#crosshatch)" : "#f0f0f2";
+          return countyNominations[d.properties.CTY24NM] ? "url(#crosshatch)" : "#fff";
         })
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 0.5)
+        .attr("stroke", function (d) {
+          var r = countyResults[d.properties.CTY24NM];
+          return (r && r.gainOrHold === "gain") ? "#000" : "#fff";
+        })
+        .attr("stroke-width", function (d) {
+          var r = countyResults[d.properties.CTY24NM];
+          return (r && r.gainOrHold === "gain") ? 1 : 0.5;
+        })
         .attr("class", function (d) {
           var nm = d.properties.CTY24NM;
-          if (countyResults[nm]) return "map-area map-area--has-result";
+          var r = countyResults[nm];
+          if (r) return "map-area map-area--has-result";
           if (countyNominations[nm]) return "map-area map-area--awaiting";
           return "map-area";
         })
@@ -425,25 +522,31 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           } else if (countyNominations[nm]) {
             showAwaitingTooltip(event, nm);
           } else { return; }
-          d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
         })
         .on("mousemove", function (event) {
           var el = document.getElementById("map-tooltip");
           if (el) Tooltip.position(el, event.clientX, event.clientY, mapBounds);
         })
         .on("mouseleave", function () {
-          d3.select(this).attr("stroke", "#fff").attr("stroke-width", 0.5);
           Tooltip.hide("map-tooltip");
         })
         .on("click", function (event, d) {
           var nm = d.properties.CTY24NM;
           var r = countyResults[nm];
-          if (r) { showOverlay(findAllElections(r.name)); }
-          else if (countyNominations[nm]) { showAwaitingOverlay(countyNominations[nm].name, countyNominations[nm].type); }
+          var feature = d;
+          if (r) {
+            zoomThenOverlay(feature, function () { showOverlay(findAllElections(r.name)); });
+          } else if (countyNominations[nm]) {
+            zoomThenOverlay(feature, function () { showAwaitingOverlay(countyNominations[nm].name, countyNominations[nm].type); });
+          }
         });
+      countyPaths.filter(function (d) {
+        var r = countyResults[d.properties.CTY24NM];
+        return r && r.gainOrHold === "gain";
+      }).raise();
     } else {
       // District / Mayoral mode – LAD layer
-      m.zoomGroup.append("g")
+      var ladPaths = m.zoomGroup.append("g")
         .attr("class", "map-lad-layer")
         .selectAll("path")
         .data(englandLad.features)
@@ -454,23 +557,33 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           if (mode === "district") {
             var r = ladResults[name];
             if (r) return partyColour(r.winningParty);
-            return ladNominations[name] ? "url(#crosshatch)" : "#f0f0f2";
+            return ladNominations[name] ? "url(#crosshatch)" : "#fff";
           } else if (mode === "mayoral") {
             var mr = mayoralLadResults[name];
             if (mr) return partyColour(mr.winningParty);
-            return mayoralLadNominations[name] ? "url(#crosshatch)" : "#f0f0f2";
+            return mayoralLadNominations[name] ? "url(#crosshatch)" : "#fff";
           }
-          return "#f0f0f2";
+          return "#fff";
         })
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 0.3)
+        .attr("stroke", function (d) {
+          var name = d.properties.LAD25NM;
+          var r = mode === "district" ? ladResults[name] : mode === "mayoral" ? mayoralLadResults[name] : null;
+          return (r && r.gainOrHold === "gain") ? "#000" : "#fff";
+        })
+        .attr("stroke-width", function (d) {
+          var name = d.properties.LAD25NM;
+          var r = mode === "district" ? ladResults[name] : mode === "mayoral" ? mayoralLadResults[name] : null;
+          return (r && r.gainOrHold === "gain") ? 1 : 0.3;
+        })
         .attr("class", function (d) {
           var name = d.properties.LAD25NM;
           if (mode === "district") {
-            if (ladResults[name]) return "map-area map-area--has-result";
+            var r = ladResults[name];
+            if (r) return "map-area map-area--has-result";
             if (ladNominations[name]) return "map-area map-area--awaiting";
           } else if (mode === "mayoral") {
-            if (mayoralLadResults[name]) return "map-area map-area--has-result";
+            var mr = mayoralLadResults[name];
+            if (mr) return "map-area map-area--has-result";
             if (mayoralLadNominations[name]) return "map-area map-area--awaiting";
           }
           return "map-area";
@@ -485,32 +598,152 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
             if (!hasNom) return;
             showAwaitingTooltip(event, name);
           }
-          d3.select(this).attr("stroke", "#222").attr("stroke-width", 1.5).raise();
         })
         .on("mousemove", function (event) {
           var el = document.getElementById("map-tooltip");
           if (el) Tooltip.position(el, event.clientX, event.clientY, mapBounds);
         })
         .on("mouseleave", function () {
-          d3.select(this).attr("stroke", "#fff").attr("stroke-width", 0.3);
           Tooltip.hide("map-tooltip");
         })
         .on("click", function (event, d) {
           var name = d.properties.LAD25NM;
+          var feature = d;
           if (mode === "district") {
             var r = ladResults[name];
-            if (r) { showOverlay(findAllElections(r.name)); }
-            else if (ladNominations[name]) { showAwaitingOverlay(ladNominations[name].name, ladNominations[name].type); }
+            if (r) { zoomThenOverlay(feature, function () { showOverlay(findAllElections(r.name)); }); }
+            else if (ladNominations[name]) { zoomThenOverlay(feature, function () { showAwaitingOverlay(ladNominations[name].name, ladNominations[name].type); }); }
           } else if (mode === "mayoral") {
             var mr = mayoralLadResults[name];
-            if (mr) { showOverlay(findAllElections(mr.name)); }
-            else if (mayoralLadNominations[name]) { showAwaitingOverlay(mayoralLadNominations[name].name, "Mayoral"); }
+            if (mr) { zoomThenOverlay(feature, function () { showOverlay(findAllElections(mr.name)); }); }
+            else if (mayoralLadNominations[name]) { zoomThenOverlay(feature, function () { showAwaitingOverlay(mayoralLadNominations[name].name, "Mayoral"); }); }
           }
         });
+      ladPaths.filter(function (d) {
+        var name = d.properties.LAD25NM;
+        var r = mode === "district" ? ladResults[name] : mode === "mayoral" ? mayoralLadResults[name] : null;
+        return r && r.gainOrHold === "gain";
+      }).raise();
+    }
+
+    // Rebuild legend for current view
+    updateLegend(mode);
+
+    // Zoom to fit visible areas
+    var visibleFeatures = getVisibleFeatures(mode);
+    if (visibleFeatures.length > 0) {
+      zoomToFeatures(m.svg, m.zoom, m.path, visibleFeatures, { duration: 600 });
+    } else {
+      m.svg.transition().duration(600).call(m.zoom.transform, d3.zoomIdentity);
     }
   }
 
+  // ── Legend ──
+  function getVisibleParties(mode) {
+    var counts = {};
+    var results;
+    if (mode === "county") results = countyResults;
+    else if (mode === "mayoral") results = mayoralLadResults;
+    else results = ladResults;
+
+    for (var key in results) {
+      var wp = results[key].winningParty;
+      if (wp) counts[wp] = (counts[wp] || 0) + 1;
+    }
+    var parties = Object.keys(counts)
+      .filter(function (n) { return n !== "NOC"; })
+      .map(function (name) {
+        return { name: name, colour: partyColour(name), count: counts[name] };
+      });
+    parties.sort(function (a, b) { return b.count - a.count; });
+    if (counts["NOC"]) parties.push({ name: "NOC", colour: partyColour("NOC"), count: counts["NOC"] });
+    return parties;
+  }
+
+  function getVisibleFeatures(mode) {
+    if (mode === "county") {
+      return countyGeo.features.filter(function (f) {
+        return countyResults[f.properties.CTY24NM] || countyNominations[f.properties.CTY24NM];
+      });
+    } else if (mode === "mayoral") {
+      return englandLad.features.filter(function (f) {
+        return mayoralLadResults[f.properties.LAD25NM] || mayoralLadNominations[f.properties.LAD25NM];
+      });
+    } else {
+      return englandLad.features.filter(function (f) {
+        return ladResults[f.properties.LAD25NM] || ladNominations[f.properties.LAD25NM];
+      });
+    }
+  }
+
+  function updateLegend(mode) {
+    var parties = getVisibleParties(mode);
+    buildMapLegend(m.wrapper, parties);
+  }
+
+  // ── Feature lookup for zoom ──
+  // Finds a GeoJSON feature by geo name or result name
+  function findFeature(name, mode) {
+    // Direct geo name match
+    if (mode === "county") {
+      for (var i = 0; i < countyGeo.features.length; i++) {
+        if (countyGeo.features[i].properties.CTY24NM === name) return countyGeo.features[i];
+      }
+    }
+    for (var i = 0; i < englandLad.features.length; i++) {
+      if (englandLad.features[i].properties.LAD25NM === name) return englandLad.features[i];
+    }
+    // Reverse lookup: result name → geo name
+    if (mode === "county") {
+      for (var gn in countyResults) {
+        if (countyResults[gn].name === name) {
+          for (var ci = 0; ci < countyGeo.features.length; ci++) {
+            if (countyGeo.features[ci].properties.CTY24NM === gn) return countyGeo.features[ci];
+          }
+        }
+      }
+    }
+    for (var gn in ladResults) {
+      if (ladResults[gn].name === name) {
+        for (var li = 0; li < englandLad.features.length; li++) {
+          if (englandLad.features[li].properties.LAD25NM === gn) return englandLad.features[li];
+        }
+      }
+    }
+    for (var gn in mayoralLadResults) {
+      if (mayoralLadResults[gn].name === name) {
+        for (var mi = 0; mi < englandLad.features.length; mi++) {
+          if (englandLad.features[mi].properties.LAD25NM === gn) return englandLad.features[mi];
+        }
+      }
+    }
+    return null;
+  }
+
+  // Helper: zoom to a feature then open an overlay
+  function zoomThenOverlay(feature, overlayFn) {
+    if (!feature) { overlayFn(); return; }
+    // Dim other areas to highlight the selected one
+    var pathEl = m.zoomGroup.selectAll(".map-area").filter(function (d) { return d === feature; }).node();
+    dimOtherAreas(m.zoomGroup, pathEl);
+    zoomToFeature(m.svg, m.zoom, m.path, feature, {
+      onEnd: overlayFn
+    });
+  }
+
   // ── Overlay ──
+  var englandOverlayApi = null;
+
+  // Click-away: clicking empty map background closes overlay
+  m.svg.on("click", function (event) {
+    if (!englandOverlayApi) return;
+    var target = event.target;
+    if (!target.classList || !target.classList.contains("map-area")) {
+      englandOverlayApi.close();
+      englandOverlayApi = null;
+    }
+  });
+
   function showOverlay(elections) {
     // If all elections are awaiting, show awaiting overlay
     var allAwaiting = elections.every(function (e) { return e.result._awaiting; });
@@ -595,6 +828,8 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
                 .attr("width", "100%")
                 .attr("preserveAspectRatio", "xMidYMid meet");
 
+              var majX = chartLeft + majority * scale;
+
               parties.forEach(function (p, i) {
                 var y = gap + i * (barHeight + gap);
                 var barW = Math.max(p.seats * scale, 1);
@@ -628,8 +863,13 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
                   var col = d3.color(hex);
                   var lum = 0.299 * col.r + 0.587 * col.g + 0.114 * col.b;
                   var textFill = lum > 160 ? "#222" : "#fff";
+                  // Shift label left if it would overlap the majority line
+                  var labelX = chartLeft + barW - 5;
+                  if (Math.abs(labelX - majX) < 16) {
+                    labelX = majX - 16;
+                  }
                   seatsSvg.append("text")
-                    .attr("x", chartLeft + barW - 5)
+                    .attr("x", labelX)
                     .attr("y", y + barHeight / 2)
                     .attr("text-anchor", "end")
                     .attr("dominant-baseline", "central")
@@ -653,7 +893,6 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
               });
 
               // Majority line
-              var majX = chartLeft + majority * scale;
               var barsBottom = gap + parties.length * (barHeight + gap);
               seatsSvg.append("line")
                 .attr("x1", majX)
@@ -705,19 +944,25 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         }
       };
     });
-    createMapOverlay(items);
+    englandOverlayApi = createMapOverlay(items, { container: m.el, onClose: function () {
+      englandOverlayApi = null;
+      resetAreaDim(m.zoomGroup);
+    }});
   }
 
   function showAwaitingOverlay(name, type) {
     var tabLabel = SPECIAL_COUNCIL_NAMES[name] || name + " " + (SECTION_TITLES[type] || "Council");
-    createMapOverlay([{
+    englandOverlayApi = createMapOverlay([{
       tabLabel: tabLabel,
       renderPanel: function (panel) {
         panel.append("div")
           .attr("class", "map-overlay__awaiting")
           .html("<p style=\"color:#888; text-align:center; padding:40px 20px; font-size:15px;\">Awaiting declaration</p>");
       }
-    }]);
+    }], { container: m.el, onClose: function () {
+      englandOverlayApi = null;
+      resetAreaDim(m.zoomGroup);
+    }});
   }
 
   // Initial render

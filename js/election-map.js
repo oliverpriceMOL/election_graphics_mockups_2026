@@ -23,6 +23,8 @@ function createMapScaffold(container, width, height, fitGeo, searchPlaceholder) 
     .attr("class", "map-search__input")
     .attr("type", "text")
     .attr("placeholder", searchPlaceholder || "Search...");
+  var searchBtn = searchWrap.append("button").attr("class", "map-search__btn").attr("type", "button").attr("aria-label", "Search");
+  searchBtn.html('<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>');
   var dropdown = searchWrap.append("div").attr("class", "map-search__dropdown");
 
   // Map wrapper
@@ -46,6 +48,7 @@ function createMapScaffold(container, width, height, fitGeo, searchPlaceholder) 
 
   var zoom = d3.zoom()
     .scaleExtent([1, 8])
+    .translateExtent([[-50, -50], [width + 50, height + 50]])
     .on("zoom", function (event) {
       zoomGroup.attr("transform", event.transform);
     });
@@ -78,10 +81,34 @@ function createMapScaffold(container, width, height, fitGeo, searchPlaceholder) 
  * Wire up search input: name matching + postcode detection with debounce.
  *   onNameSearch(query)    — called for non-postcode text
  *   onPostcode(postcode)   — called when a UK postcode is detected
+ *   onOutcode(outcode)     — called when a UK outcode (partial postcode) is detected
  */
-function setupMapSearch(searchInput, dropdown, searchWrap, onNameSearch, onPostcode) {
+function setupMapSearch(searchInput, dropdown, searchWrap, onNameSearch, onPostcode, onOutcode) {
   var debounceTimer = null;
   var postcodePattern = /^[A-Za-z]{1,2}\d[A-Za-z\d]?\s*\d[A-Za-z]{2}$/;
+  var outcodePattern = /^[A-Za-z]{1,2}\d[A-Za-z\d]?$/;
+
+  function triggerSearch() {
+    // If dropdown is visible with a result, click the first item
+    if (dropdown.style("display") === "block") {
+      var firstItem = dropdown.select(".map-search__item:not(.map-search__item--empty)");
+      if (!firstItem.empty()) {
+        firstItem.node().click();
+        return;
+      }
+    }
+    // Otherwise trigger a fresh search
+    var val = searchInput.property("value").trim();
+    clearTimeout(debounceTimer);
+    if (!val) { dropdown.style("display", "none"); return; }
+    if (postcodePattern.test(val)) {
+      onPostcode(val);
+    } else if (outcodePattern.test(val)) {
+      onOutcode(val);
+    } else {
+      onNameSearch(val);
+    }
+  }
 
   searchInput.on("input", function () {
     var val = this.value.trim();
@@ -89,16 +116,37 @@ function setupMapSearch(searchInput, dropdown, searchWrap, onNameSearch, onPostc
     if (!val) { dropdown.style("display", "none"); return; }
     if (postcodePattern.test(val)) {
       debounceTimer = setTimeout(function () { onPostcode(val); }, 400);
+    } else if (outcodePattern.test(val)) {
+      debounceTimer = setTimeout(function () { onOutcode(val); }, 400);
     } else {
       onNameSearch(val);
     }
   });
+
+  // Search button click
+  searchWrap.select(".map-search__btn").on("click", triggerSearch);
 
   document.addEventListener("click", function (e) {
     if (!searchWrap.node().contains(e.target)) {
       dropdown.style("display", "none");
     }
   });
+}
+
+/**
+ * Rank search matches: starts-with > word-boundary > substring, then alphabetical.
+ */
+function rankSearchMatches(searchIndex, query) {
+  var q = query.toLowerCase();
+  return searchIndex.filter(function (s) {
+    return s.label.toLowerCase().indexOf(q) >= 0;
+  }).sort(function (a, b) {
+    var al = a.label.toLowerCase(), bl = b.label.toLowerCase();
+    var aRank = al.indexOf(q) === 0 ? 0 : (al.indexOf(" " + q) >= 0 || al.indexOf("-" + q) >= 0) ? 1 : 2;
+    var bRank = bl.indexOf(q) === 0 ? 0 : (bl.indexOf(" " + q) >= 0 || bl.indexOf("-" + q) >= 0) ? 1 : 2;
+    if (aRank !== bRank) return aRank - bRank;
+    return al.localeCompare(bl);
+  }).slice(0, 8);
 }
 
 /**
@@ -123,25 +171,51 @@ function showMapSearchResults(dropdown, matches) {
 }
 
 /**
- * Create a tabbed overlay panel attached to .map-wrapper.
+ * Create a tabbed overlay panel below the map.
  *   items: [{tabLabel, renderPanel(panelEl), tabKey?}]
- *   Returns an API: { overlay, activateTab(idx), addOrReplaceTab(key, label, renderFn) }
+ *   options.container — D3 selection of the map section's root element (panel appended here after .map-wrapper)
+ *   options.onClose   — callback when overlay is dismissed
+ *   Returns an API: { overlay, activateTab(idx), addOrReplaceTab(key, label, renderFn), close() }
  */
-function createMapOverlay(items) {
-  d3.select(".map-overlay").remove();
+function createMapOverlay(items, options) {
+  options = options || {};
+  var container = options.container || d3.select(".map-wrapper").node().parentNode;
+  if (container.select) {
+    // D3 selection
+    container.select(".map-overlay").remove();
+  } else {
+    d3.select(container).select(".map-overlay").remove();
+    container = d3.select(container);
+  }
 
-  var overlay = d3.select(".map-wrapper").append("div")
+  var overlay = container.append("div")
     .attr("class", "map-overlay");
 
+  var escHandler = function (e) {
+    if (e.key === "Escape") close();
+  };
+
+  function close() {
+    overlay.remove();
+    document.removeEventListener("keydown", escHandler);
+    if (options.onClose) options.onClose();
+  }
+
+  // Close button – floated top-right, sticky so it stays visible on scroll
   overlay.append("button")
     .attr("class", "map-overlay__close")
     .text("\u2715")
-    .on("click", function () { overlay.remove(); });
+    .on("click", close);
+
+  // Header row: tabs
+  var header = overlay.append("div")
+    .attr("class", "map-overlay__header");
 
   var cardWrap = overlay.append("div")
     .attr("class", "map-overlay__card");
 
-  var tabBar = cardWrap.append("div").attr("class", "map-overlay__tabs");
+  var tabBar = header.append("div").attr("class", "map-overlay__tabs");
+
   var panels = [];
   var tabBtns = [];
   var tabKeys = [];
@@ -152,7 +226,6 @@ function createMapOverlay(items) {
     panels.forEach(function (p, pi) { p.style("display", pi === idx ? "block" : "none"); });
     requestAnimationFrame(function () {
       repositionBarLabels(panels[idx].node());
-      // Re-fit elected pills that may have been measured while hidden
       var pillWraps = panels[idx].node().querySelectorAll(".elected-pills");
       for (var i = 0; i < pillWraps.length; i++) {
         _fitElectedPills(d3.select(pillWraps[i]));
@@ -184,7 +257,6 @@ function createMapOverlay(items) {
   function addOrReplaceTab(key, label, renderFn) {
     var existing = tabKeys.indexOf(key);
     if (existing >= 0) {
-      // Remove old tab button + panel
       d3.select(tabBtns[existing]).remove();
       panels[existing].remove();
       tabBtns.splice(existing, 1);
@@ -206,13 +278,200 @@ function createMapOverlay(items) {
     panels[0].style("display", "block");
   }
 
-  var escHandler = function (e) {
-    if (e.key === "Escape") {
-      overlay.remove();
-      document.removeEventListener("keydown", escHandler);
-    }
-  };
   document.addEventListener("keydown", escHandler);
 
-  return { overlay: overlay, activateTab: activateTab, addOrReplaceTab: addOrReplaceTab };
+  // Scroll panel into view
+  requestAnimationFrame(function () {
+    overlay.node().scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+
+  return { overlay: overlay, activateTab: activateTab, addOrReplaceTab: addOrReplaceTab, close: close };
+}
+
+/**
+ * Build a collapsible map legend (key) inside the .map-wrapper.
+ *   wrapper:  D3 selection of .map-wrapper
+ *   parties:  [{name, colour}]  — party swatches to show
+ *   options:  { hideGain: bool }
+ */
+function buildMapLegend(wrapper, parties, options) {
+  options = options || {};
+  wrapper.select(".map-legend").remove();
+
+  var legend = wrapper.append("div").attr("class", "map-legend");
+
+  var btn = legend.append("button").attr("class", "legend-toggle")
+    .attr("aria-expanded", "false");
+  var btnSvg = btn.append("svg").attr("class", "legend-toggle-icon").attr("width", 14).attr("height", 14).attr("viewBox", "0 0 14 14");
+  btnSvg.append("circle").attr("cx", 7).attr("cy", 7).attr("r", 6).attr("fill", "none").attr("stroke", "currentColor").attr("stroke-width", 1.2);
+  btnSvg.append("circle").attr("cx", 7).attr("cy", 7).attr("r", 3.5).attr("fill", "currentColor");
+  btn.append("span").text("Key");
+
+  var body = legend.append("div").attr("class", "legend-body")
+    .style("display", "none");
+
+  // Header row inside body: icon + "Key" title + close button
+  var header = body.append("div").attr("class", "legend-header");
+  var headerLeft = header.append("span").attr("class", "legend-header-left");
+  var hSvg = headerLeft.append("svg").attr("class", "legend-toggle-icon").attr("width", 14).attr("height", 14).attr("viewBox", "0 0 14 14");
+  hSvg.append("circle").attr("cx", 7).attr("cy", 7).attr("r", 6).attr("fill", "none").attr("stroke", "currentColor").attr("stroke-width", 1.2);
+  hSvg.append("circle").attr("cx", 7).attr("cy", 7).attr("r", 3.5).attr("fill", "currentColor");
+  headerLeft.append("span").text("Key");
+  var closeBtn = header.append("button").attr("class", "legend-close");
+  closeBtn.append("span").text("Close ");
+  closeBtn.append("span").html("&#10005;");
+
+  // Party swatches
+  if (parties.length > 0) {
+    var partySection = body.append("div");
+    partySection.append("div").attr("class", "legend-title").text("Winning party");
+    parties.forEach(function (p) {
+      var item = partySection.append("div").attr("class", "legend-item");
+      item.append("div").attr("class", "legend-swatch")
+        .style("background", p.colour);
+      item.append("span").text(partyName(p.name) || p.name);
+    });
+  }
+
+  // Special items
+  var specialSection = body.append("div").attr("class", "legend-separator");
+  var aw = specialSection.append("div").attr("class", "legend-item");
+  aw.append("div").attr("class", "legend-swatch legend-swatch--crosshatch");
+  aw.append("span").text("Awaiting declaration");
+  if (!options.hideGain) {
+    var gn = specialSection.append("div").attr("class", "legend-item");
+    gn.append("div").attr("class", "legend-swatch legend-swatch--outline");
+    gn.append("span").text("Gain from another party");
+  }
+
+  // Toggle open
+  btn.on("click", function () {
+    body.style("display", "block");
+    btn.style("display", "none");
+    legend.attr("aria-expanded", "true");
+  });
+
+  // Close button
+  closeBtn.on("click", function () {
+    body.style("display", "none");
+    btn.style("display", "flex");
+    legend.attr("aria-expanded", "false");
+  });
+
+  return legend;
+}
+
+/**
+ * Dim all map areas except the selected path by lowering opacity.
+ *   zoomGroup:    D3 selection of the zoom <g>
+ *   selectedPath: the DOM element (path) to keep bright, or null to reset
+ */
+function dimOtherAreas(zoomGroup, selectedPath) {
+  zoomGroup.selectAll(".map-area").each(function () {
+    d3.select(this).style("opacity", this === selectedPath ? 1 : 0.3);
+  });
+}
+
+/**
+ * Reset all map area opacities to full.
+ */
+function resetAreaDim(zoomGroup) {
+  zoomGroup.selectAll(".map-area").style("opacity", null);
+}
+
+/**
+ * Zoom the map to fit a single GeoJSON feature.
+ *   svg:     D3 selection of the <svg>
+ *   zoom:    D3 zoom behavior
+ *   path:    D3 geoPath generator
+ *   feature: GeoJSON feature
+ *   opts:    { duration, onEnd }
+ *   Returns the transition (caller can chain .on("end") if needed).
+ */
+function zoomToFeature(svg, zoom, path, feature, opts) {
+  opts = opts || {};
+  var bounds = path.bounds(feature);
+  var dx = bounds[1][0] - bounds[0][0];
+  var dy = bounds[1][1] - bounds[0][1];
+  var x = (bounds[0][0] + bounds[1][0]) / 2;
+  var y = (bounds[0][1] + bounds[1][1]) / 2;
+
+  var vb = svg.attr("viewBox").split(" ");
+  var svgW = +vb[2];
+  var svgH = +vb[3];
+
+  // Adaptive padding (more padding for small features)
+  var size = Math.max(dx, dy);
+  var padding;
+  if (size < 20) padding = 0.5;
+  else if (size < 60) padding = 0.4;
+  else if (size < 150) padding = 0.3;
+  else padding = 0.2;
+
+  var scale = Math.min(
+    svgW / (dx * (1 + padding)),
+    svgH / (dy * (1 + padding))
+  );
+  scale = Math.min(scale, 8); // Respect max zoom
+
+  var translate = [svgW / 2 - scale * x, svgH / 2 - scale * y];
+  var transform = d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale);
+
+  var dur = opts.duration != null ? opts.duration : 800;
+  var t = svg.transition().duration(dur).call(zoom.transform, transform);
+
+  if (opts.onEnd) {
+    t.on("end", opts.onEnd);
+  }
+  return t;
+}
+
+/**
+ * Zoom the map to fit multiple GeoJSON features.
+ *   svg:      D3 selection of the <svg>
+ *   zoom:     D3 zoom behavior
+ *   path:     D3 geoPath generator
+ *   features: array of GeoJSON features
+ *   opts:     { duration, onEnd, padding }
+ */
+function zoomToFeatures(svg, zoom, path, features, opts) {
+  opts = opts || {};
+  if (!features || features.length === 0) return;
+
+  // Compute combined bounding box
+  var minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+  for (var i = 0; i < features.length; i++) {
+    var b = path.bounds(features[i]);
+    if (b[0][0] < minX) minX = b[0][0];
+    if (b[0][1] < minY) minY = b[0][1];
+    if (b[1][0] > maxX) maxX = b[1][0];
+    if (b[1][1] > maxY) maxY = b[1][1];
+  }
+
+  var dx = maxX - minX;
+  var dy = maxY - minY;
+  var x = (minX + maxX) / 2;
+  var y = (minY + maxY) / 2;
+
+  var vb = svg.attr("viewBox").split(" ");
+  var svgW = +vb[2];
+  var svgH = +vb[3];
+
+  var padding = opts.padding != null ? opts.padding : 0.15;
+  var scale = Math.min(
+    svgW / (dx * (1 + padding)),
+    svgH / (dy * (1 + padding))
+  );
+  scale = Math.max(1, Math.min(scale, 8));
+
+  var translate = [svgW / 2 - scale * x, svgH / 2 - scale * y];
+  var transform = d3.zoomIdentity.translate(translate[0], translate[1]).scale(scale);
+
+  var dur = opts.duration != null ? opts.duration : 800;
+  var t = svg.transition().duration(dur).call(zoom.transform, transform);
+
+  if (opts.onEnd) {
+    t.on("end", opts.onEnd);
+  }
+  return t;
 }

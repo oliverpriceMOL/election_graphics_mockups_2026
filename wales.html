@@ -23,6 +23,10 @@
   <div class="section-title" style="margin-top:0">Party totals</div>
   <div id="party-strip"></div>
 
+  <!-- Seat changes -->
+  <div class="section-title">Seat changes</div>
+  <div id="change-cols"></div>
+
   <!-- Map -->
   <div class="section-title">Map</div>
   <div id="wales-map"></div>
@@ -56,6 +60,8 @@
 <script src="js/welsh-scoreboard.js"></script>
 <script src="js/party-strip.js"></script>
 <script src="js/devolved-strip.js"></script>
+<script src="js/change-columns.js"></script>
+<script src="js/devolved-change-columns.js"></script>
 <script src="js/election-map.js"></script>
 <script src="js/wales-map.js"></script>
 <script>
@@ -81,10 +87,33 @@ Promise.all([
       toggleRow.appendChild(badge);
     }
 
+    // Seat changes
+    devolvedChangeColumns(document.getElementById("change-cols"), results, [], { nation: "wales" });
+
+    // Declared badge (inside change-cols toggle row)
+    var changeToggleRow = document.querySelector("#change-cols .party-strip-toggle-row");
+    if (changeToggleRow) {
+      var changeBadge = document.createElement("div");
+      var changeTotalConst = welshNominations.length || 16;
+      changeBadge.className = "scoreboard__declared" + (deduped.length >= changeTotalConst ? " scoreboard__declared--complete" : "");
+      changeBadge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + changeTotalConst + "</strong> constituencies declared";
+      changeToggleRow.appendChild(changeBadge);
+    }
+
     // Map
     walesMap(document.getElementById("wales-map"), results, constGeo, {
       nominations: welshNominations,
     });
+
+    // Declared badge (bottom-right of map)
+    var mapWrapper = document.querySelector("#wales-map .map-wrapper");
+    if (mapWrapper) {
+      var mapBadge = document.createElement("div");
+      var mapTotalConst = welshNominations.length || 16;
+      mapBadge.className = "scoreboard__declared" + (deduped.length >= mapTotalConst ? " scoreboard__declared--complete" : "");
+      mapBadge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + mapTotalConst + "</strong> constituencies declared";
+      mapWrapper.appendChild(mapBadge);
+    }
 
     // Parliament hemicycle — seats from elected candidates
     const seatParties = {};

@@ -37,27 +37,29 @@ function partyChangeColumns(container, results) {
 
   var currentMode = "councillors";
 
+  // Toggle row (created once — callers may append progress counters)
+  el.selectAll("*").remove();
+  var toggleRow = el.append("div").attr("class", "party-strip-toggle-row");
+  var toggleWrap = toggleRow.append("div").attr("class", "party-strip-toggle");
+  function makeBtn(label, value) {
+    toggleWrap.append("button")
+      .attr("class", "party-strip-toggle__btn" + (value === currentMode ? " party-strip-toggle__btn--active" : ""))
+      .text(label)
+      .on("click", function () {
+        if (currentMode === value) return;
+        currentMode = value;
+        toggleWrap.selectAll(".party-strip-toggle__btn").classed("party-strip-toggle__btn--active", false);
+        d3.select(this).classed("party-strip-toggle__btn--active", true);
+        render();
+      });
+  }
+  makeBtn("Councillors", "councillors");
+  makeBtn("Councils", "councils");
+
+  var chartContainer = el.append("div");
+
   function render() {
-    el.selectAll("*").remove();
-
-    // Toggle row
-    var toggleRow = el.append("div")
-      .attr("class", "party-strip-toggle")
-      .style("margin-bottom", "8px");
-    function makeBtn(label, value) {
-      toggleRow.append("button")
-        .attr("class", "party-strip-toggle__btn" + (value === currentMode ? " party-strip-toggle__btn--active" : ""))
-        .text(label)
-        .on("click", function () {
-          if (currentMode === value) return;
-          currentMode = value;
-          render();
-        });
-    }
-    makeBtn("Councillors", "councillors");
-    makeBtn("Councils", "councils");
-
-    var chartContainer = el.append("div");
+    chartContainer.selectAll("*").remove();
 
     var isCouncils = currentMode === "councils";
     var changeKey = isCouncils ? "councilChange" : "change";
@@ -69,22 +71,11 @@ function partyChangeColumns(container, results) {
       .filter(function (p) { return p.name !== "NOC"; })
       .sort(function (a, b) { return b[sortKey] - a[sortKey]; });
 
-    // NOC entry (appended after cull so it's never collapsed into Other)
+    // NOC entry (appended after grouping so it's never collapsed into Other)
     var nocEntry = partyTotals["NOC"];
 
-    var maxP = maxPartySlots(el.node());
-    if (sorted.length > maxP) {
-      var visible = sorted.slice(0, maxP - 1);
-      var rest = sorted.slice(maxP - 1);
-      var other = { name: "Other", seats: 0, change: 0, councils: 0, councilChange: 0 };
-      for (var z = 0; z < rest.length; z++) {
-        other.seats += rest[z].seats;
-        other.change += rest[z].change;
-        other.councils += rest[z].councils;
-        other.councilChange += rest[z].councilChange;
-      }
-      sorted = visible.concat(other);
-    }
+    // Group minor parties into Other
+    sorted = groupMinorParties(sorted, MINOR_PARTIES_ENGLAND);
 
     if (nocEntry && isCouncils) {
       sorted.push(nocEntry);
@@ -95,19 +86,9 @@ function partyChangeColumns(container, results) {
     });
 
     changeColumnsChart(chartContainer.node(), {
-      parties: parties,
-      tooltipHtml: function (d) {
-        var ch = d.change;
-        var arrow = ch > 0 ? "▲" : ch < 0 ? "▼" : "";
-        var chStr = ch > 0 ? arrow + ch : ch < 0 ? arrow + Math.abs(ch) : "No change";
-        var chColour = ch > 0 ? "#4caf50" : ch < 0 ? "#ef5350" : "#aaa";
-        return "<strong>" + partyName(d.name) + "</strong><br>" +
-          totalLabel + ": " + d.total + "<br>" +
-          "Change: <span style=\"color:" + chColour + "\">" + chStr + "</span>";
-      }
+      parties: parties
     });
   }
 
   render();
-  onResize(render);
 }

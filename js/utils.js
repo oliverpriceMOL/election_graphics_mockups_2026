@@ -135,9 +135,9 @@ function textColourForBg(hex) {
  * @returns {{text: string, colour: string}} Arrow text and colour
  */
 function formatChange(val) {
-  if (val > 0) return { text: "▲" + val, colour: "#2e7d32" };
-  if (val < 0) return { text: "▼" + Math.abs(val), colour: "#c62828" };
-  return { text: "—", colour: "#999" };
+  if (val > 0) return { text: "▲" + val, colour: "#007F67" };
+  if (val < 0) return { text: "▼" + Math.abs(val), colour: "#AD0025" };
+  return { text: "—", colour: "#595959" };
 }
 
 /**
@@ -148,9 +148,9 @@ function formatChange(val) {
  */
 function formatPercentageChange(val) {
   if (val == null) return null;
-  if (val > 0) return { text: "\u25B2" + formatPct(val), colour: "#2e7d32" };
-  if (val < 0) return { text: "\u25BC" + formatPct(Math.abs(val)), colour: "#c62828" };
-  return { text: "—", colour: "#999" };
+  if (val > 0) return { text: "\u25B2" + formatPct(val), colour: "#007F67" };
+  if (val < 0) return { text: "\u25BC" + formatPct(Math.abs(val)), colour: "#AD0025" };
+  return { text: "—", colour: "#595959" };
 }
 
 /**

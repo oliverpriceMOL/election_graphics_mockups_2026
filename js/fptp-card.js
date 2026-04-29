@@ -78,6 +78,33 @@ function fptpResultCard(container, result, options) {
       .text(chgText);
   }
 
+  // Collapse to top 6 if more candidates
+  var MAX_VISIBLE = 6;
+  var allBarRows = barsWrap.selectAll(".fptp-card__bar-row").nodes();
+  if (allBarRows.length > MAX_VISIBLE) {
+    for (var h = MAX_VISIBLE; h < allBarRows.length; h++) {
+      d3.select(allBarRows[h]).style("display", "none");
+    }
+    var expandBtn = card.append("button")
+      .attr("class", "map-overlay__expand-btn")
+      .text("Show all " + allBarRows.length + " candidates \u25BE");
+    expandBtn.on("click", function () {
+      var expanded = expandBtn.classed("map-overlay__expand-btn--expanded");
+      if (!expanded) {
+        for (var j = MAX_VISIBLE; j < allBarRows.length; j++) {
+          d3.select(allBarRows[j]).style("display", null);
+        }
+        expandBtn.text("Show fewer \u25B4").classed("map-overlay__expand-btn--expanded", true);
+      } else {
+        for (var j = MAX_VISIBLE; j < allBarRows.length; j++) {
+          d3.select(allBarRows[j]).style("display", "none");
+        }
+        expandBtn.text("Show all " + allBarRows.length + " candidates \u25BE").classed("map-overlay__expand-btn--expanded", false);
+      }
+      requestAnimationFrame(function () { repositionBarLabels(barsWrap.node()); });
+    });
+  }
+
   // Size name column to fit longest name, then position labels
   requestAnimationFrame(function () {
     // Measure natural width of each name, find the max (capped)

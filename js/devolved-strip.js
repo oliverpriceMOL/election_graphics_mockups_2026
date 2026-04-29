@@ -93,9 +93,11 @@ function devolvedPartyStrip(container, constituencyResults, regionalResults, opt
   partyStrip(container, {
     toggleLabels: [],
     getData: function () {
+      var minorNames = isScotland ? MINOR_PARTIES_SCOTLAND : MINOR_PARTIES_WALES;
       return {
         parties: sorted.map(function (p) { return { name: p.name, value: p.total, change: p.totalChange }; }),
-        showChange: isScotland
+        showChange: isScotland,
+        groupIntoOther: minorNames
       };
     }
   });
