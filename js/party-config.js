@@ -13,9 +13,9 @@ const PARTY = {
   SNP:    { name: "SNP",                 short: "SNP",     colour: "#ffff54" },
   Alba:   { name: "Alba Party",          short: "Alba",    colour: "#005EB8" },
   PC:     { name: "Plaid Cymru",         short: "PC",      colour: "#5BD65B" },
-  Gwlad:  { name: "Gwlad Gwlad",         short: "Gwlad",   colour: "#D4002A" },
-  Propel: { name: "Propel",              short: "Propel",  colour: "#00A86B" },
-  Abolish:{ name: "Abolish",             short: "Abolish", colour: "#6B2C91" },
+  Gwlad:  { name: "Gwlad Gwlad",         short: "Gwl",     colour: "#D4002A" },
+  Propel: { name: "Propel",              short: "Prop",    colour: "#00A86B" },
+  Abolish:{ name: "Abolish",             short: "Abol",    colour: "#6B2C91" },
   DUP:    { name: "DUP",                 short: "DUP",     colour: "#931100" },
   SF:     { name: "Sinn Féin",           short: "SF",      colour: "#1FCA90" },
   SDLP:   { name: "SDLP",               short: "SDLP",    colour: "#158336" },
@@ -31,14 +31,14 @@ const PARTY = {
 
   /* ── Minor parties (Scottish, Welsh, mayoral) ────────────────────── */
   UKIP:        { name: "UKIP",                       short: "UKIP",    colour: "#70147A" },
-  Aspire:      { name: "Aspire",                     short: "Aspire",  colour: "#00A99D" },
+  Aspire:      { name: "Aspire",                     short: "Asp",     colour: "#00A99D" },
   SSP:         { name: "Scottish Socialist Party",    short: "SSP",     colour: "#E53935" },
   TUSC:        { name: "TUSC",                       short: "TUSC",    colour: "#BF360C" },
   Animal:      { name: "Animal Welfare Party",       short: "AWP",     colour: "#C2185B" },
-  Reclaim:     { name: "Reclaim Party",              short: "Reclaim", colour: "#152856" },
-  "Comm Brit": { name: "Communist Party of Britain",  short: "CPB",     colour: "#8B0000" },
+  Reclaim:     { name: "Reclaim Party",              short: "Recl",    colour: "#152856" },
+  "Comm Brit": { name: "Communist Party of Britain",  short: "Comm",    colour: "#8B0000" },
   SLP:         { name: "Socialist Labour Party",     short: "SLP",     colour: "#B71C1C" },
-  Renew:       { name: "Renew",                      short: "Renew",   colour: "#582C83" },
+  Renew:       { name: "Renew",                      short: "Rnw",     colour: "#582C83" },
   WP:          { name: "Workers Party",              short: "WP",      colour: "#770000" },
   WEP:         { name: "Women's Equality Party",     short: "WEP",     colour: "#2E8B57" },
   FA:          { name: "Freedom Alliance",           short: "FA",      colour: "#B8860B" },
@@ -49,8 +49,8 @@ const PARTY = {
   RS:          { name: "Reform Scotland",            short: "RS",      colour: "#5C6BC0" },
   "Soc Dem":   { name: "Social Democratic Party",    short: "SDP",     colour: "#843B62" },
   ND:          { name: "New Democrats",              short: "ND",      colour: "#607D8B" },
-  Unity:       { name: "Unity",                      short: "Unity",   colour: "#795548" },
-  Vanguard:    { name: "Vanguard",                   short: "Vanguard",colour: "#455A64" },
+  Unity:       { name: "Unity",                      short: "Uni",     colour: "#795548" },
+  Vanguard:    { name: "Vanguard",                   short: "Van",     colour: "#455A64" },
 };
 
 // Parties always grouped into "Other" (per nation)
