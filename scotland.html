@@ -96,8 +96,8 @@ Promise.all([
   const toggleRow = document.querySelector(".party-strip-toggle-row");
   if (toggleRow) {
     const badge = document.createElement("div");
-    var totalConst = constNominations.length || 73;
-    var totalReg = regNominations.length || 8;
+    var totalConst = 73;
+    var totalReg = 8;
     badge.className = "scoreboard__declared" + (constDeduped.length >= totalConst && regDeduped.length >= totalReg ? " scoreboard__declared--complete" : "");
     badge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>" + totalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + totalReg + "</strong> regions declared";
     toggleRow.appendChild(badge);
@@ -110,8 +110,8 @@ Promise.all([
   var changeToggleRow = document.querySelector("#change-cols .party-strip-toggle-row");
   if (changeToggleRow) {
     var changeBadge = document.createElement("div");
-    var changeTotalConst = constNominations.length || 73;
-    var changeTotalReg = regNominations.length || 8;
+    var changeTotalConst = 73;
+    var changeTotalReg = 8;
     changeBadge.className = "scoreboard__declared" + (constDeduped.length >= changeTotalConst && regDeduped.length >= changeTotalReg ? " scoreboard__declared--complete" : "");
     changeBadge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>" + changeTotalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + changeTotalReg + "</strong> regions declared";
     changeToggleRow.appendChild(changeBadge);
@@ -127,11 +127,15 @@ Promise.all([
   var mapWrapper = document.querySelector("#scotland-map .map-wrapper");
   if (mapWrapper) {
     var mapBadge = document.createElement("div");
-    var mapTotalConst = constNominations.length || 73;
-    var mapTotalReg = regNominations.length || 8;
+    var mapTotalConst = 73;
+    var mapTotalReg = 8;
     mapBadge.className = "scoreboard__declared" + (constDeduped.length >= mapTotalConst && regDeduped.length >= mapTotalReg ? " scoreboard__declared--complete" : "");
-    mapBadge.innerHTML = "<strong>" + constDeduped.length + "</strong> of <strong>" + mapTotalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + mapTotalReg + "</strong> regions declared";
     mapWrapper.appendChild(mapBadge);
+    registerMapDeclaredBadge(
+      mapWrapper,
+      mapBadge,
+      "<strong>" + constDeduped.length + "</strong> of <strong>" + mapTotalConst + "</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>" + mapTotalReg + "</strong> regions declared"
+    );
   }
 
   // Parliament hemicycle — build seat array from both result types

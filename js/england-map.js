@@ -470,6 +470,12 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
     Tooltip.show("map-tooltip", "<strong>" + name + "</strong><br><span style=\"color:#888\">Awaiting declaration</span>", event.clientX, event.clientY, mapBounds);
   }
 
+  function areaStrokeColour(result, hasNomination) {
+    if (result && result.gainOrHold === "gain") return "#000";
+    if (!result && !hasNomination) return "#d1d1d1";
+    return "#fff";
+  }
+
   // ── Render view ──
   function renderView(mode) {
     m.zoomGroup.selectAll("*").remove();
@@ -482,9 +488,9 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         .data(englandLad.features)
         .join("path")
         .attr("d", m.path)
-        .attr("fill", "#e8e8e8")
-        .attr("stroke", "#e8e8e8")
-        .attr("stroke-width", 0.5)
+        .attr("fill", "#fff")
+        .attr("stroke", "none")
+        .attr("stroke-width", 0)
         .attr("class", "map-area");
 
       // County boundaries on top
@@ -500,8 +506,9 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
           return countyNominations[d.properties.CTY24NM] ? "url(#crosshatch)" : "#fff";
         })
         .attr("stroke", function (d) {
+          var nm = d.properties.CTY24NM;
           var r = countyResults[d.properties.CTY24NM];
-          return (r && r.gainOrHold === "gain") ? "#000" : "#fff";
+          return areaStrokeColour(r, countyNominations[nm]);
         })
         .attr("stroke-width", function (d) {
           var r = countyResults[d.properties.CTY24NM];
@@ -568,7 +575,8 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
         .attr("stroke", function (d) {
           var name = d.properties.LAD25NM;
           var r = mode === "district" ? ladResults[name] : mode === "mayoral" ? mayoralLadResults[name] : null;
-          return (r && r.gainOrHold === "gain") ? "#000" : "#fff";
+          var hasNom = mode === "district" ? ladNominations[name] : mode === "mayoral" ? mayoralLadNominations[name] : null;
+          return areaStrokeColour(r, hasNom);
         })
         .attr("stroke-width", function (d) {
           var name = d.properties.LAD25NM;

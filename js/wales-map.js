@@ -297,7 +297,7 @@ function walesMap(container, results, constGeo, options) {
 
   function updateWalesLegend() {
     var parties = getWalesVisibleParties();
-    buildMapLegend(m.wrapper, parties, { hideGain: true });
+    buildMapLegend(m.wrapper, parties, { hideGain: true, hideNoElection: true });
   }
   updateWalesLegend();
 

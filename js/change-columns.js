@@ -18,8 +18,8 @@ function changeColumnsChart(containerEl, options) {
 
   if (seatsOnly) return _renderSeatsOnly(el, parties);
 
-  // SVG dimensions — extra top/bottom margin for two-line labels
-  var margin = { top: 38, right: 12, bottom: 32, left: 40 };
+  // SVG dimensions — extra bottom margin for party labels plus totals row
+  var margin = { top: 38, right: 12, bottom: 46, left: 40 };
   var width = 600;
   var height = 280;
   var innerW = width - margin.left - margin.right;
@@ -104,32 +104,26 @@ function changeColumnsChart(containerEl, options) {
       .style("pointer-events", "none")
       .text(function (d) { return valLabel(d.change); });
 
-  // ── Total labels in brackets — above positive bars, below negative bars ──
+  // ── Total labels in brackets — fixed row under party labels ──
   g.selectAll(".col-total")
     .data(parties).join("text")
       .attr("class", "col-total")
       .attr("x", function (d) { return x(d.name) + x.bandwidth() / 2; })
-      .attr("y", function (d) {
-        if (d.change >= 0) return yScale(d.change) - 19;
-        var below = yScale(d.change) + 28;
-        return below > innerH - 4 ? yScale(d.change) - 18 : below;
-      })
-      .attr("text-anchor", "middle").attr("font-size", 11).attr("font-weight", 500)
+      .attr("y", innerH + 28)
+      .attr("text-anchor", "middle").attr("font-size", 12).attr("font-weight", 500)
       .attr("font-family", "'Inter', sans-serif")
-      .attr("fill", function (d) {
-        if (d.change >= 0) return "#666";
-        var below = yScale(d.change) + 28;
-        return below > innerH - 4 ? textColourForBg(partyColour(d.name)) : "#666";
-      })
+      .attr("fill", "#666")
       .style("pointer-events", "none")
-      .text(function (d) { return d.total != null ? "(" + d.total + ")" : ""; });
+      .text(function (d) {
+        return d.total != null ? "(" + Number(d.total).toLocaleString("en-GB") + ")" : "";
+      });
 
   // Party labels at bottom
   g.selectAll(".col-label")
     .data(parties).join("text")
       .attr("class", "col-label")
       .attr("x", function (d) { return x(d.name) + x.bandwidth() / 2; })
-      .attr("y", innerH + 16)
+      .attr("y", innerH + 14)
       .attr("text-anchor", "middle").attr("font-size", 12).attr("font-weight", 600)
       .attr("font-family", "'Inter', sans-serif").attr("fill", "#444")
       .style("pointer-events", "none")

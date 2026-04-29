@@ -288,15 +288,61 @@ function createMapOverlay(items, options) {
   return { overlay: overlay, activateTab: activateTab, addOrReplaceTab: addOrReplaceTab, close: close };
 }
 
+function layoutMapDeclaredBadge(wrapperEl) {
+  if (!wrapperEl) return;
+
+  var badge = wrapperEl.querySelector(".scoreboard__declared");
+  if (!badge || !badge.dataset.singleLineHtml) return;
+
+  var textEl = badge.querySelector(".scoreboard__declared-text");
+  if (!textEl) return;
+
+  badge.classList.remove("scoreboard__declared--multiline");
+  textEl.innerHTML = badge.dataset.singleLineHtml;
+
+  var legend = wrapperEl.querySelector(".map-legend");
+  if (!legend || badge.dataset.multiLineHtml === badge.dataset.singleLineHtml) return;
+
+  var badgeRect = badge.getBoundingClientRect();
+  var legendRect = legend.getBoundingClientRect();
+  var overlaps = badgeRect.left < legendRect.right + 8 &&
+    badgeRect.right > legendRect.left - 8 &&
+    badgeRect.top < legendRect.bottom + 8 &&
+    badgeRect.bottom > legendRect.top - 8;
+
+  if (overlaps) {
+    badge.classList.add("scoreboard__declared--multiline");
+    textEl.innerHTML = badge.dataset.multiLineHtml;
+  }
+}
+
+function registerMapDeclaredBadge(wrapperEl, badge, html) {
+  if (!wrapperEl || !badge) return;
+
+  badge.dataset.singleLineHtml = html;
+  badge.dataset.multiLineHtml = html.indexOf(", ") !== -1 ? html.replace(", ", ",<br>") : html;
+  badge.innerHTML = '<span class="scoreboard__declared-text">' + html + '</span>';
+
+  if (!wrapperEl.__declaredBadgeRelayout) {
+    wrapperEl.__declaredBadgeRelayout = function () {
+      layoutMapDeclaredBadge(wrapperEl);
+    };
+    window.addEventListener("resize", wrapperEl.__declaredBadgeRelayout);
+  }
+
+  requestAnimationFrame(wrapperEl.__declaredBadgeRelayout);
+}
+
 /**
  * Build a collapsible map legend (key) inside the .map-wrapper.
  *   wrapper:  D3 selection of .map-wrapper
  *   parties:  [{name, colour}]  — party swatches to show
- *   options:  { hideGain: bool }
+ *   options:  { hideGain: bool, hideNoElection: bool }
  */
 function buildMapLegend(wrapper, parties, options) {
   options = options || {};
   wrapper.select(".map-legend").remove();
+  var wrapperNode = wrapper.node ? wrapper.node() : null;
 
   var legend = wrapper.append("div").attr("class", "map-legend");
 
@@ -335,6 +381,11 @@ function buildMapLegend(wrapper, parties, options) {
 
   // Special items
   var specialSection = body.append("div").attr("class", "legend-separator");
+  if (!options.hideNoElection) {
+    var ne = specialSection.append("div").attr("class", "legend-item");
+    ne.append("div").attr("class", "legend-swatch legend-swatch--no-election");
+    ne.append("span").text("No election");
+  }
   var aw = specialSection.append("div").attr("class", "legend-item");
   aw.append("div").attr("class", "legend-swatch legend-swatch--crosshatch");
   aw.append("span").text("Awaiting declaration");
@@ -349,6 +400,7 @@ function buildMapLegend(wrapper, parties, options) {
     body.style("display", "block");
     btn.style("display", "none");
     legend.attr("aria-expanded", "true");
+    if (wrapperNode) requestAnimationFrame(function () { layoutMapDeclaredBadge(wrapperNode); });
   });
 
   // Close button
@@ -356,7 +408,10 @@ function buildMapLegend(wrapper, parties, options) {
     body.style("display", "none");
     btn.style("display", "flex");
     legend.attr("aria-expanded", "false");
+    if (wrapperNode) requestAnimationFrame(function () { layoutMapDeclaredBadge(wrapperNode); });
   });
+
+  if (wrapperNode) requestAnimationFrame(function () { layoutMapDeclaredBadge(wrapperNode); });
 
   return legend;
 }

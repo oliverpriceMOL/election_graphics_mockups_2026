@@ -637,7 +637,7 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
 
   function updateScotlandLegend(mode) {
     var parties = getScotlandVisibleParties(mode);
-    buildMapLegend(m.wrapper, parties);
+    buildMapLegend(m.wrapper, parties, { hideNoElection: true });
   }
 
   // ── Feature lookup for zoom ──

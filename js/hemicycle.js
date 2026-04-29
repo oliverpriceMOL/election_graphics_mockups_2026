@@ -204,6 +204,14 @@ function hemicycle(container, parties, options = {}) {
     .attr("font-family", "'Inter', sans-serif")
     .text(`${totalSeats} seats`);
 
+  function labelFillForParty(partyAbbr) {
+    const hex = partyColour(partyAbbr);
+    const col = d3.color(hex);
+    if (!col) return "#222";
+    const luminance = 0.299 * col.r + 0.587 * col.g + 0.114 * col.b;
+    return luminance > 160 ? "#222" : hex;
+  }
+
   // ── Hover / tap interactivity ──
   // Build invisible convex-hull hit-areas per party so hovering the
   // combined zone (including gaps between circles) triggers highlight.
@@ -272,7 +280,7 @@ function hemicycle(container, parties, options = {}) {
 
     majText
       .text(partyShortName(partyAbbr))
-      .attr("fill", partyColour(partyAbbr))
+      .attr("fill", labelFillForParty(partyAbbr))
       .attr("font-weight", "bold");
 
     seatsText

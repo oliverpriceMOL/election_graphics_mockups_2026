@@ -118,8 +118,12 @@ Promise.all([
     var mapBadge = document.createElement("div");
     var mapTotalCouncils = localNominations.length || 136;
     mapBadge.className = "scoreboard__declared" + (deduped.length >= mapTotalCouncils ? " scoreboard__declared--complete" : "");
-    mapBadge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + mapTotalCouncils + "</strong> councils declared";
     mapWrapper.appendChild(mapBadge);
+    registerMapDeclaredBadge(
+      mapWrapper,
+      mapBadge,
+      "<strong>" + deduped.length + "</strong> of <strong>" + mapTotalCouncils + "</strong> councils declared"
+    );
   }
 
   // ── Party scoreboard ──

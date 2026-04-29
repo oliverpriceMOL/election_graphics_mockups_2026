@@ -111,8 +111,12 @@ Promise.all([
       var mapBadge = document.createElement("div");
       var mapTotalConst = welshNominations.length || 16;
       mapBadge.className = "scoreboard__declared" + (deduped.length >= mapTotalConst ? " scoreboard__declared--complete" : "");
-      mapBadge.innerHTML = "<strong>" + deduped.length + "</strong> of <strong>" + mapTotalConst + "</strong> constituencies declared";
       mapWrapper.appendChild(mapBadge);
+      registerMapDeclaredBadge(
+        mapWrapper,
+        mapBadge,
+        "<strong>" + deduped.length + "</strong> of <strong>" + mapTotalConst + "</strong> constituencies declared"
+      );
     }
 
     // Parliament hemicycle — seats from elected candidates

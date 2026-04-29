@@ -185,7 +185,7 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
   var avgTurnout = turnoutCount ? (turnoutSum / turnoutCount) : 0;
 
   var turnoutData = (totalVotes || avgTurnout) ? { turnout: avgTurnout, totalVotes: totalVotes, electorate: totalElectorate } : null;
-  var declaredStr = "<strong>" + constDeduped.length + "</strong> of 73 constituencies, <strong>" + regDeduped.length + "</strong> of 8 regions declared";
+  var declaredStr = "<strong>" + constDeduped.length + "</strong> of <strong>73</strong> constituencies, <strong>" + regDeduped.length + "</strong> of <strong>8</strong> regions declared";
   var allDeclaredFlag = constDeduped.length >= 73 && regDeduped.length >= 8;
 
   // Seats columns

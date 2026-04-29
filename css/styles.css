@@ -812,6 +812,7 @@ body {
   box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 .map-wrapper {
+  --map-corner-inset: 14px;
   position: relative;
   width: 100%;
   height: 500px;
@@ -879,21 +880,33 @@ body {
 /* -- Map declared badge (bottom-right of map) -- */
 .map-wrapper .scoreboard__declared {
   position: absolute;
-  bottom: 14px;
-  right: 14px;
+  bottom: var(--map-corner-inset);
+  right: var(--map-corner-inset);
   z-index: 10;
   background: rgba(255,255,255,0.94);
   backdrop-filter: blur(6px);
   box-shadow: 0 1px 6px rgba(0,0,0,0.12);
   border-radius: 10px;
   padding: 6px 12px;
+  max-width: calc(100% - var(--map-corner-inset) - var(--map-corner-inset));
+}
+.map-wrapper .scoreboard__declared .scoreboard__declared-text {
+  display: block;
+}
+.map-wrapper .scoreboard__declared--multiline {
+  align-items: flex-start;
+  line-height: 1.25;
+}
+.map-wrapper .scoreboard__declared--multiline,
+.map-wrapper .scoreboard__declared--multiline .scoreboard__declared-text {
+  white-space: normal;
 }
 
 /* -- Map legend (collapsible key) -- */
 .map-legend {
   position: absolute;
-  bottom: 14px;
-  left: 14px;
+  bottom: var(--map-corner-inset);
+  left: var(--map-corner-inset);
   background: rgba(255,255,255,0.94);
   backdrop-filter: blur(6px);
   border-radius: 10px;
@@ -980,6 +993,10 @@ body {
   height: 14px;
   border-radius: 3px;
   flex-shrink: 0;
+}
+.legend-swatch--no-election {
+  background: #fff;
+  border: 1px solid #d1d1d1;
 }
 .legend-swatch--outline {
   background: transparent;
@@ -1214,7 +1231,7 @@ body {
   }
   .card-grid--2 { grid-template-columns: 1fr; }
   .card-grid--3 { grid-template-columns: 1fr; }
-  .map-wrapper { height: 400px; }
+  .map-wrapper { height: 400px; --map-corner-inset: 10px; }
 }
 
 /* ====================================================
@@ -1372,11 +1389,6 @@ body {
     max-height: 200px;
   }
 
-  /* Map legend */
-  .map-legend {
-    bottom: 10px;
-    left: 10px;
-  }
   .legend-toggle {
     padding: 6px 10px;
     font-size: 11px;
@@ -1391,6 +1403,7 @@ body {
   /* Map overlay */
   .map-overlay {
     padding: 0 14px 14px;
+    padding-top: 10px;
     max-height: 400px;
   }
   .map-overlay__area-name {
