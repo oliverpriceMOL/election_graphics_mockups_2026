@@ -22,45 +22,85 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
   var constByName = dedup(constResults);
   var regByName = dedup(regResults);
 
-  // Map constituency GeoJSON name → result
-  var constMap = {};
+  // Build ONS code → GeoJSON name reverse indices
+  var constCodeToName = {};
   for (var i = 0; i < constGeo.features.length; i++) {
-    var feat = constGeo.features[i];
-    var nm = feat.properties.SPC_NM;
-    if (constByName[nm]) constMap[nm] = constByName[nm];
+    var p = constGeo.features[i].properties;
+    constCodeToName[p.SPC_CD] = p.SPC_NM;
   }
-
-  // Map region GeoJSON name → result
-  var regMap = {};
+  var regCodeToName = {};
   for (var i = 0; i < regGeo.features.length; i++) {
-    var feat = regGeo.features[i];
-    var nm = feat.properties.SPR_NM;
-    if (regByName[nm]) regMap[nm] = regByName[nm];
+    var p = regGeo.features[i].properties;
+    regCodeToName[p.SPR_CD] = p.SPR_NM;
   }
 
-  // Build nomination lookups (for distinguishing "awaiting" from "no election")
+  // Resolve constituency result to GeoJSON name via PA_ONS_LOOKUP, fallback to exact name
+  function resolveConst(item) {
+    if (typeof PA_ONS_LOOKUP !== "undefined" && item.number != null && PA_ONS_LOOKUP.scottishConstituencies[item.number]) {
+      var onsCode = PA_ONS_LOOKUP.scottishConstituencies[item.number];
+      if (constCodeToName[onsCode]) return constCodeToName[onsCode];
+    }
+    // Exact name fallback
+    for (var i = 0; i < constGeo.features.length; i++) {
+      if (constGeo.features[i].properties.SPC_NM === item.name) {
+        console.warn("Map: fuzzy fallback for Scottish const", item.name);
+        return item.name;
+      }
+    }
+    return null;
+  }
+  function resolveReg(item) {
+    if (typeof PA_ONS_LOOKUP !== "undefined" && item.number != null && PA_ONS_LOOKUP.scottishRegions[item.number]) {
+      var onsCode = PA_ONS_LOOKUP.scottishRegions[item.number];
+      if (regCodeToName[onsCode]) return regCodeToName[onsCode];
+    }
+    // Exact name fallback
+    for (var i = 0; i < regGeo.features.length; i++) {
+      if (regGeo.features[i].properties.SPR_NM === item.name) {
+        console.warn("Map: fuzzy fallback for Scottish region", item.name);
+        return item.name;
+      }
+    }
+    return null;
+  }
+
+  // Map constituency GeoJSON name → result (via ID lookup)
+  var constMap = {};
+  for (var key in constByName) {
+    var geoName = resolveConst(constByName[key]);
+    if (geoName) constMap[geoName] = constByName[key];
+  }
+
+  // Map region GeoJSON name → result (via ID lookup)
+  var regMap = {};
+  for (var key in regByName) {
+    var geoName = resolveReg(regByName[key]);
+    if (geoName) regMap[geoName] = regByName[key];
+  }
+
+  // Build nomination lookups via ID, fallback to fuzzy name
   var constNomSet = {};  // geoName → true
   var regNomSet = {};
   var constNoms = options.constNominations || [];
   var regNoms = options.regNominations || [];
-  function normName2(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
   for (var ni = 0; ni < constNoms.length; ni++) {
-    var cnNorm = normName2(constNoms[ni].name);
-    for (var fi = 0; fi < constGeo.features.length; fi++) {
-      if (normName2(constGeo.features[fi].properties.SPC_NM) === cnNorm) {
-        constNomSet[constGeo.features[fi].properties.SPC_NM] = true;
-        break;
-      }
-    }
+    var gn = resolveConst(constNoms[ni]);
+    if (gn) constNomSet[gn] = true;
   }
   for (var ni2 = 0; ni2 < regNoms.length; ni2++) {
-    var rnNorm = normName2(regNoms[ni2].name);
-    for (var fi2 = 0; fi2 < regGeo.features.length; fi2++) {
-      if (normName2(regGeo.features[fi2].properties.SPR_NM) === rnNorm) {
-        regNomSet[regGeo.features[fi2].properties.SPR_NM] = true;
-        break;
-      }
-    }
+    var gn2 = resolveReg(regNoms[ni2]);
+    if (gn2) regNomSet[gn2] = true;
+  }
+
+  // All GeoJSON constituencies/regions are contested — ensure they're in nom sets
+  // even if test nomination data is incomplete
+  for (var gi = 0; gi < constGeo.features.length; gi++) {
+    var geoNm = constGeo.features[gi].properties.SPC_NM;
+    if (!constNomSet[geoNm]) constNomSet[geoNm] = true;
+  }
+  for (var gi2 = 0; gi2 < regGeo.features.length; gi2++) {
+    var geoNm2 = regGeo.features[gi2].properties.SPR_NM;
+    if (!regNomSet[geoNm2]) regNomSet[geoNm2] = true;
   }
 
   // Build constituency → region lookup
@@ -211,6 +251,14 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
     return elections;
   }
 
+  function resolvePostcodeElections(cName) {
+    var elections = findAllElections(cName);
+    if (elections.length === 0 && constNomSet[cName]) {
+      elections = [{ result: { name: cName, _awaiting: true }, type: "constituency" }];
+    }
+    return elections;
+  }
+
   // ── Search ──
   setupMapSearch(m.searchInput, m.dropdown, m.searchWrap,
     function onNameSearch(query) {
@@ -236,42 +284,47 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
       m.dropdown.style("display", "block")
         .html('<div class="map-search__item map-search__item--empty">Looking up postcode...</div>');
 
+      // Try Scotland-specific endpoint first (returns constituency name directly)
       fetch("https://api.postcodes.io/scotland/postcodes/" + encodeURIComponent(clean))
         .then(function (res) { return res.json(); })
         .then(function (data) {
-          if (data.status !== 200 || !data.result) {
-            return fetch("https://api.postcodes.io/postcodes/" + encodeURIComponent(clean))
-              .then(function (r) { return r.json(); });
-          }
-          return data;
-        })
-        .then(function (data) {
-          if (data.status !== 200 || !data.result) {
-            m.dropdown.html('<div class="map-search__item map-search__item--empty">Postcode not found</div>');
-            return;
-          }
-          var pc = data.result;
-          var constName = pc.scottish_parliamentary_constituency || pc.parliamentary_constituency || "";
-          var elections = [];
-          if (constName) {
-            var normQ = normName(constName);
-            var bestMatch = null;
-            for (var nm in constMap) {
-              var normN = normName(nm);
-              if (normN === normQ || normN.indexOf(normQ) >= 0 || normQ.indexOf(normN) >= 0) {
-                bestMatch = nm;
-                break;
-              }
+          if (data.status === 200 && data.result && data.result.scottish_parliamentary_constituency) {
+            var constName = data.result.scottish_parliamentary_constituency;
+            var elections = resolvePostcodeElections(constName);
+            if (elections.length > 0) {
+              m.searchInput.property("value", elections[0].result.name);
+              m.dropdown.style("display", "none");
+              showScotlandOverlay(elections);
+              return;
             }
-            if (bestMatch) elections = findAllElections(bestMatch);
           }
-          if (elections.length > 0) {
-            m.searchInput.property("value", elections[0].result.name);
-            m.dropdown.style("display", "none");
-            showScotlandOverlay(elections);
-          } else {
-            m.dropdown.html('<div class="map-search__item map-search__item--empty">No elections found for ' + (constName || postcode) + '</div>');
-          }
+          // Fall back to general endpoint for geometric lookup
+          return fetch("https://api.postcodes.io/postcodes/" + encodeURIComponent(clean))
+            .then(function (r) { return r.json(); })
+            .then(function (genData) {
+              if (genData.status !== 200 || !genData.result) {
+                m.dropdown.html('<div class="map-search__item map-search__item--empty">Postcode not found</div>');
+                return;
+              }
+              var pc = genData.result;
+              var elections = [];
+              if (pc.longitude && pc.latitude) {
+                var pt = [pc.longitude, pc.latitude];
+                for (var i = 0; i < constGeo.features.length; i++) {
+                  if (d3.geoContains(constGeo.features[i], pt)) {
+                    elections = resolvePostcodeElections(constGeo.features[i].properties.SPC_NM);
+                    break;
+                  }
+                }
+              }
+              if (elections.length > 0) {
+                m.searchInput.property("value", elections[0].result.name);
+                m.dropdown.style("display", "none");
+                showScotlandOverlay(elections);
+              } else {
+                m.dropdown.html('<div class="map-search__item map-search__item--empty">No elections found for ' + (pc.scottish_parliamentary_constituency || postcode) + '</div>');
+              }
+            });
         })
         .catch(function () {
           m.dropdown.html('<div class="map-search__item map-search__item--empty">Postcode lookup failed</div>');
@@ -560,33 +613,6 @@ function scotlandMap(container, constResults, regResults, constGeo, regGeo, opti
       }
 
       requestAnimationFrame(function () { repositionBarLabels(barsWrap.node()); });
-    }
-
-    // ── Hemicycle ──
-    var hemiParties = [];
-    for (var i = 0; i < tally.length; i++) {
-      var t = tally[i];
-      // Constituency seats (solid)
-      if (t.constSeats > 0) {
-        hemiParties.push({ name: t.abbr, seats: t.constSeats, striped: false });
-      }
-      // Additional seats (striped)
-      if (t.listSeats > 0) {
-        hemiParties.push({ name: t.abbr, seats: t.listSeats, striped: true });
-      }
-    }
-    var totalMSPs = tally.reduce(function (s, t) { return s + t.total; }, 0);
-    if (totalMSPs > 0) {
-      var hemiWrap = card.append("div")
-        .attr("class", "region-overlay__hemicycle")
-        .style("max-width", "340px")
-        .style("margin", "0 auto 12px");
-      hemicycle(hemiWrap.node(), hemiParties, {
-        width: 340,
-        showMajorityLine: false,
-        showLabels: true,
-        labelMinSeats: 1
-      });
     }
 
     // ── Turnout bar ──

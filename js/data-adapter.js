@@ -64,6 +64,7 @@ function normalizeLocalResults(raw) {
       sittingParty:  council["@sittingParty"],
       revision:      _tryNum(wrapper["@revision"]),
       fileType:      key === "LocalElectionResult" ? "result" : "rush",
+      declarationTime: wrapper["@declarationTime"],
       election: {
         date: election["@date"],
         paId: election["@paId"]

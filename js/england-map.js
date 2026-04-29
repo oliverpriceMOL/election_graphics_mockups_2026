@@ -41,10 +41,52 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
   var byName = {};
   for (var i = 0; i < deduped.length; i++) byName[deduped[i].name] = deduped[i];
 
-  // Build lookup
+  // Build ONS code → GeoJSON feature name reverse indices
+  var ladCodeToName = {};
+  for (var i = 0; i < englandLad.features.length; i++) {
+    var p = englandLad.features[i].properties;
+    ladCodeToName[p.LAD25CD] = p.LAD25NM;
+  }
+  var countyCodeToName = {};
+  for (var i = 0; i < countyGeo.features.length; i++) {
+    var p = countyGeo.features[i].properties;
+    countyCodeToName[p.CTY24CD] = p.CTY24NM;
+  }
+
+  // Fuzzy fallback lookup (kept for unmatched entries)
   var ladNames = englandLad.features.map(function (f) { return f.properties.LAD25NM; });
   var countyNames = countyGeo.features.map(function (f) { return f.properties.CTY24NM; });
   var lookup = buildCouncilLookup(ladNames, countyNames);
+
+  // Resolve a local result to { geoName, layer } via PA_ONS_LOOKUP, fallback to fuzzy
+  function resolveLocal(result) {
+    if (typeof PA_ONS_LOOKUP !== "undefined" && result.paId && PA_ONS_LOOKUP.localCouncils[result.paId]) {
+      var onsCode = PA_ONS_LOOKUP.localCouncils[result.paId];
+      if (ladCodeToName[onsCode]) return { geoName: ladCodeToName[onsCode], layer: "lad" };
+      if (countyCodeToName[onsCode]) return { geoName: countyCodeToName[onsCode], layer: "county" };
+    }
+    // Fuzzy fallback
+    var match = lookup.resolve(result);
+    if (match) console.warn("Map: fuzzy fallback for", result.name, "(paId " + result.paId + ")");
+    return match;
+  }
+
+  // Resolve a mayoral/nomination by number via PA_ONS_LOOKUP, fallback to fuzzy
+  function resolveMayoral(item) {
+    if (typeof PA_ONS_LOOKUP !== "undefined" && item.number != null && PA_ONS_LOOKUP.mayoralAreas[item.number]) {
+      var onsCode = PA_ONS_LOOKUP.mayoralAreas[item.number];
+      if (ladCodeToName[onsCode]) return ladCodeToName[onsCode];
+    }
+    // Fuzzy name fallback
+    var norm = normaliseName(item.name);
+    for (var i = 0; i < englandLad.features.length; i++) {
+      if (normaliseName(englandLad.features[i].properties.LAD25NM) === norm) {
+        console.warn("Map: fuzzy fallback for mayoral", item.name);
+        return englandLad.features[i].properties.LAD25NM;
+      }
+    }
+    return null;
+  }
 
   // Map result → geo feature name, split by layer
   var ladResults = {};
@@ -52,7 +94,7 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
   var unmatched = [];
 
   for (var i = 0; i < deduped.length; i++) {
-    var match = lookup.resolve(deduped[i]);
+    var match = resolveLocal(deduped[i]);
     if (match) {
       if (match.layer === "county") {
         countyResults[match.geoName] = deduped[i];
@@ -78,18 +120,13 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
       mayoralByName[mr.name] = mr;
     }
   }
-  // Map mayoral results to LAD features by name
+  // Map mayoral results to LAD features via ID lookup
   var mayoralLadResults = {};
   var mayoralVals = Object.values(mayoralByName);
   for (var mi = 0; mi < mayoralVals.length; mi++) {
     var mv = mayoralVals[mi];
-    var mvNorm = normaliseName(mv.name);
-    for (var fi = 0; fi < englandLad.features.length; fi++) {
-      if (normaliseName(englandLad.features[fi].properties.LAD25NM) === mvNorm) {
-        mayoralLadResults[englandLad.features[fi].properties.LAD25NM] = mv;
-        break;
-      }
-    }
+    var geoName = resolveMayoral(mv);
+    if (geoName) mayoralLadResults[geoName] = mv;
   }
 
   // Build nomination lookups (for distinguishing "awaiting" from "no election")
@@ -101,7 +138,7 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
 
   for (var ni = 0; ni < localNoms.length; ni++) {
     var nom = localNoms[ni];
-    var nomMatch = lookup.resolve(nom);
+    var nomMatch = resolveLocal(nom);
     if (nomMatch) {
       if (nomMatch.layer === "county") {
         countyNominations[nomMatch.geoName] = nom;
@@ -112,13 +149,8 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
   }
   for (var mi2 = 0; mi2 < mayoralNoms.length; mi2++) {
     var mn = mayoralNoms[mi2];
-    var mnNorm = normaliseName(mn.name);
-    for (var fi2 = 0; fi2 < englandLad.features.length; fi2++) {
-      if (normaliseName(englandLad.features[fi2].properties.LAD25NM) === mnNorm) {
-        mayoralLadNominations[englandLad.features[fi2].properties.LAD25NM] = mn;
-        break;
-      }
-    }
+    var geoName = resolveMayoral(mn);
+    if (geoName) mayoralLadNominations[geoName] = mn;
   }
 
   // Build a searchable index: normalised name → { label, elections: [{result, type}] }
@@ -255,24 +287,42 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
             return;
           }
           var pc = data.result;
+          // Geometric lookup: find which LAD and county contain this coordinate
           var allElections = [];
           var seen = {};
-          var districtEntry = pc.admin_district ? indexByNorm[normaliseName(pc.admin_district)] : null;
-          var countyEntry = pc.admin_county ? indexByNorm[normaliseName(pc.admin_county)] : null;
-          if (districtEntry) {
-            for (var i = 0; i < districtEntry.elections.length; i++) {
-              var key = districtEntry.elections[i].result.name + "|" + districtEntry.elections[i].type;
-              if (!seen[key]) { seen[key] = true; allElections.push(districtEntry.elections[i]); }
+          if (pc.longitude && pc.latitude) {
+            var pt = [pc.longitude, pc.latitude];
+            // Check LAD features
+            for (var i = 0; i < englandLad.features.length; i++) {
+              if (d3.geoContains(englandLad.features[i], pt)) {
+                var ladName = englandLad.features[i].properties.LAD25NM;
+                var ladEntry = indexByNorm[normaliseName(ladName)];
+                if (ladEntry) {
+                  for (var j = 0; j < ladEntry.elections.length; j++) {
+                    var key = ladEntry.elections[j].result.name + "|" + ladEntry.elections[j].type;
+                    if (!seen[key]) { seen[key] = true; allElections.push(ladEntry.elections[j]); }
+                  }
+                }
+                break;
+              }
             }
-          }
-          if (countyEntry) {
-            for (var i = 0; i < countyEntry.elections.length; i++) {
-              var key = countyEntry.elections[i].result.name + "|" + countyEntry.elections[i].type;
-              if (!seen[key]) { seen[key] = true; allElections.push(countyEntry.elections[i]); }
+            // Check county features
+            for (var ci = 0; ci < countyGeo.features.length; ci++) {
+              if (d3.geoContains(countyGeo.features[ci], pt)) {
+                var ctyName = countyGeo.features[ci].properties.CTY24NM;
+                var ctyEntry = indexByNorm[normaliseName(ctyName)];
+                if (ctyEntry) {
+                  for (var j = 0; j < ctyEntry.elections.length; j++) {
+                    var key = ctyEntry.elections[j].result.name + "|" + ctyEntry.elections[j].type;
+                    if (!seen[key]) { seen[key] = true; allElections.push(ctyEntry.elections[j]); }
+                  }
+                }
+                break;
+              }
             }
           }
           if (allElections.length > 0) {
-            var label = pc.admin_district || pc.admin_county;
+            var label = allElections[0].result.name;
             m.searchInput.property("value", label);
             m.dropdown.style("display", "none");
             showOverlay(allElections);
@@ -485,22 +535,169 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
       return {
         tabLabel: tabLabel,
         renderPanel: function (panel) {
-          if (e.type !== "mayoral") {
-            var badgeSpan = panel.append("div").attr("class", "map-overlay__title-row").append("span");
-            gainHoldBadge(badgeSpan.node(), e.result, { fullNames: true });
-          }
-          var cardContainer = panel.append("div");
           if (e.type === "mayoral") {
-            mayoralResultCard(cardContainer.node(), e.result);
+            var badgeContainer = panel.append("div");
+            mayoralResultCard(badgeContainer.node(), e.result);
+            badgeContainer.selectAll(".fptp-card__header").each(function () {
+              if (this.children.length === 0) d3.select(this).remove();
+            });
           } else {
-            councilResultCard(cardContainer.node(), e.result, { size: "full" });
+            // Badge
+            var badgeSpan = panel.append("div").style("margin-bottom", "4px").append("span");
+            gainHoldBadge(badgeSpan.node(), e.result, { fullNames: true });
+
+            // Toggle: Change / Seats
+            var council = e.result;
+            var toggleRow = panel.append("div")
+              .attr("class", "party-strip-toggle")
+              .style("margin", "12px 0 8px")
+              .style("position", "relative")
+              .style("z-index", "2");
+            var changeBtn = toggleRow.append("button")
+              .attr("class", "party-strip-toggle__btn party-strip-toggle__btn--active")
+              .text("Change");
+            var seatsBtn = toggleRow.append("button")
+              .attr("class", "party-strip-toggle__btn")
+              .text("Seats");
+
+            var contentDiv = panel.append("div");
+
+            function renderChangeView() {
+              contentDiv.html("");
+              if (council.changes) {
+                var barEl = contentDiv.append("div").style("margin-top", "12px");
+                changeBarChart(barEl.node(), council.changes);
+              }
+            }
+
+            function renderSeatsView() {
+              contentDiv.html("");
+              var parties = (council.newCouncil || []).slice().sort(function (a, b) { return b.seats - a.seats; });
+              if (parties.length === 0) return;
+
+              var totalSeats = parties.reduce(function (s, p) { return s + p.seats; }, 0);
+              var majority = Math.ceil(totalSeats / 2) + 1;
+              var maxSeats = parties[0].seats;
+
+              var barHeight = 28;
+              var gap = 6;
+              var labelWidth = 50;
+              var width = 600;
+              var chartLeft = labelWidth;
+              var chartWidth = width - labelWidth - 10;
+              var height = parties.length * (barHeight + gap) + gap + 24;
+
+              var scale = chartWidth / Math.max(maxSeats, majority);
+
+              var seatsSvg = contentDiv.append("div").style("margin-top", "12px")
+                .append("svg")
+                .attr("viewBox", "0 0 " + width + " " + height)
+                .attr("width", "100%")
+                .attr("preserveAspectRatio", "xMidYMid meet");
+
+              parties.forEach(function (p, i) {
+                var y = gap + i * (barHeight + gap);
+                var barW = Math.max(p.seats * scale, 1);
+                var hex = partyColour(p.name);
+
+                // Party label
+                seatsSvg.append("text")
+                  .attr("x", chartLeft - 6)
+                  .attr("y", y + barHeight / 2)
+                  .attr("text-anchor", "end")
+                  .attr("dominant-baseline", "central")
+                  .attr("font-size", 15)
+                  .attr("font-weight", 600)
+                  .attr("fill", "#444")
+                  .attr("font-family", "'Inter', sans-serif")
+                  .text(partyShortName(p.name));
+
+                // Bar
+                seatsSvg.append("rect")
+                  .attr("x", chartLeft)
+                  .attr("y", y)
+                  .attr("width", barW)
+                  .attr("height", barHeight)
+                  .attr("rx", 2)
+                  .attr("fill", hex)
+                  .attr("opacity", 0.85);
+
+                // Seat count label
+                var minBarForLabel = 30;
+                if (barW >= minBarForLabel) {
+                  var col = d3.color(hex);
+                  var lum = 0.299 * col.r + 0.587 * col.g + 0.114 * col.b;
+                  var textFill = lum > 160 ? "#222" : "#fff";
+                  seatsSvg.append("text")
+                    .attr("x", chartLeft + barW - 5)
+                    .attr("y", y + barHeight / 2)
+                    .attr("text-anchor", "end")
+                    .attr("dominant-baseline", "central")
+                    .attr("font-size", 14)
+                    .attr("font-weight", 700)
+                    .attr("fill", textFill)
+                    .attr("font-family", "'Inter', sans-serif")
+                    .text(p.seats);
+                } else {
+                  seatsSvg.append("text")
+                    .attr("x", chartLeft + barW + 5)
+                    .attr("y", y + barHeight / 2)
+                    .attr("text-anchor", "start")
+                    .attr("dominant-baseline", "central")
+                    .attr("font-size", 14)
+                    .attr("font-weight", 700)
+                    .attr("fill", "#444")
+                    .attr("font-family", "'Inter', sans-serif")
+                    .text(p.seats);
+                }
+              });
+
+              // Majority line
+              var majX = chartLeft + majority * scale;
+              var barsBottom = gap + parties.length * (barHeight + gap);
+              seatsSvg.append("line")
+                .attr("x1", majX)
+                .attr("y1", 0)
+                .attr("x2", majX)
+                .attr("y2", barsBottom)
+                .attr("stroke", "#333")
+                .attr("stroke-width", 1.5)
+                .attr("stroke-dasharray", "4,3");
+
+              seatsSvg.append("text")
+                .attr("x", majX)
+                .attr("y", barsBottom + 14)
+                .attr("text-anchor", "middle")
+                .attr("font-size", 11)
+                .attr("fill", "#888")
+                .attr("font-family", "'Inter', sans-serif")
+                .text(majority + " for majority");
+            }
+
+            changeBtn.on("click", function () {
+              changeBtn.classed("party-strip-toggle__btn--active", true);
+              seatsBtn.classed("party-strip-toggle__btn--active", false);
+              renderChangeView();
+            });
+            seatsBtn.on("click", function () {
+              seatsBtn.classed("party-strip-toggle__btn--active", true);
+              changeBtn.classed("party-strip-toggle__btn--active", false);
+              renderSeatsView();
+            });
+
+            // Default: change view
+            renderChangeView();
+
+            // Declaration time
+            if (council.declarationTime) {
+              var t = new Date(council.declarationTime);
+              var dateStr = t.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+              var timeStr = t.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+              panel.append("div")
+                .attr("class", "council-card__declared")
+                .text("Declared " + timeStr + ", " + dateStr);
+            }
           }
-          cardContainer.select(".council-card__name").remove();
-          cardContainer.selectAll(".council-card__badge").remove();
-          cardContainer.selectAll(".council-card__header, .fptp-card__header").each(function () {
-            if (this.children.length === 0) d3.select(this).remove();
-          });
-          cardContainer.selectAll(".council-card__hemicycle").style("margin-top", "0");
         }
       };
     });
