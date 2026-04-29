@@ -48,6 +48,16 @@ function partyStrip(container, options) {
     // Group minor parties into Other
     parties = groupMinorParties(parties, data.groupIntoOther || []);
 
+    // Force NOC to the very end (after Other)
+    var nocIdx = -1;
+    for (var ni = 0; ni < parties.length; ni++) {
+      if (parties[ni].name === "NOC") { nocIdx = ni; break; }
+    }
+    if (nocIdx >= 0) {
+      var nocItem = parties.splice(nocIdx, 1)[0];
+      parties.push(nocItem);
+    }
+
     // Row 1: party names
     var nameRow = table.append("div").attr("class", "party-strip__row party-strip__row--name");
     for (var i = 0; i < parties.length; i++) {
@@ -126,8 +136,13 @@ function partyTotalsStrip(container, results) {
       var isCouncils = modeIndex === 1;
       var parties;
       if (isCouncils) {
-        parties = sorted.slice().sort(function (a, b) { return b.councils - a.councils; })
+        var nocEntry = sorted.find(function (p) { return p.name === "NOC"; });
+        parties = sorted.slice().filter(function (p) { return p.name !== "NOC"; })
+          .sort(function (a, b) { return b.councils - a.councils; })
           .map(function (p) { return { name: p.name, value: p.councils, change: p.councilChange }; });
+        if (nocEntry) {
+          parties.push({ name: nocEntry.name, value: nocEntry.councils, change: nocEntry.councilChange });
+        }
       } else {
         parties = sorted.filter(function (p) { return p.name !== "NOC"; })
           .map(function (p) { return { name: p.name, value: p.seats, change: p.change }; });

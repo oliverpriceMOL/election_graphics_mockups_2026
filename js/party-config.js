@@ -22,14 +22,41 @@ const PARTY = {
   APNI:   { name: "Alliance",            short: "APNI",    colour: "#D3911C" },
   WPB:    { name: "Workers Party",       short: "WPB",     colour: "#770000" },
   UUP:    { name: "UUP",                 short: "UUP",     colour: "#48A5EE" },
-  NOC:    { name: "No overall control",  short: "NOC",     colour: "#DEA5B2" },
+  NOC:    { name: "No overall control",  short: "NOC",     colour: "#CCCCCC" },
   Other:  { name: "Other",               short: "Other",   colour: "#CCCCCC" },
+
+  /* ── Aliases (PA data uses varying abbreviation strings) ─────────── */
+  "Reform UK": { name: "Reform UK",      short: "Ref",     colour: "#2EEBFF" },
+  Others:      { name: "Other",          short: "Other",   colour: "#CCCCCC" },
+
+  /* ── Minor parties (Scottish, Welsh, mayoral) ────────────────────── */
+  UKIP:        { name: "UKIP",                       short: "UKIP",    colour: "#70147A" },
+  Aspire:      { name: "Aspire",                     short: "Aspire",  colour: "#00A99D" },
+  SSP:         { name: "Scottish Socialist Party",    short: "SSP",     colour: "#E53935" },
+  TUSC:        { name: "TUSC",                       short: "TUSC",    colour: "#BF360C" },
+  Animal:      { name: "Animal Welfare Party",       short: "AWP",     colour: "#C2185B" },
+  Reclaim:     { name: "Reclaim Party",              short: "Reclaim", colour: "#152856" },
+  "Comm Brit": { name: "Communist Party of Britain",  short: "CPB",     colour: "#8B0000" },
+  SLP:         { name: "Socialist Labour Party",     short: "SLP",     colour: "#B71C1C" },
+  Renew:       { name: "Renew",                      short: "Renew",   colour: "#582C83" },
+  WP:          { name: "Workers Party",              short: "WP",      colour: "#770000" },
+  WEP:         { name: "Women's Equality Party",     short: "WEP",     colour: "#2E8B57" },
+  FA:          { name: "Freedom Alliance",           short: "FA",      colour: "#B8860B" },
+  Lib:         { name: "Liberal Party",              short: "Lib",     colour: "#EB7F00" },
+  IGV:         { name: "Independent Green Voice",    short: "IGV",     colour: "#66BB6A" },
+  ScF:         { name: "Scottish Family Party",      short: "ScF",     colour: "#1E3765" },
+  SFP:         { name: "Scottish Freedom Party",     short: "SFP",     colour: "#4A148C" },
+  RS:          { name: "Reform Scotland",            short: "RS",      colour: "#5C6BC0" },
+  "Soc Dem":   { name: "Social Democratic Party",    short: "SDP",     colour: "#843B62" },
+  ND:          { name: "New Democrats",              short: "ND",      colour: "#607D8B" },
+  Unity:       { name: "Unity",                      short: "Unity",   colour: "#795548" },
+  Vanguard:    { name: "Vanguard",                   short: "Vanguard",colour: "#455A64" },
 };
 
 // Parties always grouped into "Other" (per nation)
-var MINOR_PARTIES_ENGLAND  = ["R", "Your"];
-var MINOR_PARTIES_SCOTLAND = ["Alba"];
-var MINOR_PARTIES_WALES    = ["Gwlad", "Propel", "Abolish"];
+var MINOR_PARTIES_ENGLAND  = ["R", "Your", "Aspire", "UKIP"];
+var MINOR_PARTIES_SCOTLAND = ["Alba", "SSP", "TUSC", "Animal", "Reclaim", "Comm Brit", "SLP", "Renew", "WEP", "FA", "Lib", "IGV", "ScF", "SFP", "RS", "Soc Dem", "ND", "Unity", "Vanguard", "Others"];
+var MINOR_PARTIES_WALES    = ["Gwlad", "Propel", "Abolish", "TUSC", "UKIP", "Comm Brit", "WP"];
 
 function partyColour(abbr) {
   return (PARTY[abbr] || PARTY.Other).colour;
