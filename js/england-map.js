@@ -664,14 +664,18 @@ function englandMap(container, results, ladGeo, countyGeo, mayoralResults, optio
                 .attr("stroke-width", 1.5)
                 .attr("stroke-dasharray", "4,3");
 
+              var majLabel = majority + " for majority";
+              var majAnchor = "middle";
+              var majTextX = majX;
+              if (majX > width - 60) { majAnchor = "end"; majTextX = majX; }
               seatsSvg.append("text")
-                .attr("x", majX)
+                .attr("x", majTextX)
                 .attr("y", barsBottom + 14)
-                .attr("text-anchor", "middle")
+                .attr("text-anchor", majAnchor)
                 .attr("font-size", 11)
                 .attr("fill", "#888")
                 .attr("font-family", "'Inter', sans-serif")
-                .text(majority + " for majority");
+                .text(majLabel);
             }
 
             changeBtn.on("click", function () {
