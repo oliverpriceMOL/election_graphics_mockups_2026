@@ -6,24 +6,24 @@
 function welshScoreboard(container, results) {
   const deduped = dedupByRevision(results);
 
-  // Aggregate seats from elected candidates + vote totals
+  // Aggregate seats from elected candidates + vote totals (keyed by canonical party key)
   const partyTotals = {};
-  function ensure(name) {
-    if (!partyTotals[name]) {
-      partyTotals[name] = { name: name, seats: 0, votes: 0 };
+  function ensure(key) {
+    if (!partyTotals[key]) {
+      partyTotals[key] = { name: key, seats: 0, votes: 0 };
     }
   }
 
   for (const r of deduped) {
     for (const c of (r.candidates || [])) {
       if (c.elected === "*") {
-        ensure(c.party.abbreviation);
-        partyTotals[c.party.abbreviation].seats++;
+        ensure(c.party.key);
+        partyTotals[c.party.key].seats++;
       }
     }
     for (const p of (r.parties || [])) {
-      ensure(p.abbreviation);
-      partyTotals[p.abbreviation].votes += (p.votes || 0);
+      ensure(p.key);
+      partyTotals[p.key].votes += (p.votes || 0);
     }
   }
 
@@ -35,22 +35,13 @@ function welshScoreboard(container, results) {
 
   var sorted = Object.values(partyTotals).sort((a, b) => b.seats - a.seats);
 
-  // Group sub-1% zero-seat parties into Other (keep Ind and Alba always)
-  var keepNames = ["Ind", "Alba"];
-  var minorNames = [];
+  // Determine cutoff: parties with 0 seats AND <1% vote share are hidden behind "Show more"
+  var maxVisibleRows = sorted.length;
   for (var i = 0; i < sorted.length; i++) {
     var s = sorted[i];
-    if (keepNames.indexOf(s.name) === -1 && s.seats === 0 && s.voteShare < 1) {
-      minorNames.push(s.name);
-    }
-  }
-  if (minorNames.length) {
-    sorted = groupMinorParties(sorted, minorNames);
-    // Recalculate vote share for grouped Other entry
-    for (var j = 0; j < sorted.length; j++) {
-      if (sorted[j].name === "Other") {
-        sorted[j].voteShare = totalVotes ? (sorted[j].votes / totalVotes * 100) : 0;
-      }
+    if (s.name !== "ind" && s.name !== "alba" && s.seats === 0 && s.voteShare < 1) {
+      maxVisibleRows = i;
+      break;
     }
   }
 
@@ -76,7 +67,7 @@ function welshScoreboard(container, results) {
       {
         header: "Seats",
         render: function (td, p) {
-          td.append("div").attr("class", "scoreboard__num").text(p.seats || "—");
+          td.append("div").attr("class", "scoreboard__num").text(p.seats != null ? p.seats : "—");
         }
       },
       {
@@ -110,7 +101,9 @@ function welshScoreboard(container, results) {
         }
       }
     ],
-    partyRows: sorted.filter(p => p.seats > 0 || p.votes > 0)
+    partyRows: sorted.filter(p => p.seats > 0 || p.votes > 0),
+    maxVisibleRows: maxVisibleRows < sorted.filter(p => p.seats > 0 || p.votes > 0).length ? maxVisibleRows : undefined,
+    onExpandToggle: function () { requestAnimationFrame(positionBarLabels); }
   });
 
   // Position labels inside/outside bars (FPTP style) + reposition on resize

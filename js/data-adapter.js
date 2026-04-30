@@ -74,19 +74,19 @@ function normalizeLocalResults(raw) {
     // ElectedCouncillors
     var ec = (council.ElectedCouncillors || {}).Party;
     r.electedCouncillors = _arr(ec).map(function (p) {
-      return { name: p["@name"], paId: p["@paId"], seats: _tryNum(p["@seats"]) };
+      return { name: p["@name"], paId: p["@paId"], key: resolvePartyKey(p["@paId"], p["@name"]), seats: _tryNum(p["@seats"]) };
     });
 
     // Changes
     var ch = (council.Changes || {}).Party;
     r.changes = _arr(ch).map(function (p) {
-      return { name: p["@name"], paId: p["@paId"], change: _parseChange(p["@change"]) };
+      return { name: p["@name"], paId: p["@paId"], key: resolvePartyKey(p["@paId"], p["@name"]), change: _parseChange(p["@change"]) };
     });
 
     // NewCouncil
     var nc = (council.NewCouncil || {}).Party;
     r.newCouncil = _arr(nc).map(function (p) {
-      return { name: p["@name"], paId: p["@paId"], seats: _tryNum(p["@seats"]) };
+      return { name: p["@name"], paId: p["@paId"], key: resolvePartyKey(p["@paId"], p["@name"]), seats: _tryNum(p["@seats"]) };
     });
 
     results.push(r);
@@ -145,6 +145,7 @@ function normalizeFPTPResults(raw) {
           paId:                   party["@paId"],
           name:                   party["@name"],
           abbreviation:           party["@abbreviation"],
+          key:                    resolvePartyKey(party["@paId"], party["@abbreviation"]),
           votes:                  _tryNum(party["@votes"]),
           percentageShare:        _tryNum(party["@percentageShare"]),
           percentageShareChange:  _tryNum(party["@percentageShareChange"])
@@ -209,7 +210,8 @@ function normalizeTopUpResults(raw) {
         party: {
           paId:         party["@paId"],
           abbreviation: party["@abbreviation"],
-          name:         party["@name"]
+          name:         party["@name"],
+          key:          resolvePartyKey(party["@paId"], party["@abbreviation"])
         }
       };
     });
@@ -222,6 +224,7 @@ function normalizeTopUpResults(raw) {
         paId:                   p["@paId"],
         abbreviation:           p["@abbreviation"],
         name:                   p["@name"],
+        key:                    resolvePartyKey(p["@paId"], p["@abbreviation"]),
         votes:                  _tryNum(p["@votes"]),
         percentageShare:        _tryNum(p["@percentageShare"]),
         percentageShareChange:  _tryNum(p["@percentageShareChange"]),
@@ -261,6 +264,7 @@ function normalizeTopUpResults(raw) {
                     paId:         party["@paId"],
                     name:         party["@name"],
                     abbreviation: party["@abbreviation"],
+                    key:          resolvePartyKey(party["@paId"], party["@abbreviation"]),
                     votes:        _tryNum(party["@votes"]),
                     percentageShare: _tryNum(party["@percentageShare"])
                   }
@@ -271,6 +275,7 @@ function normalizeTopUpResults(raw) {
                   paId:         p["@paId"],
                   abbreviation: p["@abbreviation"],
                   name:         p["@name"],
+                  key:          resolvePartyKey(p["@paId"], p["@abbreviation"]),
                   votes:        _tryNum(p["@votes"]),
                   percentageShare: _tryNum(p["@percentageShare"])
                 };
@@ -308,6 +313,7 @@ function normalizeLocalNominations(raw) {
           name:              p["@name"],
           abbreviation:      p["@abbreviation"],
           paId:              p["@paId"],
+          key:               resolvePartyKey(p["@paId"], p["@abbreviation"]),
           seatsHeld:         _tryNum(p["@seatsHeld"]),
           seatsOffered:      _tryNum(p["@seatsOffered"]),
           unopposedReturns:  _tryNum(p["@unopposedReturns"]),
@@ -349,7 +355,8 @@ function normalizeFPTPNominations(raw) {
           party: {
             paId:         party["@paId"],
             name:         party["@name"],
-            abbreviation: party["@abbreviation"]
+            abbreviation: party["@abbreviation"],
+            key:          resolvePartyKey(party["@paId"], party["@abbreviation"])
           }
         };
       }),
@@ -390,7 +397,8 @@ function normalizeTopUpNominations(raw) {
           party: {
             paId:         party["@paId"],
             abbreviation: party["@abbreviation"],
-            name:         party["@name"]
+            name:         party["@name"],
+            key:          resolvePartyKey(party["@paId"], party["@abbreviation"])
           }
         };
       }),

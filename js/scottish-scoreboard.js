@@ -7,43 +7,51 @@
 // 2021 Scottish Parliament constituency vote share (%)
 // Source: https://en.wikipedia.org/wiki/2021_Scottish_Parliament_election#Results
 var SCOTLAND_2021_CONST_VOTE_SHARE = {
-  SNP: 47.7, C: 21.9, Lab: 21.6, LD: 5.8, Green: 1.3, Alba: 0.0, Reform: 0.0
+  snp: 47.7, con: 21.9, lab: 21.6, ld: 5.8, green: 1.3, alba: 0.0, reform: 0.0
 };
 // 2021 Scottish Parliament regional vote share (%)
 var SCOTLAND_2021_REG_VOTE_SHARE = {
-  SNP: 40.3, C: 23.5, Lab: 17.9, Green: 8.1, LD: 5.1, Alba: 1.7, Reform: 0.0
+  snp: 40.3, con: 23.5, lab: 17.9, green: 8.1, ld: 5.1, alba: 1.7, reform: 0.2
 };
+
+// Parties that are genuinely new to each ballot type (did not stand at all in 2021)
+var SCOTLAND_NEW_TO_CONSTITUENCY = ["reform"];
+var SCOTLAND_NEW_TO_REGIONAL = [];
 
 function scottishScoreboard(container, constituencyResults, regionalResults) {
   const constDeduped = dedupByRevision(constituencyResults);
   const regDeduped = dedupByRevision(regionalResults);
 
-  // Aggregate constituency seats + changes
+  // Aggregate constituency seats + changes (keyed by canonical party key)
   const partyTotals = {};
-  function ensure(name) {
-    if (!partyTotals[name]) {
-      partyTotals[name] = { name: name, constSeats: 0, regSeats: 0, total: 0,
+  function ensure(key) {
+    if (!partyTotals[key]) {
+      partyTotals[key] = { name: key, constSeats: 0, regSeats: 0, total: 0,
                             constChange: 0, regChange: 0, totalChange: 0,
-                            constVotes: 0, regVotes: 0 };
+                            constVotes: 0, regVotes: 0,
+                            constCandidates: 0, regCandidates: 0 };
     }
   }
 
   for (const r of constDeduped) {
-    if (r.winningParty) {
-      ensure(r.winningParty);
-      partyTotals[r.winningParty].constSeats++;
+    var wpKey = r.winningParty ? resolvePartyKey(null, r.winningParty) : null;
+    var spKey = r.sittingParty ? resolvePartyKey(null, r.sittingParty) : null;
+    if (wpKey) {
+      ensure(wpKey);
+      partyTotals[wpKey].constSeats++;
     }
-    if (r.gainOrHold === "gain" && r.winningParty && r.sittingParty) {
-      ensure(r.winningParty);
-      ensure(r.sittingParty);
-      partyTotals[r.winningParty].constChange++;
-      partyTotals[r.sittingParty].constChange--;
+    if (r.gainOrHold === "gain" && wpKey && spKey) {
+      ensure(wpKey);
+      ensure(spKey);
+      partyTotals[wpKey].constChange++;
+      partyTotals[spKey].constChange--;
     }
-    // Sum constituency votes per party
+    // Sum constituency votes per party + count candidates
     for (const c of (r.candidates || [])) {
-      if (c.party && c.party.abbreviation) {
-        ensure(c.party.abbreviation);
-        partyTotals[c.party.abbreviation].constVotes += (c.party.votes || 0);
+      if (c.party && c.party.key) {
+        ensure(c.party.key);
+        partyTotals[c.party.key].constVotes += (c.party.votes || 0);
+        partyTotals[c.party.key].constCandidates++;
       }
     }
   }
@@ -53,16 +61,17 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
     const currentCounts = {};
     for (const c of (r.candidates || [])) {
       if (c.elected === "*") {
-        const abbr = c.party.abbreviation;
-        ensure(abbr);
-        partyTotals[abbr].regSeats++;
-        currentCounts[abbr] = (currentCounts[abbr] || 0) + 1;
+        const key = c.party.key;
+        ensure(key);
+        partyTotals[key].regSeats++;
+        currentCounts[key] = (currentCounts[key] || 0) + 1;
       }
     }
-    // Sum regional votes per party
+    // Sum regional votes per party + count candidates
     for (const p of (r.parties || [])) {
-      ensure(p.abbreviation);
-      partyTotals[p.abbreviation].regVotes += (p.votes || 0);
+      ensure(p.key);
+      partyTotals[p.key].regVotes += (p.votes || 0);
+      partyTotals[p.key].regCandidates++;
     }
     const prev = (r.previousElections || [])[0];
     if (prev && prev.constituencies) {
@@ -70,15 +79,15 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
       for (const pc of prev.constituencies) {
         for (const c of (pc.candidates || [])) {
           if (c.elected === "*") {
-            const abbr = c.party.abbreviation;
-            prevCounts[abbr] = (prevCounts[abbr] || 0) + 1;
+            const key = c.party.key;
+            prevCounts[key] = (prevCounts[key] || 0) + 1;
           }
         }
       }
-      const allAbbrs = new Set([...Object.keys(currentCounts), ...Object.keys(prevCounts)]);
-      for (const abbr of allAbbrs) {
-        ensure(abbr);
-        partyTotals[abbr].regChange += (currentCounts[abbr] || 0) - (prevCounts[abbr] || 0);
+      const allKeys = new Set([...Object.keys(currentCounts), ...Object.keys(prevCounts)]);
+      for (const key of allKeys) {
+        ensure(key);
+        partyTotals[key].regChange += (currentCounts[key] || 0) - (prevCounts[key] || 0);
       }
     }
   }
@@ -100,39 +109,41 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
 
   var sorted = Object.values(partyTotals).sort((a, b) => b.total - a.total);
 
-  // Group sub-1% zero-seat parties into Other (keep Ind and Alba always)
-  var keepNames = ["Ind", "Alba"];
-  var minorNames = [];
+  // Determine cutoff: parties with 0 seats AND <1% vote share in both ballots are hidden behind "Show more"
+  var maxVisibleRows = sorted.length;
   for (var i = 0; i < sorted.length; i++) {
     var s = sorted[i];
-    if (keepNames.indexOf(s.name) === -1 && s.total === 0 && s.constVoteShare < 1 && s.regVoteShare < 1) {
-      minorNames.push(s.name);
+    if (s.name !== "ind" && s.name !== "alba" && s.total === 0 && s.constVoteShare < 1 && s.regVoteShare < 1) {
+      maxVisibleRows = i;
+      break;
     }
   }
-  if (minorNames.length) {
-    sorted = groupMinorParties(sorted, minorNames);
-    // Recalculate vote shares for grouped Other entry
-    for (var j = 0; j < sorted.length; j++) {
-      if (sorted[j].name === "Other") {
-        sorted[j].constVoteShare = constTotalVotes ? (sorted[j].constVotes / constTotalVotes * 100) : 0;
-        sorted[j].regVoteShare = regTotalVotes ? (sorted[j].regVotes / regTotalVotes * 100) : 0;
-        sorted[j].constVoteShareChange = sorted[j].constVoteShare;
-        sorted[j].regVoteShareChange = sorted[j].regVoteShare;
-      }
-    }
-  }
+
+  // Seats view: only show major parties + any party that won at least 1 seat
+  var seatsRows = sorted.filter(function (p) {
+    return MAJOR_PARTIES_SCOTLAND.indexOf(p.name) !== -1 || p.total > 0;
+  });
 
   var maxConstVoteShare = Math.max(...sorted.map(p => p.constVoteShare), 1);
   var maxRegVoteShare = Math.max(...sorted.map(p => p.regVoteShare), 1);
 
   function renderNumChange(td, value, change) {
-    td.append("div").attr("class", "scoreboard__num").text(value || "—");
+    td.append("div").attr("class", "scoreboard__num").text(value != null ? value : "—");
     const fmt = formatChange(change);
     td.append("div").attr("class", "scoreboard__change")
       .style("color", fmt.colour).text(fmt.text);
   }
 
-  function renderVoteShareCell(td, p, voteShare, maxShare, ppChange, votes) {
+  function renderVoteShareCell(td, p, voteShare, maxShare, ppChange, votes, candidateCount, isNewParty) {
+    // DNS: party had no candidates at all in this ballot
+    if (!candidateCount) {
+      td.append("div")
+        .style("font-size", "12px").style("font-weight", "400")
+        .style("font-style", "italic").style("color", "#999")
+        .style("line-height", "20px").style("text-align", "left")
+        .text("DNS");
+      return;
+    }
     if (!votes) { td.append("div").attr("class", "scoreboard__num").text("—"); return; }
     td.style("padding-right", "44px");
     var hex = partyColour(p.name);
@@ -147,26 +158,37 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
       .attr("data-party-colour", hex)
       .style("position", "absolute").style("top", "0")
       .style("line-height", "20px")
-      .style("font-size", "11px").style("font-weight", "600")
+      .style("font-size", "12px").style("font-weight", "600")
       .style("font-variant-numeric", "tabular-nums")
       .style("white-space", "nowrap").style("pointer-events", "none")
       .text(formatPct(voteShare) + "%");
     // pp change — absolutely positioned, placed by rAF right after label
-    if (ppChange != null) {
+    if (isNewParty) {
+      barWrap.append("span").attr("class", "scoreboard__vs-bar-change")
+        .style("position", "absolute").style("top", "2px")
+        .style("line-height", "16px")
+        .style("font-size", "10px").style("font-weight", "600")
+        .style("white-space", "nowrap").style("pointer-events", "none")
+        .style("color", "#fff").style("background", "#181818")
+        .style("padding", "0 5px").style("border-radius", "3px")
+        .text("NEW");
+    } else if (ppChange != null) {
+      var roundedPP = Math.round(Math.abs(ppChange) * 10) / 10;
       var arrow = ppChange > 0 ? "\u25B2" : ppChange < 0 ? "\u25BC" : "";
       var ppCol = ppChange > 0 ? "#007F67" : ppChange < 0 ? "#AD0025" : "#595959";
-      var ppText = ppChange === 0 ? "—" : arrow + formatPct(Math.abs(ppChange));
+      var ppText = roundedPP === 0 ? "—" : arrow + formatPct(Math.abs(ppChange));
+      var ppCol2 = roundedPP === 0 ? "#595959" : ppCol;
       barWrap.append("span").attr("class", "scoreboard__vs-bar-change")
         .style("position", "absolute").style("top", "0")
         .style("line-height", "20px")
-        .style("font-size", "11px").style("font-weight", "600")
+        .style("font-size", "12px").style("font-weight", "600")
         .style("white-space", "nowrap").style("pointer-events", "none")
-        .style("color", ppCol)
+        .style("color", ppCol2)
         .text(ppText);
     }
     // Total votes below
     td.append("div")
-      .style("font-size", "10px").style("color", "#666")
+      .style("font-size", "12px").style("color", "#666")
       .style("text-align", "left")
       .text("(" + votes.toLocaleString() + ")");
   }
@@ -215,13 +237,15 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
     {
       header: "Constituency",
       render: function (td, p) {
-        renderVoteShareCell(td, p, p.constVoteShare, maxConstVoteShare, p.constVoteShareChange, p.constVotes);
+        var isNew = SCOTLAND_NEW_TO_CONSTITUENCY.indexOf(p.name) !== -1;
+        renderVoteShareCell(td, p, p.constVoteShare, maxConstVoteShare, p.constVoteShareChange, p.constVotes, p.constCandidates, isNew);
       }
     },
     {
       header: "Regional",
       render: function (td, p) {
-        renderVoteShareCell(td, p, p.regVoteShare, maxRegVoteShare, p.regVoteShareChange, p.regVotes);
+        var isNew = SCOTLAND_NEW_TO_REGIONAL.indexOf(p.name) !== -1;
+        renderVoteShareCell(td, p, p.regVoteShare, maxRegVoteShare, p.regVoteShareChange, p.regVotes, p.regCandidates, isNew);
       }
     }
   ];
@@ -262,6 +286,8 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
     if (removeResizeListener) { removeResizeListener(); removeResizeListener = null; }
 
     var columns = currentMode === "seats" ? seatsColumns : voteShareColumns;
+    var rows = currentMode === "seats" ? seatsRows : sorted;
+    var visibleLimit = currentMode === "votes" && maxVisibleRows < sorted.length ? maxVisibleRows : undefined;
 
     electionScoreboard(container, {
       title: "Scottish Parliament",
@@ -269,7 +295,9 @@ function scottishScoreboard(container, constituencyResults, regionalResults) {
       allDeclared: allDeclaredFlag,
       turnout: turnoutData,
       columns: columns,
-      partyRows: sorted
+      partyRows: rows,
+      maxVisibleRows: visibleLimit,
+      onExpandToggle: currentMode === "votes" ? function () { requestAnimationFrame(positionBarLabels); } : undefined
     });
 
     // Insert toggle between declared text and table

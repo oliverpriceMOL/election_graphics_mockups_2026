@@ -68,6 +68,32 @@ function electionScoreboard(container, options) {
     }
   }
 
+  // Show more / Show fewer toggle for long party lists
+  if (options.maxVisibleRows != null && partyRows.length > options.maxVisibleRows) {
+    var allRows = tbody.selectAll("tr").nodes();
+    for (var hi = options.maxVisibleRows; hi < allRows.length; hi++) {
+      d3.select(allRows[hi]).style("display", "none");
+    }
+    var expandBtn = board.append("button")
+      .attr("class", "map-overlay__expand-btn")
+      .text("Show more \u25BE");
+    expandBtn.on("click", function () {
+      var expanded = expandBtn.classed("map-overlay__expand-btn--expanded");
+      if (!expanded) {
+        for (var j = options.maxVisibleRows; j < allRows.length; j++) {
+          d3.select(allRows[j]).style("display", null);
+        }
+        expandBtn.text("Show fewer \u25B4").classed("map-overlay__expand-btn--expanded", true);
+      } else {
+        for (var j = options.maxVisibleRows; j < allRows.length; j++) {
+          d3.select(allRows[j]).style("display", "none");
+        }
+        expandBtn.text("Show more \u25BE").classed("map-overlay__expand-btn--expanded", false);
+      }
+      if (options.onExpandToggle) options.onExpandToggle();
+    });
+  }
+
   // Aggregate turnout bar (Scotland/Wales)
   if (options.turnout) {
     turnoutBar(board.node(), options.turnout);
@@ -140,7 +166,7 @@ function partyScoreboard(container, results) {
       {
         header: "Councils",
         render: function (td, p) {
-          renderNumChange(td, p.councils || "—", p.councilChange);
+          renderNumChange(td, p.councils != null ? p.councils : "—", p.councilChange);
         }
       },
       {
