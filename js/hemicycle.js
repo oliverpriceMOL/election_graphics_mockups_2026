@@ -3,10 +3,36 @@
  * EU Parliament–style: concentric arcs of small circles
  * Requires: d3.js, party-config.js
  */
+
+/**
+ * Compute hemicycle layout geometry from arc angle and radius.
+ * @param {number} arcAngle - Total arc sweep in degrees (e.g. 200)
+ * @param {number} r - Outer radius in px
+ * @param {number} width - SVG width in px
+ * @returns {{ height, cx, cy, padding }}
+ */
+function hemicycleLayout(arcAngle, r, width) {
+  const arcRad = arcAngle * Math.PI / 180;
+  const padding = (Math.PI - arcRad) / 2;
+
+  // How far the arc endpoints dip below the center line
+  const dipBelow = arcRad > Math.PI ? r * Math.sin(Math.abs(padding)) : 0;
+
+  // Vertical space: top margin + arc height + dip below horizontal + dot overflow
+  const topMargin = r * 0.05;
+  const dotPadding = r * 0.06;
+  const height = topMargin + r + dipBelow + dotPadding;
+  const cx = width / 2;
+  const cy = topMargin + r;
+
+  return { height, cx, cy, padding };
+}
+
 function hemicycle(container, parties, options = {}) {
   const {
     width = 400,
     outerRadius = null,
+    arcAngle = 200,
     showMajorityLine = true,
     showLabels = true,
     labelMinSeats = 3,
@@ -16,28 +42,35 @@ function hemicycle(container, parties, options = {}) {
   const majorityLine = Math.floor(totalSeats / 2) + 1;
 
   const r = outerRadius || width * 0.45;
-  const height = r * 1.15;
-  const cx = width / 2;
-  const cy = height * 0.92;
+  const { height, cx, cy, padding } = hemicycleLayout(arcAngle, r, width);
 
-  // Determine ring layout
-  const numRings = totalSeats <= 35 ? 3 : totalSeats <= 60 ? 4 : totalSeats <= 80 ? 5 : 6;
-  const innerRadiusFrac = 0.45;
+  // Determine ring layout — pick smallest numRings where ideal packing fits totalSeats
+  const innerRadiusFrac = 0.38;
+  const usableArc = Math.PI - 2 * padding; // arc sweep in radians
+  let numRings = 3;
+  for (let n = 3; n <= 8; n++) {
+    const gap = r * (1 - innerRadiusFrac) / n;
+    let ideal = 0;
+    for (let i = 0; i < n; i++) {
+      ideal += (r * innerRadiusFrac + gap * (i + 0.5)) * usableArc / gap;
+    }
+    numRings = n;
+    if (ideal >= totalSeats) break;
+  }
   const ringGap = (r - r * innerRadiusFrac) / numRings;
 
-  // Distribute seats across rings (outer rings get more seats — wider arc)
+  // Distribute seats so angular spacing ≈ radial spacing on each ring
   const ringRadii = [];
-  const ringSeatCounts = [];
-  let assignedTotal = 0;
+  const idealSeats = [];
 
   for (let i = 0; i < numRings; i++) {
     const ringR = r * innerRadiusFrac + ringGap * (i + 0.5);
     ringRadii.push(ringR);
-    ringSeatCounts.push(ringR);
+    idealSeats.push(ringR * usableArc / ringGap);
   }
-  const totalWeight = ringSeatCounts.reduce((a, b) => a + b, 0);
+  const idealTotal = idealSeats.reduce((a, b) => a + b, 0);
 
-  const ringSeats = ringSeatCounts.map(w => Math.round((w / totalWeight) * totalSeats));
+  const ringSeats = idealSeats.map(s => Math.round((s / idealTotal) * totalSeats));
   let diff = totalSeats - ringSeats.reduce((a, b) => a + b, 0);
   for (let i = ringSeats.length - 1; diff !== 0; i = (i - 1 + ringSeats.length) % ringSeats.length) {
     if (diff > 0) { ringSeats[i]++; diff--; }
@@ -45,7 +78,6 @@ function hemicycle(container, parties, options = {}) {
   }
 
   // Create flat list of seat positions
-  const padding = Math.PI * 0.04;
   const seats = [];
   for (let ring = 0; ring < numRings; ring++) {
     const ringR = ringRadii[ring];
@@ -55,13 +87,15 @@ function hemicycle(container, parties, options = {}) {
       seats.push({
         x: cx + ringR * Math.cos(angle),
         y: cy - ringR * Math.sin(angle),
+        angle,
         ring,
         indexInRing: j,
       });
     }
   }
 
-  seats.sort((a, b) => a.x - b.x || b.y - a.y);
+  // Sort by angle (descending) for left-to-right party assignment
+  seats.sort((a, b) => b.angle - a.angle || a.ring - b.ring);
 
   // Assign party colours to seats
   let seatIdx = 0;
@@ -77,8 +111,8 @@ function hemicycle(container, parties, options = {}) {
   }
 
   const circleR = Math.min(
-    ringGap * 0.35,
-    (Math.PI * ringRadii[0]) / (ringSeats[0] * 2.5)
+    ringGap * 0.50,
+    (Math.PI * ringRadii[0]) / (ringSeats[0] * 2.0)
   );
 
   // Clear and create SVG
@@ -104,11 +138,11 @@ function hemicycle(container, parties, options = {}) {
     .attr("stroke-width", d => d.striped ? circleR * 0.4 : circleR * 0.15);
 
   // Majority line — curved path threading between the correct seats on each ring
-  // After sorting, seats[majorityLine-1] is the last seat in the majority half
-  // and seats[majorityLine] is the first seat outside. We find which ring-local
-  // seats straddle that boundary on each ring.
+  // The line is drawn at the halfway mark (majorityLine - 1 seats before it),
+  // so that the majorityLine-th seat is the first one visually past the line.
   if (showMajorityLine && totalSeats > 1) {
     const clearance = circleR * 1.5;
+    const majLineIdx = majorityLine - 1; // line sits between seat majLineIdx-1 and majLineIdx
 
     // Tag each seat with its sorted global index
     seats.forEach((s, i) => { s.globalIdx = i; });
@@ -123,9 +157,8 @@ function hemicycle(container, parties, options = {}) {
       // Get seats on this ring, sorted by global index (left-to-right)
       const ringSeatsArr = seats.filter(s => s.ring === ring).sort((a, b) => a.globalIdx - b.globalIdx);
 
-      // Find the split point: which local index does the majority boundary fall at?
-      // Count how many seats on this ring are in the majority half (globalIdx < majorityLine)
-      const countInMajority = ringSeatsArr.filter(s => s.globalIdx < majorityLine).length;
+      // Count seats on this ring before the line (globalIdx < majLineIdx)
+      const countInMajority = ringSeatsArr.filter(s => s.globalIdx < majLineIdx).length;
 
       // The gap is between local seat [countInMajority - 1] and [countInMajority]
       let gapAngle;
@@ -170,27 +203,49 @@ function hemicycle(container, parties, options = {}) {
     svg.append("path")
       .attr("d", line(gapPoints))
       .attr("fill", "none")
-      .attr("stroke", "#333")
-      .attr("stroke-width", 1.5)
+      .attr("stroke", "#181818")
+      .attr("stroke-width", 2)
       .attr("stroke-dasharray", "4,3")
-      .attr("opacity", 0.5);
+      .attr("opacity", 0.7);
   }
 
-  // Centre text — anchored to bottom of arc hollow
+  // Centre text — anchored so bottom text aligns with inner row bottom
   const bigFont = Math.max(14, width * 0.055);
   const smallFont = Math.max(9, width * 0.028);
-  const textBaseY = cy - bigFont * 0.3;
+  // Bottom of innermost ring = y of endpoint dots (where arc meets baseline)
+  const innerBottomY = cy - ringRadii[0] * Math.sin(padding) + circleR;
+  const textBaseY = innerBottomY;
+  const majTextY = cy - ringRadii[0] + circleR + smallFont * 2.5;
 
-  // "X for maj" — above (only when majority line is shown)
+  // "X for majority" — fixed at top of hollow (just below inner ring)
   const majText = svg.append("text")
     .attr("class", "hemi-label hemi-label--maj")
     .attr("x", cx)
-    .attr("y", textBaseY - bigFont * 1.05)
+    .attr("y", majTextY)
     .attr("text-anchor", "middle")
     .attr("font-size", smallFont)
     .attr("fill", "#888")
-    .attr("font-family", "'Inter', sans-serif")
-    .text(showMajorityLine ? `${majorityLine} for maj` : "");
+    .attr("font-family", "'Inter', sans-serif");
+
+  if (showMajorityLine) {
+    if (width >= 250) {
+      majText.text(`${majorityLine} for majority`);
+    } else {
+      majText.append("tspan").attr("x", cx).text(`${majorityLine}`);
+      majText.append("tspan").attr("x", cx).attr("dy", smallFont * 1.2).text("for majority");
+    }
+  }
+
+  // Party name — shown on hover (just above seats text)
+  const partyFont = Math.max(12, width * 0.038);
+  const partyText = svg.append("text")
+    .attr("class", "hemi-label hemi-label--party")
+    .attr("x", cx)
+    .attr("y", textBaseY - bigFont * 1.05)
+    .attr("text-anchor", "middle")
+    .attr("font-size", partyFont)
+    .attr("fill", "#888")
+    .attr("font-family", "'Inter', sans-serif");
 
   // "X seats" — below (bottom-aligned)
   const seatsText = svg.append("text")
@@ -278,7 +333,7 @@ function hemicycle(container, parties, options = {}) {
     // Sum all entries for this party (solid + hollow may be separate)
     const count = parties.reduce((s, p) => p.name === partyAbbr ? s + p.seats : s, 0);
 
-    majText
+    partyText
       .text(partyShortName(partyAbbr))
       .attr("fill", labelFillForParty(partyAbbr))
       .attr("font-weight", "bold");
@@ -289,8 +344,8 @@ function hemicycle(container, parties, options = {}) {
 
   function resetHighlight() {
     allCircles.attr("opacity", 1);
-    majText
-      .text(showMajorityLine ? `${majorityLine} for maj` : "")
+    partyText
+      .text("")
       .attr("fill", "#888")
       .attr("font-weight", "normal");
     seatsText
