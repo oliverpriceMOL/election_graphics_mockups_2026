@@ -314,14 +314,17 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
+  overflow: hidden;
   vertical-align: middle;
   flex-shrink: 0;
+}
+.party-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .scoreboard__party-cell {
   vertical-align: middle;
@@ -444,13 +447,13 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 700;
-  font-size: 18px;
+  overflow: hidden;
   flex-shrink: 0;
+}
+.fptp-card__avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .fptp-card__winner-name {
   font-size: 18px;
@@ -506,7 +509,7 @@ body {
   text-align: right;
 }
 .fptp-card__bar-row--two-col {
-  grid-template-columns: var(--name-col, 60px) 1fr;
+  grid-template-columns: var(--name-col, 36px) 1fr;
 }
 .fptp-card__bar-change-inline {
   position: absolute;
@@ -1016,6 +1019,22 @@ body {
   padding-top: 6px;
   border-top: 1px solid #e0e0e0;
 }
+.legend-gradient-item {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+}
+.legend-gradient-bar {
+  height: 10px;
+  border-radius: 3px;
+  width: 100%;
+}
+.legend-gradient-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #666;
+}
 
 /* When panel is open, map sits above the overlap so its rounded corners mask the panel */
 .map-wrapper:has(+ .map-overlay) {
@@ -1276,9 +1295,8 @@ body {
     font-size: 12px;
   }
   .party-logo {
-    width: 28px;
-    height: 28px;
-    font-size: 10px;
+    width: 40px;
+    height: 40px;
   }
   .scoreboard__party-name--short {
     font-size: 13px;
@@ -1346,7 +1364,6 @@ body {
   .fptp-card__avatar {
     width: 40px;
     height: 40px;
-    font-size: 14px;
   }
 
   /* Party strip */
@@ -1405,6 +1422,7 @@ body {
     padding: 0 14px 14px;
     padding-top: 10px;
     max-height: 400px;
+    overflow-y: auto;
   }
   .map-overlay__area-name {
     font-size: 18px;

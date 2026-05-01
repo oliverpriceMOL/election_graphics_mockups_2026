@@ -21,10 +21,16 @@ function fptpResultCard(container, result, options) {
   if (winner) {
     var winWrap = card.append("div").attr("class", "fptp-card__winner");
     var hex = partyColour(winner.party.abbreviation);
-    var avatar = winWrap.append("div").attr("class", "fptp-card__avatar")
-      .style("background", hex)
-      .style("color", textColourForBg(hex));
-    avatar.append("span").text(winner.firstName[0] + winner.surname[0]);
+    var avatar = winWrap.append("div").attr("class", "fptp-card__avatar");
+    var avatarIconUrl = partyIconUrl(winner.party.abbreviation);
+    if (avatarIconUrl) {
+      avatar.append("img")
+        .attr("src", avatarIconUrl)
+        .attr("alt", partyShortName(winner.party.abbreviation))
+        .attr("width", "50").attr("height", "50");
+    } else {
+      avatar.html(partyFallbackIconSvg(hex));
+    }
 
     var info = winWrap.append("div");
     info.append("div").attr("class", "fptp-card__winner-name")
@@ -87,7 +93,7 @@ function fptpResultCard(container, result, options) {
     }
     var expandBtn = card.append("button")
       .attr("class", "map-overlay__expand-btn")
-      .text("Show all " + allBarRows.length + " candidates \u25BE");
+      .text("Show more \u25BE");
     expandBtn.on("click", function () {
       var expanded = expandBtn.classed("map-overlay__expand-btn--expanded");
       if (!expanded) {
@@ -99,7 +105,7 @@ function fptpResultCard(container, result, options) {
         for (var j = MAX_VISIBLE; j < allBarRows.length; j++) {
           d3.select(allBarRows[j]).style("display", "none");
         }
-        expandBtn.text("Show all " + allBarRows.length + " candidates \u25BE").classed("map-overlay__expand-btn--expanded", false);
+        expandBtn.text("Show more \u25BE").classed("map-overlay__expand-btn--expanded", false);
       }
       requestAnimationFrame(function () { repositionBarLabels(barsWrap.node()); });
     });

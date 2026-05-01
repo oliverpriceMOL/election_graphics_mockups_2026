@@ -38,11 +38,19 @@ function electionScoreboard(container, options) {
     const nameCell = row.append("td").attr("class", "scoreboard__party-cell");
     const inner = nameCell.append("div").attr("class", "scoreboard__party-inner");
     const hex = partyColour(name);
-    const logo = inner.append("span")
-      .attr("class", "party-logo")
-      .style("background", hex)
-      .style("color", textColourForBg(hex));
-    logo.append("span").text(partyShortName(name));
+    const logo = inner.append("span").attr("class", "party-logo");
+    const iconUrl = partyIconUrl(name);
+    const inlineIcon = partyInlineIcon(name);
+    if (iconUrl) {
+      logo.append("img")
+        .attr("src", iconUrl)
+        .attr("alt", partyShortName(name))
+        .attr("width", "52").attr("height", "52");
+    } else if (inlineIcon) {
+      logo.html(inlineIcon);
+    } else {
+      logo.html(partyFallbackIconSvg(hex));
+    }
     inner.append("span")
       .attr("class", "scoreboard__party-name scoreboard__party-name--full")
       .text(partyName(name));

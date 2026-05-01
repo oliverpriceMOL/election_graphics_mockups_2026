@@ -20,8 +20,8 @@ var PARTY_REGISTRY = {
   snp:      { name: "SNP",                    short: "SNP",   colour: "#ffff54" },
   alba:     { name: "Alba Party",             short: "Alba",  colour: "#005EB8" },
   pc:       { name: "Plaid Cymru",            short: "PC",    colour: "#5BD65B" },
-  ind:      { name: "Independent",            short: "Ind",   colour: "#191919" },
-  r:        { name: "Ratepayers/Residents",   short: "R",     colour: "#2D6A4F" },
+  ind:      { name: "Independent",            short: "Ind",   colour: "#181818" },
+  r:        { name: "Ratepayers/Residents",   short: "R",     colour: "#ff8faa" },
   your:     { name: "Your Party",             short: "Your",  colour: "#7E57C2" },
   noc:      { name: "No overall control",     short: "NOC",   colour: "#CCCCCC" },
   other:    { name: "Other",                  short: "Other", colour: "#CCCCCC" },
@@ -147,6 +147,50 @@ var ABBREVIATION_FALLBACK = {
   "Advance UK": "advance_uk", Equality: "equality", SCP: "scp", SRP: "srp",
   EELP: "eelp", Heritage: "heritage", "Soc Lab": "soc_lab", ADF: "adf",
 };
+
+/* ── Party SVG Icon Map ─────────────────────────────────────────────────── */
+
+var PARTY_SVG_MAP = {
+  con: "CON.svg", lab: "LAB.svg", ld: "LIB_DEM.svg",
+  green: "GREEN.svg", reform: "REFORM.svg", ind: "INDEPENDENT.svg",
+  r: "RATEPAYERS_RES.svg", your: "YP.svg", other: "OTHER.svg",
+};
+
+var _PARTY_ICON_BASE = "img/party-icons/";
+
+function partyIconUrl(keyOrAbbr) {
+  var key = PARTY_REGISTRY[keyOrAbbr] ? keyOrAbbr : (ABBREVIATION_FALLBACK[keyOrAbbr] || null);
+  var filename = key && PARTY_SVG_MAP[key];
+  return filename ? _PARTY_ICON_BASE + filename : null;
+}
+
+// Inline SVG icons for parties that need text rather than a graphic symbol.
+var PARTY_INLINE_ICONS = {
+  noc: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.265386 97.265386" width="100%" height="100%">' +
+    '<circle cx="48.632693" cy="48.632693" r="48.632693" fill="#CCCCCC"/>' +
+    '<text x="48.632693" y="48.632693" font-family="\'Inter\', Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle" dominant-baseline="central" fill="#595959">NOC</text>' +
+    '</svg>',
+};
+
+function partyInlineIcon(keyOrAbbr) {
+  var key = PARTY_REGISTRY[keyOrAbbr] ? keyOrAbbr : (ABBREVIATION_FALLBACK[keyOrAbbr] || null);
+  return (key && PARTY_INLINE_ICONS[key]) || null;
+}
+
+// Returns inline SVG: OTHER.svg cross/asterisk shape, background recoloured to hex.
+// The inner polygon shares the background colour (cutout effect), so both fills change.
+function partyFallbackIconSvg(hex) {
+  var c = String(hex).replace(/[^#0-9a-fA-F]/g, "");
+  var fg = textColourForBg(c);
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.265386 97.265386" width="100%" height="100%">' +
+    '<circle cx="48.632693" cy="48.632693" r="48.632693" fill="' + c + '"/>' +
+    '<path d="M77.73247,66.834141H9.42633l12.125578-8.8061h68.30614l-12.125578,8.8061ZM15.99548,64.700339h61.043088l6.249288-4.538496H22.244769l-6.249288,4.538496Z" fill="' + fg + '"/>' +
+    '<path d="M60.925791,62.431054l-33.897491-9.273732,9.275129-33.896794,33.897491,9.273732-9.275129,33.896794Z" fill="' + fg + '"/>' +
+    '<polygon points="66.685187 30.542283 58.926029 58.91542 30.542327 51.15775 38.310562 22.772561 66.685187 30.542283" fill="' + c + '"/>' +
+    '<rect x="46.469133" y="33.186123" width="4.290954" height="17.70378" transform="translate(-14.441604 29.608665) rotate(-29.699695)" fill="' + fg + '"/>' +
+    '<rect x="39.76259" y="39.89219" width="17.704041" height="4.291645" transform="translate(-14.444156 29.62162) rotate(-29.711467)" fill="' + fg + '"/>' +
+    '</svg>';
+}
 
 /* ── Legacy PARTY alias (backward-compatible) ──────────────────────────── */
 // Some external code may reference PARTY directly. Keep as a derived view.
