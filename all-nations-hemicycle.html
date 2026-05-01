@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Nations — Parliament Hemicycle</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>html,body{margin:0;padding:0;background:#fff;} .country-panel.active{display:flex;justify-content:center;} .country-panel.active > div{max-width:500px;width:100%;}</style>
+</head>
+<body>
+<div id="graphic" style="padding:12px;">
+  <div class="country-tabs">
+    <button class="country-tab active" data-country="scotland">
+      <img src="img/scotland.webp" alt="" class="country-tab-icon" loading="lazy" decoding="async">
+      <span>Scotland</span>
+    </button>
+    <button class="country-tab" data-country="wales">
+      <img src="img/wales.webp" alt="" class="country-tab-icon" loading="lazy" decoding="async">
+      <span>Wales</span>
+    </button>
+  </div>
+
+  <div id="panel-scotland" class="country-panel active">
+    <div id="graphic-scotland"></div>
+  </div>
+  <div id="panel-wales" class="country-panel">
+    <div id="graphic-wales"></div>
+  </div>
+</div>
+<script src="js/all-nations-hemicycle.js"></script>
+<script>
+pollData(function () {
+  return Promise.all([
+    fetch(paUrl("results", "scottish_fptp_results.json")).then(function (r) { return r.json(); }).then(normalizeFPTPResults),
+    fetch(paUrl("results", "scottish_topup_results.json")).then(function (r) { return r.json(); }).then(normalizeTopUpResults),
+  ]).then(function (arr) { return { constResults: arr[0], regResults: arr[1] }; });
+}, function (data) {
+  var container = document.getElementById("graphic-scotland");
+  container.innerHTML = "";
+  var constResults = Array.isArray(data.constResults) ? data.constResults : (data.constResults.results || data.constResults);
+  var regResults = Array.isArray(data.regResults) ? data.regResults : (data.regResults.results || []);
+  var constDeduped = dedupByRevision(constResults);
+  var regDeduped = dedupByRevision(regResults);
+  var seatParties = {};
+  for (var i = 0; i < constDeduped.length; i++) {
+    var r = constDeduped[i];
+    if (r.winningParty) {
+      if (!seatParties[r.winningParty]) seatParties[r.winningParty] = { name: r.winningParty, seats: 0 };
+      seatParties[r.winningParty].seats++;
+    }
+  }
+  for (var j = 0; j < regDeduped.length; j++) {
+    var reg = regDeduped[j];
+    var candidates = reg.candidates || [];
+    for (var k = 0; k < candidates.length; k++) {
+      var c = candidates[k];
+      if (c.elected === "*") {
+        var abbr = c.party.abbreviation;
+        if (!seatParties[abbr]) seatParties[abbr] = { name: abbr, seats: 0 };
+        seatParties[abbr].seats++;
+      }
+    }
+  }
+  var hemiData = Object.values(seatParties).sort(function (a, b) { return b.seats - a.seats; });
+  hemicycle(container, hemiData, { width: 500 });
+});
+
+pollData(function () {
+  return fetch(paUrl("results", "welsh_results.json")).then(function (r) { return r.json(); }).then(normalizeTopUpResults);
+}, function (data) {
+  var container = document.getElementById("graphic-wales");
+  container.innerHTML = "";
+  var results = Array.isArray(data) ? data : (data.results || []);
+  var deduped = dedupByRevision(results);
+  var seatParties = {};
+  for (var i = 0; i < deduped.length; i++) {
+    var r = deduped[i];
+    var candidates = r.candidates || [];
+    for (var j = 0; j < candidates.length; j++) {
+      var c = candidates[j];
+      if (c.elected === "*") {
+        var abbr = c.party.abbreviation;
+        if (!seatParties[abbr]) seatParties[abbr] = { name: abbr, seats: 0 };
+        seatParties[abbr].seats++;
+      }
+    }
+  }
+  var hemiData = Object.values(seatParties).sort(function (a, b) { return b.seats - a.seats; });
+  hemicycle(container, hemiData, { width: 500 });
+});
+
+(function () {
+  var tabs = document.querySelectorAll(".country-tab");
+  var panels = document.querySelectorAll(".country-panel");
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.classList.remove("active"); });
+      panels.forEach(function (p) { p.classList.remove("active"); });
+      tab.classList.add("active");
+      var country = tab.getAttribute("data-country");
+      document.getElementById("panel-" + country).classList.add("active");
+      
+    });
+  });
+})();
+</script>
+</body>
+</html>

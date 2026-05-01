@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wales — Parliament Hemicycle</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>html,body{margin:0;padding:0;background:#fff;} #graphic{display:flex;justify-content:center;} #hemicycle{max-width:500px;width:100%;}</style>
+</head>
+<body>
+<div id="graphic"><div id="hemicycle"></div></div>
+<script src="js/wales-hemicycle.js"></script>
+<script>
+pollData(function () {
+  return fetch(paUrl("results", "welsh_results.json")).then(function (r) { return r.json(); }).then(normalizeTopUpResults);
+}, function (data) {
+  var container = document.getElementById("hemicycle");
+  container.innerHTML = "";
+  var results = Array.isArray(data) ? data : (data.results || []);
+  var deduped = dedupByRevision(results);
+
+  // Aggregate seats from elected candidates
+  var seatParties = {};
+  for (var i = 0; i < deduped.length; i++) {
+    var r = deduped[i];
+    var candidates = r.candidates || [];
+    for (var j = 0; j < candidates.length; j++) {
+      var c = candidates[j];
+      if (c.elected === "*") {
+        var abbr = c.party.abbreviation;
+        if (!seatParties[abbr]) seatParties[abbr] = { name: abbr, seats: 0 };
+        seatParties[abbr].seats++;
+      }
+    }
+  }
+
+  var hemiData = Object.values(seatParties).sort(function (a, b) { return b.seats - a.seats; });
+  hemicycle(container, hemiData, { width: 500 });
+});
+</script>
+</body>
+</html>

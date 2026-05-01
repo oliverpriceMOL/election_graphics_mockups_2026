@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>England — Local Elections Map</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>html,body{margin:0;padding:0;background:#fff;}</style>
+</head>
+<body>
+<div id="graphic"></div>
+<script src="js/england-map.js"></script>
+<script>
+var mapApi = null;
+pollData(function () {
+  return Promise.all([
+    fetch(paUrl("results", "local_results.json")).then(function (r) { return r.json(); }).then(normalizeLocalResults),
+    fetch(paUrl("results", "mayoral_results.json")).then(function (r) { return r.json(); }).then(normalizeFPTPResults),
+    fetch("map_data/lad_map.geojson").then(function (r) { return r.json(); }),
+    fetch("map_data/counties_map.geojson").then(function (r) { return r.json(); }),
+    fetch(paUrl("nominations", "local_nominations.json")).then(function (r) { return r.json(); }).then(normalizeLocalNominations),
+    fetch(paUrl("nominations", "mayoral_nominations.json")).then(function (r) { return r.json(); }).then(normalizeFPTPNominations),
+  ]).then(function (arr) {
+    return { localData: arr[0], mayoralData: arr[1], ladGeo: arr[2], countyGeo: arr[3], localNominations: arr[4], mayoralNominations: arr[5] };
+  });
+}, function (data) {
+  var container = document.getElementById("graphic");
+  container.innerHTML = "";
+  var results = data.localData.results || data.localData;
+  var deduped = dedupByRevision(results);
+
+  mapApi = englandMap(container, results, data.ladGeo, data.countyGeo, data.mayoralData, {
+    localNominations: data.localNominations,
+    mayoralNominations: data.mayoralNominations,
+  });
+}, function (data) {
+  // Incremental update — patch map paths without destroying DOM
+  var results = data.localData.results || data.localData;
+  if (mapApi && mapApi.update) {
+    mapApi.update(results, data.mayoralData, data.localNominations, data.mayoralNominations);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scotland — Parliament Hemicycle</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>html,body{margin:0;padding:0;background:#fff;} #graphic{display:flex;justify-content:center;} #hemicycle{max-width:500px;width:100%;}</style>
+</head>
+<body>
+<div id="graphic"><div id="hemicycle"></div></div>
+<script src="js/scotland-hemicycle.js"></script>
+<script>
+pollData(function () {
+  return Promise.all([
+    fetch(paUrl("results", "scottish_fptp_results.json")).then(function (r) { return r.json(); }).then(normalizeFPTPResults),
+    fetch(paUrl("results", "scottish_topup_results.json")).then(function (r) { return r.json(); }).then(normalizeTopUpResults),
+  ]).then(function (arr) { return { constResults: arr[0], regResults: arr[1] }; });
+}, function (data) {
+  var container = document.getElementById("hemicycle");
+  container.innerHTML = "";
+  var constResults = Array.isArray(data.constResults) ? data.constResults : (data.constResults.results || data.constResults);
+  var regResults = Array.isArray(data.regResults) ? data.regResults : (data.regResults.results || []);
+
+  var constDeduped = dedupByRevision(constResults);
+  var regDeduped = dedupByRevision(regResults);
+
+  // Aggregate seats from both result types
+  var seatParties = {};
+  for (var i = 0; i < constDeduped.length; i++) {
+    var r = constDeduped[i];
+    if (r.winningParty) {
+      if (!seatParties[r.winningParty]) seatParties[r.winningParty] = { name: r.winningParty, seats: 0 };
+      seatParties[r.winningParty].seats++;
+    }
+  }
+  for (var j = 0; j < regDeduped.length; j++) {
+    var reg = regDeduped[j];
+    var candidates = reg.candidates || [];
+    for (var k = 0; k < candidates.length; k++) {
+      var c = candidates[k];
+      if (c.elected === "*") {
+        var abbr = c.party.abbreviation;
+        if (!seatParties[abbr]) seatParties[abbr] = { name: abbr, seats: 0 };
+        seatParties[abbr].seats++;
+      }
+    }
+  }
+
+  var hemiData = Object.values(seatParties).sort(function (a, b) { return b.seats - a.seats; });
+  hemicycle(container, hemiData, { width: 500 });
+});
+</script>
+</body>
+</html>

@@ -1,37 +1,69 @@
-# Election Graphics Mockups 2026
+# Election Graphics — Standalone Modules 2026
 
-Interactive D3.js visualisations for UK May 2026 election night coverage (Daily Mail).
+Self-contained interactive D3.js modules for UK May 2026 election night coverage (Daily Mail). Each module is a single HTML page designed for iframe embedding, with auto-polling every 60 seconds.
+
+**Live preview:** https://oliverpricemol.github.io/election_graphics_mockups_2026/
 
 ## Running locally
 
-```
-cd mock_up_designs
+```bash
 python3 -m http.server 8080
 ```
 
-Then open `http://localhost:8080/`.
+Then open http://localhost:8080/ for the module gallery.
+
+## Modules (19 total)
+
+### All Nations (combined with country tabs)
+| File | Graphic |
+|------|---------|
+| `all-nations-scoreboard.html` | Scoreboard with England/Scotland/Wales tabs |
+| `all-nations-party-strip.html` | Party totals bar with country tabs |
+| `all-nations-change-seats.html` | Seat change columns with country tabs |
+| `all-nations-hemicycle.html` | Parliament hemicycle (Scotland + Wales) |
+| `all-nations-map.html` | Interactive map with country tabs |
+
+### England
+| File | Graphic |
+|------|---------|
+| `england-scoreboard.html` | Party scoreboard table |
+| `england-party-strip.html` | Party totals horizontal bar |
+| `england-change-seats.html` | Change in councillors/councils columns |
+| `england-map.html` | Interactive choropleth with search & overlays |
+
+### Scotland
+| File | Graphic |
+|------|---------|
+| `scotland-scoreboard.html` | Scoreboard with seats/vote share toggle |
+| `scotland-party-strip.html` | Party totals horizontal bar |
+| `scotland-change-seats.html` | Seat change columns |
+| `scotland-hemicycle.html` | Parliament composition |
+| `scotland-map.html` | Interactive constituency + region map |
+
+### Wales
+| File | Graphic |
+|------|---------|
+| `wales-scoreboard.html` | Scoreboard with vote share bars |
+| `wales-party-strip.html` | Party totals horizontal bar |
+| `wales-change-seats.html` | Seat change columns |
+| `wales-hemicycle.html` | Parliament composition |
+| `wales-map.html` | Interactive Senedd constituency map |
+
+## Structure
+
+```
+├── index.html          # Landing page / module gallery
+├── css/styles.css      # Shared stylesheet
+├── js/                 # Built JS bundles (one per module)
+├── data/               # Test JSON data (local dev)
+├── map_data/           # GeoJSON boundary files
+└── img/                # Flag icons + party icons
+```
 
 ## Data
 
-The front-end consumes **raw PA wire JSON** — xmltodict-converted XML served from a CDN in production. For local development, downloaded copies of these files live in `data/`.
+Each module fetches PA wire JSON via `paUrl(category, filename)`:
+- **Local dev** (localhost / github.io): loads from `data/`
+- **Production** (dailymail.co.uk): loads from CDN
 
-`data-adapter.js` normalizes the raw format at runtime:
-- Strips `@`-prefixed attribute keys → plain keys
-- Converts string values to numbers
-- Unwraps deeply nested `Election → Council/Constituency` structure
-- Filters out State of Parties (SOP) entries
-- Tags items as `fileType: "result"` or `"rush"`
-
-`paUrl(category, filename)` automatically routes to local `data/` on localhost and to the CDN in production.
-
-### Rush vs Result
-
-PA sends two message types for each constituency/council:
-- **Rush** — arrives first with winner info but no vote counts
-- **Result** — follows with full candidate vote data
-
-`dedupByRevision()` always prefers a Result over a Rush for the same name, then picks the highest revision number.
-
-## Known limitations
-
-**Council↔GeoJSON matching**: The map currently matches PA result/nomination names to GeoJSON feature names using fuzzy string normalisation (`council-lookup.js`). For the final production version, this should be replaced with a hardcoded lookup table mapping PA council IDs (`paId`) to ONS/GSS codes (`LAD25CD`, `SPC_CD`, `SENEDD_CD` etc.) for reliable matching.
+Auto-polls every 60 seconds. Graphics update automatically as results arrive.
